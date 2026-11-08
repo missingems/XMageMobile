@@ -39,6 +39,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -166,7 +167,7 @@ final class ClientSession implements MageClient {
         con.setPort(port);
         con.setUsername(name);
         con.setProxyType(Connection.ProxyType.NONE);
-        con.setUserData(UserData.getDefaultUserDataView());
+        con.setUserData(userData());
         session = s;
         username = name;
         if (!s.connectStart(con)) {
@@ -781,7 +782,7 @@ final class ClientSession implements MageClient {
                 }
                 case GAME_TARGET -> {
                     GameClientMessage m = (GameClientMessage) data;
-                    Set<UUID> targets = m.getTargets();
+                    Set<UUID> targets = targetsOf(m);
                     sendGame(m.getGameView(), targets);
                     JsonObject p = prompt("target", m.getMessage(), m.getOptions());
                     p.addProperty("required", m.isFlag());
@@ -924,6 +925,28 @@ final class ClientSession implements MageClient {
         JsonObject o = message("game");
         o.add("state", new ViewMapper(gameId, playerId, targets).game(view));
         send(o);
+    }
+
+    private static UserData userData() {
+        UserData data = UserData.getDefaultUserDataView();
+        data.getUserSkipPrioritySteps().getYourTurn().setEndOfTurn(true);
+        data.getUserSkipPrioritySteps().getOpponentTurn().setEndOfTurn(true);
+        return data;
+    }
+
+    private static Set<UUID> targetsOf(GameClientMessage m) {
+        Set<UUID> targets = new LinkedHashSet<>();
+        if (m.getTargets() != null) {
+            targets.addAll(m.getTargets());
+        }
+        if (m.getOptions() != null && m.getOptions().get("possibleTargets") instanceof Collection<?> possible) {
+            for (Object id : possible) {
+                if (id instanceof UUID uuid) {
+                    targets.add(uuid);
+                }
+            }
+        }
+        return targets;
     }
 
     private JsonObject prompt(String kind, String text, Map<String, Serializable> options) {
