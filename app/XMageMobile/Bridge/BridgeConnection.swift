@@ -1,11 +1,6 @@
 import Foundation
 
-final class BridgeConnection {
-    enum Event: Sendable {
-        case message(BridgeMessage)
-        case closed(String?)
-    }
-
+final class BridgeConnection: BridgeTransport {
     private let task: URLSessionWebSocketTask
     private let decoder = JSONDecoder()
 
@@ -14,7 +9,7 @@ final class BridgeConnection {
         task.maximumMessageSize = 16 * 1024 * 1024
     }
 
-    func events() -> AsyncStream<Event> {
+    func events() -> AsyncStream<BridgeEvent> {
         task.resume()
         let task = task
         let decoder = decoder

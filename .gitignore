@@ -8,3 +8,4 @@ app/XMageMobile.xcodeproj/project.xcworkspace/xcuserdata/
 DerivedData/
 .DS_Store
 *.log
+app/Frameworks/

@@ -11,11 +11,14 @@
 		06468995C9FF64126C6A8DC3 /* ZoneRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5617C1664B821913AF0B3BE /* ZoneRequest.swift */; };
 		07D00D7B427B4F43E362A420 /* ManaPoolChips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939CCB7251ADB3E8F697EB3E /* ManaPoolChips.swift */; };
 		081ACDC792C98A3CF04368FA /* PlayerAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CEC8EAA74D1F7291CC8F28 /* PlayerAvatar.swift */; };
+		083F105530FFBC2EDED5E869 /* XMageBridge.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD3DB2A3F45A723364132DF /* XMageBridge.xcframework */; };
 		0C2B0ED869ECEA6D61779EB6 /* ManaIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AD662363B892BFAED41C2C /* ManaIdentity.swift */; };
 		0C4477C3244B0D778C7C51F4 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491E4725ED6472C2FFE5F80D /* GameState.swift */; };
 		0ECF501931B1EB4F1F944030 /* CardTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF001532EC2DF86A1F1E1AF2 /* CardTile.swift */; };
+		12D8C2B13798D402AF81C4FC /* EmbeddedEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E49CA9B4CF406FE461963F /* EmbeddedEngine.swift */; };
 		1618AE21D55C168BD37C019A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256E4566A64CEFA51553419 /* Card.swift */; };
 		16E9A4BC20E356A0C35ACAC3 /* GameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932995FA53A18CFF96ECF67B /* GameStore.swift */; };
+		181F1F500873582BE100E0DA /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D43E4289C9595EE80AAF06E9 /* CoreServices.framework */; };
 		18278913B273142C9869EC58 /* CardFrameStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A05B52DADB05AE1F25D2255 /* CardFrameStyle.swift */; };
 		1C41CE5C703A23E11DCA83EE /* AmountPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82A1EF6EF079EDA89C90FBB /* AmountPicker.swift */; };
 		1E60C78C719B7FB8DCA784C9 /* ZoneSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5E70E5B92BD04D0EBB4FE /* ZoneSheet.swift */; };
@@ -26,11 +29,14 @@
 		42B0E701AF8B79F726A9DBC7 /* ManaPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3C0497EDE649F4ECF7915F /* ManaPool.swift */; };
 		4730E0EAAA20345781962322 /* OnlineTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA6BE69D9BA5D4924CFE6E0 /* OnlineTable.swift */; };
 		4C0C424CB5C4C76572EFDE05 /* PermanentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C50657BFC044BF3E68B6161 /* PermanentRow.swift */; };
+		4CA9A19E39FE1161801E06D8 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DAF016DBD0155A7883271FB /* libc++.tbd */; };
 		55EA4AA749E4F267E9231816 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 879EBB04312FB15840878834 /* Assets.xcassets */; };
 		5ADD4D6A21EAF6BDF6FCFB7B /* PermanentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CE16A246F4351E2E54BD73 /* PermanentStack.swift */; };
 		5AEA9BB679212F0F27F601D2 /* StackColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB01B5878A4F9C482974A44 /* StackColumn.swift */; };
 		5E5BB0AE456AEAF742405D25 /* PromptChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DEBDBBFEA7C35B03D73A83 /* PromptChoice.swift */; };
+		6013748FECC9B6BE697FD54B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ACBC71A0E2BBF04155E157BC /* libz.tbd */; };
 		6034BEBDB885B4E6DE27921E /* Playmat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C9165B350CD8679EC17081 /* Playmat.swift */; };
+		60D5B77B5836D0B870F99A34 /* EmbeddedBridgeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C12599D956360F50949892 /* EmbeddedBridgeError.swift */; };
 		63208A8B96F9CE5C0E95DC1B /* ZonePiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2CE99CCD18A29E99BD270E /* ZonePiles.swift */; };
 		63E495D158807CB5F0510505 /* AmountRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AD683DFE9D2DEEDA8CF81A /* AmountRow.swift */; };
 		65AEF9A965DA6A33E6709368 /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3793353D661D0E199CFCBF93 /* GameOverView.swift */; };
@@ -38,10 +44,13 @@
 		6831CB245C7F6394D78A2466 /* BridgeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74328BE36942C95DD2C1019 /* BridgeMessage.swift */; };
 		6D05FDA85200502BD6B9CD24 /* CardFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BCF3466840EB78329739B8 /* CardFace.swift */; };
 		6EE4982BDBDCD6F4781317C7 /* LobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B99105FDFAC8D89F3C1C0C4 /* LobbyView.swift */; };
+		6F901D64B83E46A16EC99C57 /* BridgeTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764D8F6C1CAFA0CCA67592C3 /* BridgeTransport.swift */; };
 		76258A3542D2300102EB891C /* LandGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91C3028AFB2FE911600E64F /* LandGroup.swift */; };
 		76A725569567DE4BA949ABD1 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586F398A4A0508D82B6A106F /* GameScreen.swift */; };
 		7A063209250DE99FF686B53F /* TableZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9D05E9B3C3A1E33CF13E17 /* TableZone.swift */; };
+		7B19F37881F6597B31C350CF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22CBDAA60511A31FFA2191A3 /* CFNetwork.framework */; };
 		7DF7F054E52A67F8D23AF532 /* OnlineSeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D600C0F80644B4EA4F02982 /* OnlineSeat.swift */; };
+		7F5C97FD4ACA44162C75770D /* EmbeddedBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D11998720392E7E62335F /* EmbeddedBridge.swift */; };
 		878C39B5DCBCD80137A71D4B /* CombatRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00B490B75E3CA22749C31CF /* CombatRole.swift */; };
 		87AD48832CDED98A99B71917 /* OpponentHandFan.swift in Sources */ = {isa = PBXBuildFile; fileRef = D285091AA6FA06F4405814A2 /* OpponentHandFan.swift */; };
 		8D0AF6953C8898AC634177ED /* ServerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC97C2D61956DAF96F2298C6 /* ServerSettings.swift */; };
@@ -74,12 +83,14 @@
 		E6E2160308F93094307B16E8 /* LogLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D826C956FBB7F61F75CDA /* LogLine.swift */; };
 		E7CF787965BBB5D478259928 /* ManaSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6100DF8210D0E76CB8E4AE4B /* ManaSymbol.swift */; };
 		EB39F93CE40740B867C7151E /* BridgeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483CA531D5B6A53826141C2 /* BridgeRequest.swift */; };
+		ED5DCB8F5E4A97194CA27533 /* BridgeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34639339F69FB10E705EC0AC /* BridgeEvent.swift */; };
 		ED8FE5D9C84CCE6A9D8D5F5D /* TableMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92885F9BD1628423A2A9E1B /* TableMetrics.swift */; };
 		F279D775DA1B295C97FE2A3C /* WaitingRoomSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF77A4D3FC406B233DB1723F /* WaitingRoomSection.swift */; };
 		F49A83C0A40269495265DFE3 /* DeckPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4A52C036284D2D24B4E00E /* DeckPickerView.swift */; };
 		F4FD8595A9C16E5E37E3DE16 /* PilePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74C87B715206130A09F5BF9 /* PilePicker.swift */; };
 		F5A677C70D814979450DCB7E /* OnlineTablesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D85F16B06427813749A4384 /* OnlineTablesSection.swift */; };
 		F73AB093EB2EE699256A0EB6 /* MultiAmountPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135C248BDEBD1ECCB2C5B4CD /* MultiAmountPicker.swift */; };
+		FE0FBA438FA3792513BBF881 /* sample-decks in Resources */ = {isa = PBXBuildFile; fileRef = 33894AF7870628B1066BD7A7 /* sample-decks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,17 +100,23 @@
 		110502E26BF42AB584F25E80 /* OnlineTableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineTableRow.swift; sourceTree = "<group>"; };
 		135C248BDEBD1ECCB2C5B4CD /* MultiAmountPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiAmountPicker.swift; sourceTree = "<group>"; };
 		187437E6A6C4F9B571A55E2E /* ManaCostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaCostView.swift; sourceTree = "<group>"; };
+		22CBDAA60511A31FFA2191A3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		24CE16A246F4351E2E54BD73 /* PermanentStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermanentStack.swift; sourceTree = "<group>"; };
+		269D11998720392E7E62335F /* EmbeddedBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedBridge.swift; sourceTree = "<group>"; };
 		2A0FC47264DA5343332336E2 /* CombatGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatGroup.swift; sourceTree = "<group>"; };
 		2DA2EB5565C45AEDB47F2FDD /* CardArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardArt.swift; sourceTree = "<group>"; };
+		33894AF7870628B1066BD7A7 /* sample-decks */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "sample-decks"; path = "../vendor/xmage/xmage/mage-client/sample-decks"; sourceTree = SOURCE_ROOT; };
+		34639339F69FB10E705EC0AC /* BridgeEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeEvent.swift; sourceTree = "<group>"; };
 		3793353D661D0E199CFCBF93 /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
 		39B16B6B2A989227AD814722 /* CommandObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandObject.swift; sourceTree = "<group>"; };
 		3C3C0497EDE649F4ECF7915F /* ManaPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaPool.swift; sourceTree = "<group>"; };
 		42AA013C6206181FFE98FCBF /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		42C9165B350CD8679EC17081 /* Playmat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playmat.swift; sourceTree = "<group>"; };
+		42E49CA9B4CF406FE461963F /* EmbeddedEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedEngine.swift; sourceTree = "<group>"; };
 		47312F21C0094526239CD5FB /* GameLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogView.swift; sourceTree = "<group>"; };
 		491E4725ED6472C2FFE5F80D /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		4A6FC8F6A759805A157D1A76 /* CreateTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTableView.swift; sourceTree = "<group>"; };
+		4DAF016DBD0155A7883271FB /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		586F398A4A0508D82B6A106F /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
 		59E2131D1279EDF1D081D1F3 /* CardBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBack.swift; sourceTree = "<group>"; };
 		5B7A10A6925493CA42F186D5 /* CardImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImageLoader.swift; sourceTree = "<group>"; };
@@ -114,6 +131,7 @@
 		713340862AD8518D3960FF49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		736D826C956FBB7F61F75CDA /* LogLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLine.swift; sourceTree = "<group>"; };
 		761161383D77D8DA91A3A900 /* XMageMobileApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMageMobileApp.swift; sourceTree = "<group>"; };
+		764D8F6C1CAFA0CCA67592C3 /* BridgeTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeTransport.swift; sourceTree = "<group>"; };
 		767D91350D447D72C1E8A148 /* PromptSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptSheet.swift; sourceTree = "<group>"; };
 		8537E9FE7F943EAA61D17F31 /* TableMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableMenu.swift; sourceTree = "<group>"; };
 		879EBB04312FB15840878834 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -125,12 +143,14 @@
 		97CEC8EAA74D1F7291CC8F28 /* PlayerAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAvatar.swift; sourceTree = "<group>"; };
 		9B4C20B8829D5A5EA76F9716 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		9D600C0F80644B4EA4F02982 /* OnlineSeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineSeat.swift; sourceTree = "<group>"; };
+		ACBC71A0E2BBF04155E157BC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		AFB01B5878A4F9C482974A44 /* StackColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackColumn.swift; sourceTree = "<group>"; };
 		B2DEBDBBFEA7C35B03D73A83 /* PromptChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptChoice.swift; sourceTree = "<group>"; };
 		B32157DC6F5EA7D311D31784 /* ConnectionPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionPhase.swift; sourceTree = "<group>"; };
 		B92529CA40A43FBC4330457B /* TargetCardsPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetCardsPicker.swift; sourceTree = "<group>"; };
 		BA99F65CE25C2456DD406BA0 /* TableAnchorKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableAnchorKey.swift; sourceTree = "<group>"; };
 		BBA6BE69D9BA5D4924CFE6E0 /* OnlineTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineTable.swift; sourceTree = "<group>"; };
+		BCD3DB2A3F45A723364132DF /* XMageBridge.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = XMageBridge.xcframework; path = Frameworks/XMageBridge.xcframework; sourceTree = "<group>"; };
 		BE399D9D537A51EFE99B601D /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		C4AD683DFE9D2DEEDA8CF81A /* AmountRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountRow.swift; sourceTree = "<group>"; };
 		C732E3E521363C5B0BAE9F21 /* Autopilot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autopilot.swift; sourceTree = "<group>"; };
@@ -140,6 +160,8 @@
 		CF77A4D3FC406B233DB1723F /* WaitingRoomSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingRoomSection.swift; sourceTree = "<group>"; };
 		D256E4566A64CEFA51553419 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		D285091AA6FA06F4405814A2 /* OpponentHandFan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentHandFan.swift; sourceTree = "<group>"; };
+		D43E4289C9595EE80AAF06E9 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		D5C12599D956360F50949892 /* EmbeddedBridgeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedBridgeError.swift; sourceTree = "<group>"; };
 		D74328BE36942C95DD2C1019 /* BridgeMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeMessage.swift; sourceTree = "<group>"; };
 		D92885F9BD1628423A2A9E1B /* TableMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableMetrics.swift; sourceTree = "<group>"; };
 		DF001532EC2DF86A1F1E1AF2 /* CardTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTile.swift; sourceTree = "<group>"; };
@@ -160,6 +182,21 @@
 		FF3A6120ECFA19D5FE14C9E6 /* BridgeConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeConnection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFrameworksBuildPhase section */
+		F884E5E3831C1C6C251984C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				083F105530FFBC2EDED5E869 /* XMageBridge.xcframework in Frameworks */,
+				7B19F37881F6597B31C350CF /* CFNetwork.framework in Frameworks */,
+				181F1F500873582BE100E0DA /* CoreServices.framework in Frameworks */,
+				6013748FECC9B6BE697FD54B /* libz.tbd in Frameworks */,
+				4CA9A19E39FE1161801E06D8 /* libc++.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
 		09E96CD437F6A4B08275B932 /* XMageMobile */ = {
 			isa = PBXGroup;
@@ -175,6 +212,14 @@
 			path = XMageMobile;
 			sourceTree = "<group>";
 		};
+		14554FC938F230C21174FB24 /* xmage */ = {
+			isa = PBXGroup;
+			children = (
+				A38F2CB3D303652464547575 /* xmage */,
+			);
+			path = xmage;
+			sourceTree = "<group>";
+		};
 		275E036760A9E262B7FCDCF6 /* Features */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +230,14 @@
 				E7C7BBA043D2B8DDEE6B866D /* Table */,
 			);
 			path = Features;
+			sourceTree = "<group>";
+		};
+		2AA6289DF1B2D7F29B1EBE6A /* mage-client */ = {
+			isa = PBXGroup;
+			children = (
+				33894AF7870628B1066BD7A7 /* sample-decks */,
+			);
+			path = "mage-client";
 			sourceTree = "<group>";
 		};
 		3855D6C57372A7858864F686 /* Prompts */ = {
@@ -224,8 +277,13 @@
 			isa = PBXGroup;
 			children = (
 				FF3A6120ECFA19D5FE14C9E6 /* BridgeConnection.swift */,
+				34639339F69FB10E705EC0AC /* BridgeEvent.swift */,
 				D74328BE36942C95DD2C1019 /* BridgeMessage.swift */,
 				E483CA531D5B6A53826141C2 /* BridgeRequest.swift */,
+				764D8F6C1CAFA0CCA67592C3 /* BridgeTransport.swift */,
+				269D11998720392E7E62335F /* EmbeddedBridge.swift */,
+				D5C12599D956360F50949892 /* EmbeddedBridgeError.swift */,
+				42E49CA9B4CF406FE461963F /* EmbeddedEngine.swift */,
 				736D826C956FBB7F61F75CDA /* LogLine.swift */,
 				94CEFDF4D4FF188143652551 /* PlayerAction.swift */,
 			);
@@ -255,6 +313,23 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		6ABD510209A008AB57DA6CC3 /* XMageMobile */ = {
+			isa = PBXGroup;
+			children = (
+				75C4FAE04A37414434C98CBA /* vendor */,
+			);
+			name = XMageMobile;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		75C4FAE04A37414434C98CBA /* vendor */ = {
+			isa = PBXGroup;
+			children = (
+				14554FC938F230C21174FB24 /* xmage */,
+			);
+			path = vendor;
+			sourceTree = "<group>";
+		};
 		81DB060E4C2233ECC0BF14B4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,10 +350,32 @@
 			path = Store;
 			sourceTree = "<group>";
 		};
+		A38F2CB3D303652464547575 /* xmage */ = {
+			isa = PBXGroup;
+			children = (
+				2AA6289DF1B2D7F29B1EBE6A /* mage-client */,
+			);
+			path = xmage;
+			sourceTree = "<group>";
+		};
+		A8B80350EA2BE24C49F158BC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				22CBDAA60511A31FFA2191A3 /* CFNetwork.framework */,
+				D43E4289C9595EE80AAF06E9 /* CoreServices.framework */,
+				4DAF016DBD0155A7883271FB /* libc++.tbd */,
+				ACBC71A0E2BBF04155E157BC /* libz.tbd */,
+				BCD3DB2A3F45A723364132DF /* XMageBridge.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AB708FDEED20FE2183C45F8E = {
 			isa = PBXGroup;
 			children = (
 				09E96CD437F6A4B08275B932 /* XMageMobile */,
+				6ABD510209A008AB57DA6CC3 /* XMageMobile */,
+				A8B80350EA2BE24C49F158BC /* Frameworks */,
 				F429DE481E11454440C04263 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -363,6 +460,7 @@
 			buildPhases = (
 				81078EAF632E39F214B1D14C /* Sources */,
 				3EC1657BEED6EAEA9F8E0416 /* Resources */,
+				F884E5E3831C1C6C251984C3 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -414,6 +512,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55EA4AA749E4F267E9231816 /* Assets.xcassets in Resources */,
+				FE0FBA438FA3792513BBF881 /* sample-decks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,8 +528,10 @@
 				63E495D158807CB5F0510505 /* AmountRow.swift in Sources */,
 				C1BEC5E122231C578C6BC1CB /* Autopilot.swift in Sources */,
 				B15824136E71784482B7853C /* BridgeConnection.swift in Sources */,
+				ED5DCB8F5E4A97194CA27533 /* BridgeEvent.swift in Sources */,
 				6831CB245C7F6394D78A2466 /* BridgeMessage.swift in Sources */,
 				EB39F93CE40740B867C7151E /* BridgeRequest.swift in Sources */,
+				6F901D64B83E46A16EC99C57 /* BridgeTransport.swift in Sources */,
 				1618AE21D55C168BD37C019A /* Card.swift in Sources */,
 				67B44B06A87607B612644154 /* CardArt.swift in Sources */,
 				2027C9DEFEA15A30FA7EED52 /* CardBack.swift in Sources */,
@@ -449,6 +550,9 @@
 				C6FDA6F0E3764C8F35B62D99 /* CreateTableView.swift in Sources */,
 				DF2340E186A1851E013B3F94 /* DeckEntry.swift in Sources */,
 				F49A83C0A40269495265DFE3 /* DeckPickerView.swift in Sources */,
+				7F5C97FD4ACA44162C75770D /* EmbeddedBridge.swift in Sources */,
+				60D5B77B5836D0B870F99A34 /* EmbeddedBridgeError.swift in Sources */,
+				12D8C2B13798D402AF81C4FC /* EmbeddedEngine.swift in Sources */,
 				AA25DE59CE2759008CA7DC4A /* GameLogView.swift in Sources */,
 				65AEF9A965DA6A33E6709368 /* GameOverView.swift in Sources */,
 				222ED943DCD66C7FA5B034F7 /* GameResult.swift in Sources */,
@@ -536,7 +640,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 25WL36ABTN;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -598,7 +702,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 25WL36ABTN;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -640,6 +744,10 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Frameworks\"",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = XMageMobile/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = XMage;
@@ -668,6 +776,10 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Frameworks\"",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = XMageMobile/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = XMage;

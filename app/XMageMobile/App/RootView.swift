@@ -42,9 +42,10 @@ struct RootView: View {
         store.connect(ServerSettings(
             bridgeHost: defaults.string(forKey: "bridgeHost") ?? "localhost",
             bridgePort: defaults.object(forKey: "bridgePort") as? Int ?? 8765,
-            serverHost: defaults.string(forKey: "serverHost") ?? "127.0.0.1",
+            serverHost: defaults.string(forKey: "serverHost") ?? "xmage.today",
             serverPort: defaults.object(forKey: "serverPort") as? Int ?? 17171,
-            username: defaults.string(forKey: "username") ?? "Planeswalker"))
+            username: defaults.string(forKey: "username") ?? "Planeswalker",
+            usesMacBridge: defaults.bool(forKey: "usesMacBridge")))
         while store.phase != .lobby {
             if case .failed = store.phase { return }
             try? await Task.sleep(for: .milliseconds(200))

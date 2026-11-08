@@ -31,7 +31,6 @@ import mage.view.GameView;
 import mage.view.SeatView;
 import mage.view.TableClientMessage;
 import mage.view.TableView;
-import org.java_websocket.WebSocket;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -55,7 +54,7 @@ final class ClientSession implements MageClient {
     private static final String GAME_TYPE = "Two Player Duel";
     private static final String DECK_TYPE = "Constructed - Freeform Unlimited";
 
-    private final WebSocket socket;
+    private final Outbox socket;
     private final DeckLibrary decks;
     private final String defaultServer;
     private final int defaultServerPort;
@@ -86,7 +85,7 @@ final class ClientSession implements MageClient {
     private final AtomicBoolean tablesInFlight = new AtomicBoolean();
     private final AtomicBoolean waitingInFlight = new AtomicBoolean();
 
-    ClientSession(WebSocket socket, DeckLibrary decks, String defaultServer, int defaultServerPort) {
+    ClientSession(Outbox socket, DeckLibrary decks, String defaultServer, int defaultServerPort) {
         this.socket = socket;
         this.decks = decks;
         this.defaultServer = defaultServer;
@@ -96,7 +95,9 @@ final class ClientSession implements MageClient {
     void hello() {
         JsonObject o = message("hello");
         o.addProperty("bridgeVersion", "0.1.0");
-        o.addProperty("xmageVersion", VERSION.toString());
+        String version = VERSION.toString();
+        int build = version.indexOf(" (build: runtime)");
+        o.addProperty("xmageVersion", build >= 0 ? version.substring(0, build) : version);
         o.addProperty("defaultServer", defaultServer);
         o.addProperty("defaultPort", defaultServerPort);
         send(o);
@@ -183,6 +184,15 @@ final class ClientSession implements MageClient {
         gameId = null;
         if (s != null && s.isConnected()) {
             s.connectStop(false, false);
+        }
+    }
+
+    void closeAndWait() {
+        close();
+        try {
+            calls.awaitTermination(5, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
     }
 

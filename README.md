@@ -8,6 +8,12 @@ XMage's own client is a Java Swing desktop app that talks to the server over JBo
 iPhone / iPad ──WebSocket JSON──▶ bridge (Java) ──JBoss Remoting──▶ XMage server
 ```
 
+The bridge can also run **inside the app**. GraalVM native-image compiles it, together with XMage's client classes, into a static iOS library (`XMageBridge.xcframework`). The app then talks straight to a public server such as xmage.today, with no Mac in between:
+
+```
+iPhone / iPad ──in-process JSON──▶ built-in bridge (native) ──JBoss Remoting──▶ XMage server
+```
+
 The rules engine, AI and card implementations all stay in XMage.
 
 ## Repository layout
@@ -32,7 +38,7 @@ scripts/run-bridge.sh       # bridge on ws://0.0.0.0:8765/ws
 cd app && xcodegen generate && open XMageMobile.xcodeproj
 ```
 
-In the app, set **Bridge** to your Mac's address (`localhost` in the simulator), keep **XMage Server** at `127.0.0.1`, connect, pick decks and tap **Play vs Computer**.
+In the app, turn on **Use a Mac Bridge**, set **Bridge** to your Mac's address (`localhost` in the simulator), keep **XMage Server** at `127.0.0.1`, connect, pick decks and tap **Play vs Computer**.
 
 The XMage version is pinned in one place, `bridge/gradle.properties` (`xmageVersion`). The server rejects clients built against a different release, so bump it together with `scripts/fetch-xmage.sh`.
 
@@ -50,6 +56,23 @@ For screenshots and testing without touching the screen (Debug builds only):
 ```
 
 `-autoStart` connects and starts a game against the computer. `-autopilotTurns N` plays lands and spells and passes priority until turn N, then hands control back.
+
+## Built-in engine (no Mac needed)
+
+The app links `app/Frameworks/XMageBridge.xcframework` (git-ignored, about 55 MB per slice). To build it:
+
+```bash
+scripts/fetch-xmage.sh        # XMage jars and sample decks
+scripts/setup-graalvm.sh      # GraalVM CE 25.5 and the graalvm-mobile iOS kits, checksums verified
+scripts/build-ios-bridge.sh   # native-image for iOS device and simulator, then the xcframework
+```
+
+- Only about 20 of XMage's client jars go in (no card sets, no Swing client).
+- `bridge/src/main/java/mage/remote/SessionImpl.java` is XMage's own class, with `javax.swing.SwingWorker` replaced by a plain thread, because iOS has no `java.desktop`.
+- `bridge/native/traced` is the native-image reflection and serialization metadata, recorded with the tracing agent during real games. `bridge/native/serialization` additionally registers every class XMage can send over the wire.
+- If you bump `xmageVersion`, rerun the tracing agent against the new jars.
+
+In the app, **Use a Mac Bridge** is off by default, so it connects directly. Turn it on to use `scripts/run-bridge.sh` instead.
 
 ## Card images
 

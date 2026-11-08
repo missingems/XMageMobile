@@ -18,6 +18,7 @@ java {
 dependencies {
     implementation(fileTree(xmageLib) { include("*.jar") })
     implementation("org.java-websocket:Java-WebSocket:1.5.7")
+    compileOnly("org.graalvm.sdk:nativeimage:25.5.5.0.3")
 }
 
 application {

@@ -31,7 +31,7 @@ final class GameStore {
     var presentedPrompt: Prompt?
     var lastError: String?
 
-    private var connection: BridgeConnection?
+    private var connection: (any BridgeTransport)?
     private var listener: Task<Void, Never>?
     private var bannerTask: Task<Void, Never>?
     private var outgoing: Task<Void, Never>?
@@ -42,13 +42,22 @@ final class GameStore {
 
     func connect(_ settings: ServerSettings) {
         disconnect()
-        guard let url = settings.bridgeURL else {
-            phase = .failed("That bridge address isn't valid.")
-            return
+        let connection: any BridgeTransport
+        if settings.usesMacBridge {
+            guard let url = settings.bridgeURL else {
+                phase = .failed("That bridge address isn't valid.")
+                return
+            }
+            connection = BridgeConnection(url: url)
+        } else {
+            guard let decks = Bundle.main.url(forResource: "sample-decks", withExtension: nil) else {
+                phase = .failed("The sample decks are missing from this build.")
+                return
+            }
+            connection = EmbeddedBridge(decksPath: decks.path(percentEncoded: false))
         }
         phase = .reachingBridge
         pendingLogin = settings
-        let connection = BridgeConnection(url: url)
         self.connection = connection
         listener = Task { [weak self] in
             for await event in connection.events() {
@@ -220,7 +229,7 @@ final class GameStore {
         deckTypes = []
     }
 
-    private func handle(_ event: BridgeConnection.Event) {
+    private func handle(_ event: BridgeEvent) {
         switch event {
         case let .message(message):
             handle(message)

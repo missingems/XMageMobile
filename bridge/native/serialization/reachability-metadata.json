@@ -1,0 +1,5762 @@
+{
+ "reflection": [
+  {
+   "type": "mage.constants.Constants$Option",
+   "serializable": true
+  },
+  {
+   "type": "mage.interfaces.callback.ClientCallback",
+   "serializable": true
+  },
+  {
+   "type": "mage.interfaces.callback.ClientCallbackMethod",
+   "serializable": true
+  },
+  {
+   "type": "mage.interfaces.callback.ClientCallbackType",
+   "serializable": true
+  },
+  {
+   "type": "mage.remote.Connection$ProxyType",
+   "serializable": true
+  },
+  {
+   "type": "mage.remote.MageRemoteException",
+   "serializable": true
+  },
+  {
+   "type": "mage.remote.MageVersionException",
+   "serializable": true
+  },
+  {
+   "type": "mage.remote.SessionImpl$SessionState",
+   "serializable": true
+  },
+  {
+   "type": "mage.remote.traffic.ZippedObjectImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.utils.MageVersion",
+   "serializable": true
+  },
+  {
+   "type": "mage.utils.timer.PriorityTimer$States",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.AbilityPickerView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.AbilityView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.CardsView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.CardView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.ChatMessage$MessageColor",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.ChatMessage$MessageType",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.ChatMessage$SoundToPlay",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.ChatMessage",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.CombatGroupView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.CommanderView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.CounterView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.DeckView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.DraftClientMessage",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.DraftPickView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.DraftView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.DungeonView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.EmblemView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.ExileView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.GameClientMessage",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.GameEndView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.GameTypeView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.GameView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.LookedAtView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.ManaPoolView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.MatchView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.MutateView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.PermanentView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.PlaneView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.PlayerView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.RevealedView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.RoomUsersView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.RoundView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.SeatView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.SimpleCardsView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.SimpleCardView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.StackAbilityView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.TableClientMessage",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.TableView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.TournamentGameView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.TournamentPlayerView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.TournamentTypeView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.TournamentView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.UserDataView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.UserRequestMessage",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.UsersView",
+   "serializable": true
+  },
+  {
+   "type": "mage.view.UserView",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.decks.Deck",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.decks.DeckCardInfo",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.decks.DeckCardLists",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.decks.DeckFormats",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.decks.DeckValidator",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.decks.DeckValidatorErrorType",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.decks.DeckValidatorFactory",
+   "serializable": true
+  },
+  {
+   "type": "mage.choices.Choice",
+   "serializable": true
+  },
+  {
+   "type": "mage.choices.ChoiceBasicLandType",
+   "serializable": true
+  },
+  {
+   "type": "mage.choices.ChoiceCardType",
+   "serializable": true
+  },
+  {
+   "type": "mage.choices.ChoiceColor",
+   "serializable": true
+  },
+  {
+   "type": "mage.choices.ChoiceColorOrArtifact",
+   "serializable": true
+  },
+  {
+   "type": "mage.choices.ChoiceCreatureType",
+   "serializable": true
+  },
+  {
+   "type": "mage.choices.ChoiceHintType",
+   "serializable": true
+  },
+  {
+   "type": "mage.choices.ChoiceImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.choices.ChoiceLandType",
+   "serializable": true
+  },
+  {
+   "type": "mage.choices.ChoiceLeftOrRight",
+   "serializable": true
+  },
+  {
+   "type": "mage.choices.ChoicePlaneswalkerType",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.AbilityType",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.AbilityWord",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.AffinityType",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.AsThoughEffectType",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.AttachmentType",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.CardType",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.CastManaAdjustment",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.ColoredManaSymbol",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.CommanderCardType",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.ComparisonType",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.CostModificationType",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.DependencyType",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.Duration",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.EffectType",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.EmptyNames",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.EnlargeMode",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.EnterEventType",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.GiftType",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.Layer",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.MageObjectType",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.ManaType",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.MatchBufferTime",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.MatchTimeLimit",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.ModeChoice",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.MultiplayerAttackOption",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.Outcome",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.PartnerVariantType",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.PhaseStep",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.PlanarDieRollResult",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.Planes",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.PlayerAction",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.Pronoun",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.PutCards",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.RangeOfInfluence",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.Rarity",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.RoleType",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.RollDieType",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.SagaChapter",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.SetTargetPointer",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.SetType",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.SkillLevel",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.SpellAbilityCastMode",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.SpellAbilityType",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.SubLayer",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.SubType",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.SubTypeSet",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.SuperType",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.TableState",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.TargetController",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.TimingRule",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.TournamentPlayerState",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.TurnPhase",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.UseFirstManaAbilityMode",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.WatcherScope",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.Zone",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.match.MatchOptions",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.tournament.TournamentOptions",
+   "serializable": true
+  },
+  {
+   "type": "mage.players.net.SkipPrioritySteps",
+   "serializable": true
+  },
+  {
+   "type": "mage.players.net.UserData",
+   "serializable": true
+  },
+  {
+   "type": "mage.players.net.UserGroup",
+   "serializable": true
+  },
+  {
+   "type": "mage.players.net.UserSkipPrioritySteps",
+   "serializable": true
+  },
+  {
+   "type": "mage.util.MultiAmountMessage",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.CannotConnectException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.Client",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.ClientDisconnectedException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.ClientHolder",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.ConnectionFailedException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.Home",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.InvalidConfigurationException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.InvocationFailureException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.InvocationRequest",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.InvocationResponse",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.InvokerLocator",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.ServerInvoker$InvalidStateException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.SubsystemNotSupported",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.callback.Callback",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.callback.HandleCallbackException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.callback.NullCallbackStore$FailedCallback",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.callback.NullCallbackStore",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.detection.Detection",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.detection.ServerInvokerMetadata",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.ident.Identity",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.invocation.InternalInvocation",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.invocation.NameBasedInvocation",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.invocation.OnewayInvocation",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.invocation.RemoteInvocation",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.loading.ClassBytes",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.loading.CompressedClassBytes",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.marshal.InvalidMarshallingResource",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.marshal.Marshaller",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.marshal.PreferredStreamMarshaller",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.marshal.PreferredStreamUnMarshaller",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.marshal.SerialMarshaller",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.marshal.SerialUnMarshaller",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.marshal.UnMarshaller",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.marshal.UpdateableClassloaderUnMarshaller",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.marshal.VersionedMarshaller",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.marshal.VersionedUnMarshaller",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.marshal.compress.CompressingMarshaller",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.marshal.compress.CompressingUnMarshaller",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.marshal.encryption.EncryptingMarshaller",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.marshal.encryption.EncryptingUnMarshaller",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.marshal.http.HTTPMarshaller",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.marshal.http.HTTPUnMarshaller",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.marshal.rmi.RMIMarshaller",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.marshal.rmi.RMIUnMarshaller",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.marshal.serializable.SerializableMarshaller",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.marshal.serializable.SerializableUnMarshaller",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.network.NetworkFilter",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.network.NetworkInstance",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.network.NetworkNotification",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.network.NetworkRegistryQuery",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.network.filter.IdentityFilter",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.network.filter.InvokerProtocolFilter",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.client.Chat",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.client.ChatFrame",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.client.ChatInfo",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.client.ChatMember",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.client.ChatMessage",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.client.CloseableFrame",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.client.CreateFrame",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.client.InfoFrame",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.client.JoinFrame",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.client.ListFrame",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.client.ShutDownDialog",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.client.TalkFrame",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.exceptions.ConnectionException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.exceptions.CreateConnectionException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.exceptions.DatabaseException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.exceptions.InfoConnectionException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.exceptions.InitializeException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.exceptions.InvalidArgumentException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.exceptions.JoinConnectionException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.exceptions.ListConnectionException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.exceptions.NameInUseException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.exceptions.NotConnectedException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.exceptions.RemoteConnectionException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.exceptions.ShuttingDownException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.exceptions.TalkConnectionException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.server.ChatManagerLauncher",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.server.ChatStore",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.server.ExtendedChatInfo",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.utility.ReadWriteArrayList$Gate",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.utility.ReadWriteArrayList",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.chat.utility.ShutDownGate",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.http.ComplexObject",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.transporter.basic.Address",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.transporter.basic.Customer",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.transporter.complex.NoDoctorAvailableException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.transporter.multiple.Account",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.transporter.multiple.Address",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.transporter.multiple.Customer",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.transporter.proxy.Address",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.samples.transporter.proxy.Customer",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.security.SSLSocketBuilder$NullStoreURLException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.serialization.impl.java.JavaMarshalledValue",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.serialization.impl.jboss.LocalMarshalledValue",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.serialization.impl.jboss.MarshalledValue",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.serialization.impl.jboss.SmartCloningMarshalledValue",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.socketfactory.CreationListenerServerSocketFactory",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.socketfactory.CreationListenerSocketFactory",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.stream.StreamCallPayload",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.transport.bisocket.BisocketServerInvoker$ClientUnavailableException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.transport.coyote.ClientAbortException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.transport.http.WebServerError",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.transport.multiplex.InputMultiplexor$CorruptedStreamException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.transport.multiplex.MasterServerSocket",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.transport.multiplex.SocketId",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.transport.multiplex.VirtualServerSocket",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.transport.multiplex.VirtualSocketFactory",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.transport.rmi.RMIServerInvoker_Stub",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.transport.rmi.RemotingRMIClientSocketFactory",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.transport.rmi.RemotingRMIServerSocketFactory",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.transport.socket.ServerAddress",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.transport.socket.ServerThread$AcknowledgeFailure",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.transport.socket.ServerThread$EvictionException",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.transport.sslrmi.SerializableSSLClientSocketFactory",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.transport.web.WebServerInvoker$CreatedInvocationRequest",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.transporter.DefaultLoadBalancer",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.remoting.transporter.TransporterClient",
+   "serializable": true
+  },
+  {
+   "type": "java.lang.Enum",
+   "serializable": true
+  },
+  {
+   "type": "java.lang.String",
+   "serializable": true
+  },
+  {
+   "type": "java.util.UUID",
+   "serializable": true
+  },
+  {
+   "type": "java.lang.Exception",
+   "serializable": true
+  },
+  {
+   "type": "java.lang.Throwable",
+   "serializable": true
+  },
+  {
+   "type": "java.lang.StackTraceElement",
+   "serializable": true
+  },
+  {
+   "type": "mage.MageException",
+   "serializable": true
+  },
+  {
+   "type": "mage.util.SubTypes",
+   "serializable": true
+  },
+  {
+   "type": "mage.ObjectColor",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.FrameStyle",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.ArtRect",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.icon.CardIconImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.icon.system.CombinedCountIcon",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.icon.system.PlayableCountIcon",
+   "serializable": true
+  },
+  {
+   "type": "mage.MageInt",
+   "serializable": true
+  },
+  {
+   "type": "mage.MageInt$1",
+   "serializable": true
+  },
+  {
+   "type": "mage.players.PlayableObjectStats",
+   "serializable": true
+  },
+  {
+   "type": "java.util.LinkedHashMap",
+   "serializable": true
+  },
+  {
+   "type": "java.util.HashMap",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Date",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.draft.DraftPickSuggest",
+   "serializable": true
+  },
+  {
+   "type": "mage.players.PlayableObjectsList",
+   "serializable": true
+  },
+  {
+   "type": "mage.players.PlayerType",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.AdventureCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.AdventureSpellCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.basiclands.BasicLand",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.basiclands.Forest",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.basiclands.Island",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.basiclands.Mountain",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.basiclands.Plains",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.basiclands.Swamp",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.Card",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.CardImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.CardWithHalves",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.CardWithSpellOption",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.DoubleFacedCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.DoubleFacedCardHalf",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.LevelerCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.MeldCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.mock.MockCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.mock.MockSplitCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.mock.MockSplitCardHalf",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.ModalDoubleFacedCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.ModalDoubleFacedCardHalf",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.OmenCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.OmenSpellCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.PrepareCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.PreparedSpellCopy",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.PrepareSpellCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.RoomCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.RoomCardHalf",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.RoomCardHalfImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.SpellOptionCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.SplitCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.SplitCardHalf",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.SplitCardHalfImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.SubCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.TransformingDoubleFacedCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.TransformingDoubleFacedCardHalf",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.DefaultCommander",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.permanent.Permanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.permanent.PermanentCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.permanent.PermanentImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.permanent.PermanentMeld",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.permanent.PermanentToken",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.stack.Spell",
+   "serializable": true
+  },
+  {
+   "type": "java.lang.Class",
+   "serializable": true
+  },
+  {
+   "type": "java.lang.Integer",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterControlledPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterControlledArtifactPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterControlledCreaturePermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterControlledEnchantmentPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterControlledLandPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterControlledPlaneswalkerPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CardsInOpponentGraveyardCondition$CardsInOpponentGraveyardConditionHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.DesertControlledOrGraveyardCondition$DesertControlledOrGraveyardHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CardTypesInGraveyardHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.ColorsAmongControlledPermanentsHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.effects.common.RegenerationShieldsHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.AbilityResolutionCountHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.ArtifactYouControlHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.BargainCostWasPaidHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.BoastHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.CanPlayAdditionalLandsHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.CaseSolvedHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.CitysBlessingHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.ClassLevelHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.ConditionPermanentHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.ControlACommanderHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.ControlArtifactAndEnchantmentHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.ControllerDiscardedHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.CountersOnPermanentsHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.CovenHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.CreaturesDiedThisTurnHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.CreaturesYouControlHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.CurrentDungeonHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.DayNightHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.DifferentManaValuesInGraveHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.DomainHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.EnduringStoryHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.EvidenceHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.FerociousHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.GatesYouControlHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.HarnessedHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.InitiativeHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.LandsYouControlHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.MetalcraftHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.ModesAlreadyUsedHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.MonarchHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.MonstrousHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.MorbidHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.MyTurnHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.NotMyTurnHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.OpenSideboardHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.OpponentsLostLifeHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.OpponentsTurnHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.PartyCountHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.PermanentsYouControlHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.PlayersLeftRightHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.ProwlCostWasPaidHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.ProwlHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.RaidHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.RenownedHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.StrangeNewWorldsHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.common.TeamworkCostWasPaidHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.ConditionHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.ConditionTrueHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.Hint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.StaticHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.ValueConditionHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.ValueHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.hint.ValuePositiveHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.MutateCountHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.command.emblems.EllywickTumblestrumEmblemHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.permanent.token.VolosJournalTokenHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.OnceEachTurnCastHint",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.CardType$CardTypePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.ModeChoice$ModeChoiceCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.SubType$SubTypePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.SuperType$SuperTypePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.TargetController$OwnerPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.TargetController$PlayerPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.constants.TargetController$ControllerPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.mulligan.MulliganType",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.tournament.LimitedOptions",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.draft.DraftOptions",
+   "serializable": true
+  },
+  {
+   "type": "java.lang.RuntimeException",
+   "serializable": true
+  },
+  {
+   "type": "java.rmi.MarshalException",
+   "serializable": true
+  },
+  {
+   "type": "java.rmi.RemoteException",
+   "serializable": true
+  },
+  {
+   "type": "java.io.IOException",
+   "serializable": true
+  },
+  {
+   "type": "java.util.ArrayList",
+   "serializable": true
+  },
+  {
+   "type": "java.net.InetAddress",
+   "serializable": true
+  },
+  {
+   "type": "javax.management.Notification",
+   "serializable": true
+  },
+  {
+   "type": "java.util.EventObject",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Vector",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Locale",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Hashtable",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.serial.objectmetamodel.DataContainer",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.serial.io.MarshalledObject",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.serial.io.MarshalledObjectForLocalCalls",
+   "serializable": true
+  },
+  {
+   "type": "java.rmi.server.RemoteStub",
+   "serializable": true
+  },
+  {
+   "type": "java.rmi.server.RemoteObject",
+   "serializable": true
+  },
+  {
+   "type": "org.jboss.logging.Logger",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.FrameStyle$BorderType",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.icon.CardIconType",
+   "serializable": true
+  },
+  {
+   "type": "mage.players.PlayableObjectRecord",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.SpellAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.common.PayMoreToCastAsThoughtItHadFlashAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.common.SpellTransformedAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.AwakenAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.BeamMeUpAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.BestowAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.BlitzAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.CastFromGraveyardAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.CleaveAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.DisguiseAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.DisturbAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.EmergeAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.EscapeAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.FlashbackAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.ForetellCostAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.HarmonizeAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.JumpStartAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.MayhemAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.MoreThanMeetsTheEyeAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.MorphAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.MutateAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.OverloadAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.PlotSpellAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.PrototypeAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.RetraceAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.SneakAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.SpectacleAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.SurgeAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.WarpAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.WebSlingingAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.AdventureCardSpellAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.OmenCardSpellAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.PrepareCardSpellAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.SpellOptionCardSpellAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.MageObjectImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.mana.ManaCosts",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.mana.ManaCostsImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.WaterbendCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.WaterbendXCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.mana.ColoredManaCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.mana.ColorlessHybridManaCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.mana.ColorlessManaCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.mana.GenericManaCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.mana.HybridManaCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.mana.ManaCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.mana.ManaCostImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.mana.MonoHybridManaCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.mana.SnowManaCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.mana.VariableManaCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.Abilities",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.AbilitiesImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.CompoundAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.DelayedTriggeredAbilities",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.SpecialActions",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.Cards",
+   "serializable": true
+  },
+  {
+   "type": "mage.cards.CardsImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.ExileZone",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.Graveyard",
+   "serializable": true
+  },
+  {
+   "type": "mage.MageObjectReference",
+   "serializable": true
+  },
+  {
+   "type": "mage.counters.Counters",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.permanent.PermanentImpl$MarkedDamageInfo",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.mana.ActivationManaAbilityStep",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.stack.StackObjectImpl",
+   "serializable": true
+  },
+  {
+   "type": "java.lang.Number",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.FilterPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.MentorAbilityPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.card.CardOnTopOfLibraryPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.card.DefendingPlayerOwnsCardPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.card.ManaValueLessThanOrEqualToSourcePowerPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.AnotherCreatureOrAnArtifactPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.AnotherPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.ChosenCardTypePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.ChosenColorPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.ChosenNamePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.ChosenPlaneswalkerTypePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.ChosenSubtypePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.ManaValueCompareToCountersSourceCountPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.ManaValueEqualToCountersSourceCountPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.ManaValueLessThanControlledLandCountPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.SharesColorWithSourcePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.SpellOrTargetsPermanentPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.TargetsOnlyOnePlayerPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.TargetsPermanentOrPlayerPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.TargetsPermanentPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.TargetsPlayerPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.ObjectSourcePlayerPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.other.AbilitySourceAttachedPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.other.AnotherTargetPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.other.DamagedPlayerThisTurnPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.other.HasOnlySingleTargetPermanentPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.other.PlayerCanGainLifePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.other.PlayerWithTheMostLifePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.other.SpellCastFromAnywhereOtherThanHand",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.AnotherEnchantedPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.AttachedOrShareCreatureTypePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.AttachedToAttachedPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.AttachedToControlledPermanentPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.AttachedToPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.AttachedToSourcePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.BlockingOrBlockedBySourcePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.CanHaveCounterAddedPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.ConvokedSourcePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.CrewedSourceThisTurnPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.DefendingPlayerControlsAttachedAttackingPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.DefendingPlayerControlsNoSourcePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.DefendingPlayerControlsSourceAttackingPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.EnchantedBySourceControllerPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.GreatestPowerControlledPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.MaxManaValueControlledCreatureOrPlaneswalkerPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.OtherThanEnteringPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.ProtectedByOpponentPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.SaddledSourceThisTurnPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.TeamworkSourcePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.permanent.token.IcingdeathFrostTonguePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.FilterObject",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.FilterImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.common.AnimateDeadPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.effects.common.AmplifyEffect$AmplifyPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.PairedPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.counters.CounterType$CounterPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.BlockTappedPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.CanBlockPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.PhasedInPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.FilterAbility$AbilityTypePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.FilterAbility$AbilityZonePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.card.AuraCardCanAttachToLKIPermanentId",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.card.AuraCardCanAttachToPermanentId",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.card.CardCanTargetPermanentId",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.card.CardTextPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.card.CastFromZonePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.card.DoubleFacedCardPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.card.ExpansionSetPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.card.FaceDownPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.card.MilledThisTurnPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.card.OwnerIdPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.card.PutIntoGraveFromAnywhereThisTurnPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.card.PutIntoGraveFromBattlefieldThisTurnPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.IntComparePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.AbilityPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.AdventurePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.BasePowerPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.BaseToughnessPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.CardIdPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.ColorlessPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.ColorPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.CommanderPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.HistoricPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.KickedSpellPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.MageObjectReferencePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.ManaSpentToCastPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.ManaValueParityPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.ManaValuePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.MonocoloredPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.MulticoloredPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.NamePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.NoAbilityPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.OutlawPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.PermanentPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.PowerGreaterThanBasePowerPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.PowerParityPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.PowerPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.SaddledPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.SharesCardTypePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.SharesColorPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.SharesCreatureTypePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.ToughnessGreaterThanPowerPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.ToughnessPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.mageobject.VariableManaCostPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.other.ActivatedOrTriggeredAbilityPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.other.ActivePlayerPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.other.ArtifactSourcePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.other.AuraSpellPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.other.CreatureSourcePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.other.EnchantmentSourcePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.other.ExhaustAbilityPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.other.FromSetPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.other.NotManaAbilityPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.other.NumberOfTargetsPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.other.PlayerIdPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.other.PowerUpAbilityPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.other.SpellZonePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.other.TriggeredAbilityPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.AttachmentAttachedToCardTypePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.AttackedThisTurnPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.AttackingPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.AttackingSameNotBandedPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.AuraPermanentCanAttachToPermanentId",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.BlockedByIdPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.BlockedPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.BlockedThisTurnPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.BlockingAttackerIdPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.BlockingPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.CanBeEnchantedByPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.CanBeSacrificedPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.ControlledFromStartOfControllerTurnPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.ControllerControlsIslandPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.ControllerIdPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.ControllerIsActivePlayerPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.CounterAnyPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.EnchantedPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.EnchantmentOrEnchantedPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.EnteredThisTurnPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.EquippedPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.GoadedPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.LegendRuleAppliesPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.ModifiedPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.PermanentIdPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.PermanentReferenceInCollectionPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.ProtectorIdPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.RenownedPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.RingBearerPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.SummoningSicknessPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.SuspectedPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.TappedPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.TokenPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.TransformablePredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.TransformedPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.UnblockedPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.permanent.WasDealtDamageThisTurnPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.Predicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.Predicates$AndPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.Predicates$NotPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.predicate.Predicates$OrPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.command.emblems.TheRingEmblemPredicate",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CardTypesInGraveyardCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.ColorsAmongControlledPermanentsCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.abilityword.OpusCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.common.GainLifeCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.AdamantCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.AddendumCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.AfterBlockersAreDeclaredCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.AfterCombatCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.AfterUpkeepStepCondtion",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.AnyPlayerControlsCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.APlayerHas13LifeCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.ArtifactEnteredUnderYourControlCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.AttachedAttackingCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.AttachedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.AttachedToCounterCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.AttachedToMatchesFilterCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.AttachedToPermanentCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.AttachedToTappedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.AttackedOrBlockedThisCombatSourceCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.AttackedThisStepCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.AttackedThisTurnSourceCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.BargainedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.BeforeAttackersAreDeclaredCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.BeforeBlockersAreDeclaredCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.BeheldDragonCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.BlightedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.BlitzedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.BlockedThisTurnSourceCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.BoastCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.BuybackCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CardLeftYourGraveyardThisTurnCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CardsInAnyLibraryCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CardsInControllerGraveyardCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CardsInExileCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CardsInHandCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CardsInOpponentGraveyardCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CastAnotherSpellThisTurnCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CastFromEverywhereSourceCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CastFromGraveyardSourceCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CastFromHandSourcePermanentCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CastNoncreatureSpellThisTurnCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CelebrationCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CitysBlessingCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CollectedEvidenceCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CommittedCrimeCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CompletedDungeonCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.ControlACommanderCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.ControlArtifactAndEnchantmentCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.ControlledModifiedCreatureAsSpellCastCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.ControllerDiscardedThisTurnCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.ControlsCreatureGreatestPowerCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.ControlsCreatureGreatestToughnessCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.ControlsPermanentsComparedToOpponentsCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.ControlYourCommanderCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CorruptedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CountersOnPermanentsCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CovenCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CreatedTokenThisTurnCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CreatureCountCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CreatureDiedControlledCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CreatureEnteredUnderYourControlCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CreatureLeftThisTurnCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CreaturePutInYourGraveyardCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.DashedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.DealtDamageToAnOpponent",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.DefendingPlayerControlsNoSourceCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.DefendingPlayerControlsSourceAttackingCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.DeliriumCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.DescendCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.DescendedThisTurnCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.DesertControlledOrGraveyardCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.DevouredCreaturesCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.DidNotAttackThisTurnEnchantedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.DifferentManaValuesInGraveCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.DrewTwoOrMoreCardsCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.EnchantedCreatureColorCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.EnchantedCreatureSubtypeCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.EnchantedSourceCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.EnchantedTargetCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.EnduringStoryCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.EquipmentAttachedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.EquippedHasSubtypeCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.EquippedHasSupertypeCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.EquippedMultipleSourceCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.EquippedSourceCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.EvokedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.FaceDownSourceCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.FatefulHourCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.FerociousCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.FirstCombatPhaseCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.FlippedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.ForetoldCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.FormidableCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.FullPartyCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.GiftWasPromisedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.HarnessedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.HateCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.HaveInitiativeCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.HaventCastSpellFromHandThisTurnCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.HaventCastSpellThisTurnCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.HeckbentCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.HellbentCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.IsBeingCastFromHandCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.IsMainPhaseCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.IsPhaseCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.IsStepCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.IsStillOnPlaneCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.KickedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.KickedCostCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.LandfallCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.LastTimeCounterRemovedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.LessonsInGraveCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.LifeCompareCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.LiveLostLastTurnCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.MainPhaseStackEmptyCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.ManaWasSpentCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.MeldCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.MetalcraftCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.MonarchIsNotSetCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.MonarchIsSourceControllerCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.MonstrousCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.MorbidCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.MoreCardsInHandThanOpponentsCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.MoreThanStartingDeckSizeCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.MoreThanStartingLifeTotalCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.MostCommonColorCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.MyTurnBeforeAttackersDeclaredCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.MyTurnCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.NightCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.NoSpellsWereCastLastTurnCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.NotMyTurnCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.NotTransformedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.OathbreakerOnBattlefieldCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.OnOpponentsTurnCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.OpponentControlsMoreCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.OpponentControlsPermanentCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.OpponentDealtNoncombatDamageCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.OpponentHasMoreCardsInHandCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.OpponentHasMoreLifeCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.OpponentHasNoCardsInHandCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.OpponentLostLifeCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.OpponentsControlEightLandsCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.OpponentsLostLifeCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.OpponentsTurnCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.PermanentsOnTheBattlefieldCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.PlayerDiscardedThisTurnCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.PlayLandCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.ProwlCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.ProwlCostWasPaidCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.RaidCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.RenownedSourceCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.RenownedTargetCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.RevealedOrControlledDragonCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.RevoltCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.RoomHalfLockedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SacrificedArtifactThisTurnCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SacrificedPermanentCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SaddledCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.ScryOrSurveilCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SneakCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SolvedSourceCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceAttackingAloneCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceAttackingCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceAttackingPlayerWithMostLifeCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceBlockedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceDealtDamageCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceEnteredOrControlsBasicLandCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceEnteredThisTurnCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceHarnessedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceHasCounterCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceHasCountersCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceHasntDealtDamageThisGameCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceHasRemainedInSameZoneCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceHasSubtypeCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceInExileCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceInGraveyardCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceIsEnchantmentCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceIsRingBearerCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceIsSpellCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceMatchesFilterCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceModifiedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceOnBattlefieldCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceOnBattlefieldOrCommandZoneCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourcePreparedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceRemainsInZoneCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceTappedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SourceTargetsPermanentCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SpectacleCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SpellMasteryCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SurgedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.SuspendedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.TargetAttackedThisTurnCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.TargetHasCardTypeCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.TargetHasCounterCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.TargetHasSubtypeCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.TargetHasSuperTypeCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.TargetObjectMatchesFilterCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.TeamworkCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.ThresholdCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.TopLibraryCardTypeCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.TreasureSpentToCastCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.TributeNotPaidCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.TwoOfManaColorSpentCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.TwoOrMoreOpponentsCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.TwoOrMoreSpellsWereCastLastTurnCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.TwoTappedCreaturesCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.VoidCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.WasCardExiledThisTurnCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.WaterbendedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.WebSlingingCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.YouCastExactOneSpellThisTurnCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.YouControlABasicLandCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.YouControlALegendaryCreatureCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.YouControlPermanentCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.YouControlTwoOrMoreGatesCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.YouGainedLifeCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.YouGainedOrLostLifeCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.YouLostLifeCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.CompoundCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.Condition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.FixedCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.IntCompareCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.InvertCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.LockedInCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.OrCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.FreerunningCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.ImpendingCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.MadnessCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.OffspringCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.RavenousAbilityCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.WarpExileEffect$WarpCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.mana.builder.common.ActivatedAbilityManaCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.mana.builder.common.InstantOrSorceryCastManaCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.mana.builder.common.SimpleActivatedAbilityManaCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.mana.conditional.CreatureCastManaCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.mana.conditional.ManaCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.mana.conditional.PlaneswalkerCastManaCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.mana.conditional.SpellCastManaCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.mana.conditional.XCostManaCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.command.emblems.LolthSpiderQueenEmblemCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.command.emblems.RadiationCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.command.planes.HellbentAPCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.permanent.token.OsgoodOperationDoubleCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.permanent.token.PowerstoneTokenManaCondition",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterArtifactCreaturePermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterArtifactOrEnchantmentPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterArtifactPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterAttackingCreature",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterAttackingOrBlockingCreature",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterBattlePermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterBlockingCreature",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterCreatureAttackingYou",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterCreatureForCombat",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterCreatureForCombatBase",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterCreatureForCombatBlock",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterCreatureOrPlaneswalkerPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterCreaturePermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterEnchantmentPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterLandPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterNonlandPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterOpponentsCreaturePermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterPlaneswalkerPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterTeamCreaturePermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterTeamPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.FilterPermanentThisOrAnother",
+   "serializable": true
+  },
+  {
+   "type": "mage.counters.CounterType",
+   "serializable": true
+  },
+  {
+   "type": "java.lang.Boolean",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.common.ExpendValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.common.SpellCastValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.condition.common.CelebrationNonlandsThatEnteredThisTurnCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.AdditiveDynamicValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.AbilityResolutionCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.ArtifactYouControlCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.AttachedPermanentPowerCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.AttachedPermanentToughnessCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.AttackedThisTurnOpponentsCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.AttackingCreatureCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.AuraAttachedCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.BlockingCreatureCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CardsDrawnThisTurnDynamicValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CardsInAllGraveyardsCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CardsInAllHandsCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CardsInControllerGraveyardCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CardsInControllerHandCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CardsInControllerLibraryCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CardsInExileCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CardsInTargetHandCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CardsInTargetPlayerHandCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CardsInTargetPlayersGraveyardCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CavesControlledAndInGraveCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.ChromaCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.ColorsOfManaSpentToCastCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CommanderCastCountValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CommanderCastFromCommandZoneValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CommanderGreatestManaValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.ControllerGainedLifeCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.ControllerLifeCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.ControllerLifeDividedValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.ControllerLostLifeCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.ControllerSpeedCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.ConvokedSourceCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CountersControllerCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CountersCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CountersSourceCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CreaturesAttackingYouCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CreaturesDiedThisTurnCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CreaturesThatAttackedThisTurnCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CreaturesYouControlCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.CreaturesYouControlDiedCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.DescendedThisTurnCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.DevotionCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.DevouredCreaturesCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.DifferentlyNamedPermanentCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.DiscardCostCardManaValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.DomainValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.EachTwoManaSpentToCastValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.EffectKeyValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.EnergySpentOrLostThisTurnCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.EquipmentAttachedCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.ExileFromHandCostCardConvertedMana",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.FederationCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.GateYouControlCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.GetMonstrosityXValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.GetScryAmount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.GetXValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.GreatestAmongPermanentsValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.GreatestCommanderManaValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.GreatestSharedCreatureTypeCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.HalfValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.InstantAndSorceryCastThisTurn",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.InstantSorceryExileGraveyardCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.LandsYouControlCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.ManaSpentToCastCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.ManaTypeInManaPoolCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.ManaValueInGraveyard",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.MorphManacostVariableValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.MultikickerCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.OpponentsCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.OpponentsLostLifeCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.OpponentsPoisonCountersCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.ParleyCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.PartyCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.PermanentEnteringBattlefieldManaValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.PermanentsOnBattlefieldCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.PermanentsSacrificedThisTurnCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.PermanentsTargetOpponentControlsCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.PermanentsYouControlCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.PermanentsYouOwnThatOpponentsControlCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.RevealTargetFromHandCostCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.SacrificeCostCreaturesPower",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.SacrificeCostCreaturesToughness",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.SacrificeCostManaValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.SavedCounterRemovedValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.SavedDamageValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.SavedDiscardValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.SavedGainedLifeValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.SavedLifeLossValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.SavedMilledValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.ShrinesYouControlCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.SideboardCardsYouControlCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.SignInversionDynamicValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.SnowManaSpentValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.SourceControllerCountersCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.SourceMutatedCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.SourcePermanentPowerValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.SourcePermanentToughnessValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.SpellsCastNotFromHandValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.StaticValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.StrangeNewWorldsValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.SunburstCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.SweepNumber",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.TargetManaValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.TargetPermanentPowerCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.TargetPermanentToughnessCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.TokensCreatedThisTurnCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.TotalCardsExiledOwnedManaValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.TotalPermanentsManaValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.UrzaTerrainValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.ZuberasDiedDynamicValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.DynamicValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.IntMinusDynamicValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.IntPlusDynamicValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.LimitedDynamicValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.LockedInDynamicValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.MaximumDynamicValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.MultipliedValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.MeleeDynamicValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.PermanentsDestroyedThisTurnValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.SpellsCastThisTurnValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.command.emblems.EllywickTumblestrumEmblemValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.command.emblems.LilianaZombiesCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.permanent.token.DogIllusionValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.permanent.token.GutterGrimeCountersCount",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.permanent.token.SaprolingBurstTokenDynamicValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.permanent.token.SpiritClericTokenValue",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.draft.DraftOptions$TimingOption",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.icon.CardIconCategory",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.ActivatedAbilityImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.AbilityImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.AlternativeCostImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.Costs",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.CostsImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.OptionalAdditionalCostImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.AlternativeCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.BeholdAndExileCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.BeholdCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.BlightCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.CollectEvidenceCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.CyclingDiscardCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.DealDamageToControllerSourceCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.DiscardCardCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.DiscardHandCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.DiscardSourceCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.DiscardTargetCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.DiscardXTargetCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.DynamicValueGenericManaCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.ExertSourceCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.ExileAttachmentCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.ExileFromGraveCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.ExileFromHandCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.ExileFromTopOfLibraryCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.ExileHandCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.ExileOpponentsCardFromExileToGraveyardCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.ExileSourceCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.ExileSourceFromGraveCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.ExileSourceFromHandCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.ExileTargetCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.ExileTopCardOfGraveyardCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.ExileTopCreatureCardOfGraveyardCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.ExileXFromYourGraveCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.ForageCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.GainLifeOpponentCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.GainLifePlayersCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.GetPoisonCountersCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.MillCardsCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.PayEnergyCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.PayLifeCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.PayLoyaltyCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.PayVariableEnergyCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.PayVariableLifeCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.PayVariableLoyaltyCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.PutCardFromHandOnTopOfLibraryCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.PutCountersSourceCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.PutCountersTargetCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.PutSourceOnBottomOwnerLibraryCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.RemoveAllCountersSourceCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.RemoveCounterCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.RemoveCountersSourceCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.RemoveVariableCountersSourceCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.RemoveVariableCountersTargetCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.ReturnToHandChosenControlledPermanentCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.ReturnToHandFromBattlefieldSourceCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.ReturnToHandFromGraveyardCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.RevealDragonFromHandCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.RevealHandSourceControllerCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.RevealSecretOpponentCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.RevealSourceFromYourHandCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.RevealTargetFromHandCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.SacrificeAllCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.SacrificeAttachedCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.SacrificeAttachmentCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.SacrificeSourceCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.SacrificeTargetCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.SacrificeXTargetCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.TapAttachedCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.TapSourceCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.TapTargetCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.TapVariableTargetCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.TeamworkCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.UnattachCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.UntapSourceCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.UntapTargetCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.CompositeCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.Cost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.CostImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.OptionalAdditionalCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.OrCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.SacrificeCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.UseAttachedCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.VariableCostImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.ChampionExileCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.CraftCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.CrewCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.PromiseGiftCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.ReturnAttackerToHandTargetCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.RevealNinjutsuCardCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.SaddleCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.Modes",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.Watcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.common.AnimateDeadWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.common.CastFromGraveyardOnceWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.common.DrawNthCardWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.common.DrawNthOrNthCardWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.common.ExpendWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.common.GainLifeFirstTimeWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.common.WasCastFromExileWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.effects.PreventDamageAndRemoveCountersWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.ExertedThisTurnWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.FreerunningWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.HideawayWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.MayhemWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.MeleeWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.WarpAbilityWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.triggers.MainPhaseWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.AbilityResolvedWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.AmountOfDamageAPlayerReceivedThisTurnWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.ArtifactEnteredControllerWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.AttackedLastTurnWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.AttackedOrBlockedThisCombatWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.AttackedThisTurnWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.AttackingBlockingDelayedWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.BlockedAttackerWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.BlockedByOnlyOneCreatureThisCombatWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.BlockedThisTurnWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.BlockingOrBlockedWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.BloodthirstWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.BoostCountersAddedFirstTimeWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CardsAmountDrawnThisTurnWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CardsCycledOrDiscardedThisTurnWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CardsDrawnDuringDrawStepWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CardsDrawnThisTurnWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CardsExiledThisTurnWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CardsLeftGraveyardWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CardsMilledWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CardsPutIntoGraveyardWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CastFromGraveyardWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CastFromHandWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CastSpellLastTurnWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CommanderInfoWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CommanderPlaysCountWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CommittedCrimeWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CompletedDungeonWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.ControlCombatRedundancyWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.ControlledModifiedCreatureAsSpellCastWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CountersAddedFirstTimeWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CreatedTokenWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CreatureAttackedWhichPlayerWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CreatureEnteredControllerWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CreatureLeftBattlefieldWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CreaturePutIntoGraveyardWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CreaturesDiedWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.CrewedVehicleWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.DamagedByControlledWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.DamagedByWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.DamageDoneWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.DamagedPlayerThisCombatWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.DealtDamageThisGameWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.DescendedWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.DiscardedCardWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.DragonOnTheBattlefieldWhileSpellWasCastWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.EndStepCountWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.EnergySpentOrLostWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.FirstSpellCastThisTurnWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.FirstStrikeWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.FirstXSpellCastThisTurnWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.ForetoldWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.GravestormWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.LandfallWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.LifeLossOtherFromCombatWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.LifeLostThisTurnWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.ManaPaidObjectSourceWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.ManaPaidSourceWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.ManaSpentToCastWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.MiracleWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.NoncombatDamageToPlayersWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.NumberOfTimesPermanentTargetedATurnWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.OnceEachTurnCastWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.PermanentsEnteredBattlefieldWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.PermanentsSacrificedWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.PermanentWasCastWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.PlanarRollWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.PlayerAttackedStepWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.PlayerAttackedWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.PlayerCastCreatureWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.PlayerDamagedBySourceWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.PlayerGainedLifeWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.PlayerLostGameWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.PlayerLostLifeWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.PlayersAttackedThisTurnWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.PlayLandWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.ProwlWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.RevoltWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.SaddledMountWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.ScryOrSurveilWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.SourceDidDamageWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.SpellsCastNotFromHandWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.SpellsCastWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.TemptedByTheRingWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.VoidWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.WasBlockedThisTurnWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.ZuberasDiedWatcher",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.targetadjustment.ConditionalTargetAdjuster",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.targetadjustment.DefineByTriggerTargetAdjuster",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.targetadjustment.ForEachPlayerTargetsAdjuster",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.targetadjustment.GenericTargetAdjuster",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.targetadjustment.ManaValueTargetAdjuster",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.targetadjustment.PowerTargetAdjuster",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.targetadjustment.TargetAdjuster",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.targetadjustment.TargetsCountAdjuster",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.targetadjustment.ThatPlayerControlsTargetAdjuster",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.targetadjustment.ToughnessTargetAdjuster",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.targetadjustment.XManaValueTargetAdjuster",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.targetadjustment.XTargetsCountAdjuster",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.CostAdjuster",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.costadjusters.CommanderManaValueAdjuster",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.costadjusters.DiscardXCardsCostAdjuster",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.costadjusters.DomainAdjuster",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.costadjusters.ExileCardsFromHandAdjuster",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.costadjusters.ImprintedManaValueXCostAdjuster",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.costadjusters.LegendaryCreatureCostAdjuster",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.HarmonizeAbilityAdjuster",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.PowerUpAbility$PowerUpAbilityAdjuster",
+   "serializable": true
+  },
+  {
+   "type": "mage.MageIdentifier",
+   "serializable": true
+  },
+  {
+   "type": "mage.Mana",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.mana.builder.common.ActivatedAbilityConditionalMana",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.mana.builder.common.InstantOrSorceryCastConditionalMana",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.mana.builder.common.SimpleActivatedAbilityConditionalMana",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.mana.conditional.CreatureCastConditionalMana",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.mana.conditional.SpellCastConditionalMana",
+   "serializable": true
+  },
+  {
+   "type": "mage.ConditionalMana",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.permanent.token.CommodoreGuffTokenConditionalMana",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.permanent.token.OsgoodOperationDoubleConditionalMana",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.permanent.token.PowerstoneTokenConditionalMana",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.mana.ManaOptions",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterActivatedOrTriggeredAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterAnyTarget",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterArtifactCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterArtifactOrEnchantmentCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterBasicCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterControlledCreatureSpell",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterCreatureCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterCreatureOrPlayer",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterCreaturePlayerOrPlaneswalker",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterCreatureSpell",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterDefender",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterEnchantmentCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterInstantOrSorceryCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterInstantOrSorcerySpell",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterLandCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterNonlandCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterOpponentOrPlaneswalker",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterOwnedCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterOwnedCreatureCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterPermanentCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterPermanentOrPlayer",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterPermanentOrPlayerWithCounter",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterPermanentOrSuspendedCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterPlaneswalkerCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterPlayerOrPlaneswalker",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterSpellOrPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.common.FilterSuspendedCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.Filter",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.FilterAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.FilterCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.FilterInPlay",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.FilterOpponent",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.FilterPlayer",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.FilterSource",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.FilterSpell",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.FilterStackObject",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.Targets",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.VariableCostType",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.FilterMana",
+   "serializable": true
+  },
+  {
+   "type": "java.util.LinkedHashSet",
+   "serializable": true
+  },
+  {
+   "type": "java.util.HashSet",
+   "serializable": true
+  },
+  {
+   "type": "mage.counters.Counter",
+   "serializable": true
+  },
+  {
+   "type": "mage.counters.AbilityCounter",
+   "serializable": true
+  },
+  {
+   "type": "mage.counters.BoostCounter",
+   "serializable": true
+  },
+  {
+   "type": "java.util.regex.Pattern",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.dynamicvalue.common.GreatestAmongPermanentsValue$Quality",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.CollectEvidenceCost$1",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.common.TeamworkCost$1",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.effects.common.CreatureAndOrLandInHandTarget",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.CrewCost$1",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.SaddleCost$1",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.command.dungeons.OublietteTarget",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetActivatedAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetActivatedOrTriggeredAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetAnyTarget",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetAnyTargetAmount",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetArtifactPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetAttackingCreature",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetAttackingOrBlockingCreature",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetCardAndOrCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetCardAndOrCardInLibrary",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetCardInASingleGraveyard",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetCardInCommandZone",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetCardInExile",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetCardInGraveyard",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetCardInGraveyardBattlefieldOrStack",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetCardInHand",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetCardInLibrary",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetCardInOpponentsGraveyard",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetCardInTargetPlayersGraveyard",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetCardInYourGraveyard",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetCardInYourGraveyardOrExile",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetCardWithDifferentNameInLibrary",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetControlledCreaturePermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetControlledLandPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetControlledPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetCreatureOrPlaneswalker",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetCreatureOrPlaneswalkerAmount",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetCreatureOrPlayer",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetCreaturePermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetCreaturePermanentAmount",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetCreaturesWithDifferentPowers",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetDefender",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetDiscard",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetEnchantmentPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetLandPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetNonBasicLandPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetNonlandPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetOpponent",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetOpponentOrPlaneswalker",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetOpponentsChoicePermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetOpponentsCreaturePermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetPermanentAmount",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetPermanentOrPlayer",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetPermanentOrPlayerAmount",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetPermanentOrSuspendedCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetPermanentSameController",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetPlaneswalkerPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetPlayerOrPlaneswalker",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetSacrifice",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetSacrificeCreatureEachColor",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetSpellOrPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.common.TargetTappedPermanentAsYouCast",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.Target",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.TargetAmount",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.TargetCard",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.TargetImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.TargetObject",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.TargetPermanent",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.TargetPlayer",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.TargetSource",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.TargetSpell",
+   "serializable": true
+  },
+  {
+   "type": "mage.target.TargetStackObject",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.Mode",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.combat.CombatGroup",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.turn.Step",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.turn.BeginCombatStep",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.turn.CleanupStep",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.turn.CombatDamageStep",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.turn.DeclareAttackersStep",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.turn.DeclareBlockersStep",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.turn.DrawStep",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.turn.EndOfCombatStep",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.turn.EndStep",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.turn.PostCombatMainStep",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.turn.PreCombatMainStep",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.turn.UntapStep",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.turn.UpkeepStep",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.ControlCombatRedundancyWatcher$PlayerDuration",
+   "serializable": true
+  },
+  {
+   "type": "mage.watchers.common.ManaPaidSourceWatcher$ManaPaidTracker",
+   "serializable": true
+  },
+  {
+   "type": "mage.players.PlayerList",
+   "serializable": true
+  },
+  {
+   "type": "mage.filter.Filter$ComparisonScope",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.stack.StackAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.stack.StackObject",
+   "serializable": true
+  },
+  {
+   "type": "mage.players.Player",
+   "serializable": true
+  },
+  {
+   "type": "mage.players.PlayerImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.players.StubPlayer",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.assignment.common.PredicateCardAssignment",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.assignment.common.ColorAssignment",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.effects.Effects",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.events.GameEvent$EventType",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.turn.Step$StepPart",
+   "serializable": true
+  },
+  {
+   "type": "mage.util.CircularList",
+   "serializable": true
+  },
+  {
+   "type": "java.util.concurrent.locks.ReentrantLock",
+   "serializable": true
+  },
+  {
+   "type": "mage.players.Library",
+   "serializable": true
+  },
+  {
+   "type": "mage.players.ManaPool",
+   "serializable": true
+  },
+  {
+   "type": "mage.players.Player$PayLifeCostRestriction",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.AlternativeCostSourceAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.AlternativeSourceCosts",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.AlternativeSourceCostsImpl",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.effects.common.continuous.GainEvokeAbilityEffect$GrantedEvokeAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.DashAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.EvokeAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.FreerunningAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.ImpendingAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.keyword.ProwlAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.game.match.MatchPlayer",
+   "serializable": true
+  },
+  {
+   "type": "mage.designations.Designation",
+   "serializable": true
+  },
+  {
+   "type": "mage.designations.CitysBlessing",
+   "serializable": true
+  },
+  {
+   "type": "mage.designations.EnduringStory",
+   "serializable": true
+  },
+  {
+   "type": "mage.designations.Initiative",
+   "serializable": true
+  },
+  {
+   "type": "mage.designations.Monarch",
+   "serializable": true
+  },
+  {
+   "type": "mage.designations.Speed",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.assignment.RoleAssignment",
+   "serializable": true
+  },
+  {
+   "type": "mage.players.ManaPoolItem",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.costs.DynamicCost",
+   "serializable": true
+  },
+  {
+   "type": "mage.abilities.StaticAbility",
+   "serializable": true
+  },
+  {
+   "type": "mage.designations.DesignationType",
+   "serializable": true
+  },
+  {
+   "type": "org.apache.log4j.ConsoleAppender",
+   "allDeclaredConstructors": true,
+   "allPublicMethods": true
+  },
+  {
+   "type": "org.apache.log4j.PatternLayout",
+   "allDeclaredConstructors": true,
+   "allPublicMethods": true
+  }
+ ]
+}

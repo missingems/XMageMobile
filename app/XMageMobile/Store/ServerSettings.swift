@@ -6,6 +6,7 @@ nonisolated struct ServerSettings: Hashable, Sendable {
     var serverHost: String
     var serverPort: Int
     var username: String
+    var usesMacBridge = false
 
     var bridgeURL: URL? {
         var components = URLComponents()

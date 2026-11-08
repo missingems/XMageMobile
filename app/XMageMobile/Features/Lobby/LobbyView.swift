@@ -5,7 +5,8 @@ struct LobbyView: View {
 
     @AppStorage("bridgeHost") private var bridgeHost = "localhost"
     @AppStorage("bridgePort") private var bridgePort = 8765
-    @AppStorage("serverHost") private var serverHost = "127.0.0.1"
+    @AppStorage("serverHost") private var serverHost = "xmage.today"
+    @AppStorage("usesMacBridge") private var usesMacBridge = false
     @AppStorage("serverPort") private var serverPort = 17171
     @AppStorage("username") private var username = "Planeswalker"
     @AppStorage("deck") private var deck = ""
@@ -103,7 +104,7 @@ struct LobbyView: View {
     private var statusTitle: String {
         switch store.phase {
         case .idle: "Not Connected"
-        case .reachingBridge: "Reaching the Bridge…"
+        case .reachingBridge: usesMacBridge ? "Reaching the Bridge…" : "Starting XMage…"
         case .loggingIn: "Signing In…"
         case .lobby: store.waitingTable == nil ? "Ready to Play" : "Waiting for an Opponent"
         case .startingGame: "Starting Game…"
@@ -161,17 +162,20 @@ struct LobbyView: View {
 
     private var connectionSection: some View {
         Section {
-            LabeledContent("Bridge") {
-                TextField("Host", text: $bridgeHost)
-                    .multilineTextAlignment(.trailing)
-                    .textInputAutocapitalization(.never)
-                    .autocorrectionDisabled()
-                    .keyboardType(.URL)
-            }
-            LabeledContent("Bridge Port") {
-                TextField("Port", value: $bridgePort, format: .number.grouping(.never))
-                    .multilineTextAlignment(.trailing)
-                    .keyboardType(.numberPad)
+            Toggle("Use a Mac Bridge", isOn: $usesMacBridge)
+            if usesMacBridge {
+                LabeledContent("Bridge") {
+                    TextField("Host", text: $bridgeHost)
+                        .multilineTextAlignment(.trailing)
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                        .keyboardType(.URL)
+                }
+                LabeledContent("Bridge Port") {
+                    TextField("Port", value: $bridgePort, format: .number.grouping(.never))
+                        .multilineTextAlignment(.trailing)
+                        .keyboardType(.numberPad)
+                }
             }
             LabeledContent("XMage Server") {
                 TextField("Host", text: $serverHost)
@@ -193,13 +197,15 @@ struct LobbyView: View {
                     .textContentType(.username)
             }
             Button(store.phase.isConnected ? "Reconnect" : "Connect") {
-                store.connect(ServerSettings(bridgeHost: bridgeHost, bridgePort: bridgePort, serverHost: serverHost, serverPort: serverPort, username: username))
+                store.connect(ServerSettings(bridgeHost: bridgeHost, bridgePort: bridgePort, serverHost: serverHost, serverPort: serverPort, username: username, usesMacBridge: usesMacBridge))
             }
-            .disabled(store.phase.isBusy || bridgeHost.isEmpty || username.isEmpty)
+            .disabled(store.phase.isBusy || (usesMacBridge && bridgeHost.isEmpty) || serverHost.isEmpty || username.isEmpty)
         } header: {
             Text("Connection")
         } footer: {
-            Text("The bridge runs next to the XMage server on your Mac or home server. The server address is as seen from the bridge.")
+            Text(usesMacBridge
+                 ? "Games go through the bridge on your Mac or home server. The server address is as seen from the bridge."
+                 : "XMage runs on this device and connects straight to the server, such as xmage.today or beta.xmage.today.")
         }
     }
 

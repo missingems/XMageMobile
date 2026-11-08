@@ -1,0 +1,915 @@
+{
+  "reflection": [
+    {
+      "type": "EDU.oswego.cs.dl.util.concurrent.ConcurrentHashMap",
+      "serializable": true
+    },
+    {
+      "type": "EDU.oswego.cs.dl.util.concurrent.ConcurrentHashMap$Segment",
+      "serializable": true
+    },
+    {
+      "type": "EDU.oswego.cs.dl.util.concurrent.ConcurrentHashMap$Segment[]",
+      "serializable": true
+    },
+    {
+      "type": "byte[]",
+      "serializable": true
+    },
+    {
+      "type": "com.sun.beans.editors.BooleanEditor",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.beans.editors.IntegerEditor",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.beans.editors.ThreadPoolEditor"
+    },
+    {
+      "type": "java.beans.PropertyVetoException"
+    },
+    {
+      "type": "java.io.ObjectInputStream",
+      "methods": [
+        {
+          "name": "clear",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "java.io.ObjectOutputStream",
+      "methods": [
+        {
+          "name": "clear",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "java.lang.Boolean",
+      "serializable": true,
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "getBoolean",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "java.lang.Enum",
+      "serializable": true
+    },
+    {
+      "type": "java.lang.Integer",
+      "serializable": true
+    },
+    {
+      "type": "java.lang.Long",
+      "serializable": true
+    },
+    {
+      "type": "java.lang.Number",
+      "serializable": true
+    },
+    {
+      "type": "java.lang.Object"
+    },
+    {
+      "type": "java.lang.ObjectBeanInfo"
+    },
+    {
+      "type": "java.lang.ObjectCustomizer"
+    },
+    {
+      "type": "java.lang.Object[]",
+      "serializable": true
+    },
+    {
+      "type": "java.lang.String",
+      "serializable": true
+    },
+    {
+      "type": "java.lang.String[]"
+    },
+    {
+      "type": "java.lang.Thread",
+      "methods": [
+        {
+          "name": "getContextClassLoader",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "java.net.Socket"
+    },
+    {
+      "type": "java.util.ArrayList",
+      "serializable": true
+    },
+    {
+      "type": "java.util.Collections$EmptyList",
+      "serializable": true
+    },
+    {
+      "type": "java.util.Collections$EmptySet",
+      "serializable": true
+    },
+    {
+      "type": "java.util.Collections$UnmodifiableCollection",
+      "serializable": true
+    },
+    {
+      "type": "java.util.Collections$UnmodifiableList",
+      "serializable": true
+    },
+    {
+      "type": "java.util.Date",
+      "serializable": true
+    },
+    {
+      "type": "java.util.HashMap",
+      "serializable": true
+    },
+    {
+      "type": "java.util.HashSet",
+      "serializable": true
+    },
+    {
+      "type": "java.util.LinkedHashMap",
+      "serializable": true
+    },
+    {
+      "type": "java.util.Map"
+    },
+    {
+      "type": "java.util.Timer",
+      "methods": [
+        {
+          "name": "purge",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "java.util.TreeMap",
+      "serializable": true
+    },
+    {
+      "type": "java.util.UUID",
+      "serializable": true
+    },
+    {
+      "type": "mage.MageInt",
+      "serializable": true
+    },
+    {
+      "type": "mage.ObjectColor",
+      "serializable": true
+    },
+    {
+      "type": "mage.abilities.icon.CardIconImpl",
+      "serializable": true
+    },
+    {
+      "type": "mage.abilities.icon.CardIconType",
+      "serializable": true
+    },
+    {
+      "type": "mage.cards.ArtRect",
+      "serializable": true
+    },
+    {
+      "type": "mage.cards.FrameStyle",
+      "serializable": true
+    },
+    {
+      "type": "mage.cards.decks.DeckCardInfo",
+      "serializable": true
+    },
+    {
+      "type": "mage.cards.decks.DeckCardLists",
+      "serializable": true
+    },
+    {
+      "type": "mage.constants.AbilityType",
+      "serializable": true
+    },
+    {
+      "type": "mage.constants.CardType",
+      "serializable": true
+    },
+    {
+      "type": "mage.constants.MageObjectType",
+      "serializable": true
+    },
+    {
+      "type": "mage.constants.MatchBufferTime",
+      "serializable": true
+    },
+    {
+      "type": "mage.constants.MatchTimeLimit",
+      "serializable": true
+    },
+    {
+      "type": "mage.constants.MultiplayerAttackOption",
+      "serializable": true
+    },
+    {
+      "type": "mage.constants.PhaseStep",
+      "serializable": true
+    },
+    {
+      "type": "mage.constants.PlayerAction",
+      "serializable": true
+    },
+    {
+      "type": "mage.constants.RangeOfInfluence",
+      "serializable": true
+    },
+    {
+      "type": "mage.constants.Rarity",
+      "serializable": true
+    },
+    {
+      "type": "mage.constants.SkillLevel",
+      "serializable": true
+    },
+    {
+      "type": "mage.constants.SubType",
+      "serializable": true
+    },
+    {
+      "type": "mage.constants.SuperType",
+      "serializable": true
+    },
+    {
+      "type": "mage.constants.TableState",
+      "serializable": true
+    },
+    {
+      "type": "mage.constants.TurnPhase",
+      "serializable": true
+    },
+    {
+      "type": "mage.constants.Zone",
+      "serializable": true
+    },
+    {
+      "type": "mage.game.events.PlayerQueryEvent$QueryType",
+      "serializable": true
+    },
+    {
+      "type": "mage.game.match.MatchOptions",
+      "serializable": true
+    },
+    {
+      "type": "mage.game.mulligan.MulliganType",
+      "serializable": true
+    },
+    {
+      "type": "mage.interfaces.ServerState",
+      "serializable": true
+    },
+    {
+      "type": "mage.interfaces.callback.ClientCallback",
+      "serializable": true
+    },
+    {
+      "type": "mage.interfaces.callback.ClientCallbackMethod",
+      "serializable": true
+    },
+    {
+      "type": "mage.players.PlayableObjectRecord",
+      "serializable": true
+    },
+    {
+      "type": "mage.players.PlayableObjectStats",
+      "serializable": true
+    },
+    {
+      "type": "mage.players.PlayableObjectsList",
+      "serializable": true
+    },
+    {
+      "type": "mage.players.PlayerType",
+      "serializable": true
+    },
+    {
+      "type": "mage.players.PlayerType[]",
+      "serializable": true
+    },
+    {
+      "type": "mage.players.net.SkipPrioritySteps",
+      "serializable": true
+    },
+    {
+      "type": "mage.players.net.UserData",
+      "serializable": true
+    },
+    {
+      "type": "mage.players.net.UserSkipPrioritySteps",
+      "serializable": true
+    },
+    {
+      "type": "mage.remote.CustomThreadPool",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "mage.remote.traffic.ZippedObjectImpl",
+      "serializable": true
+    },
+    {
+      "type": "mage.util.SubTypes",
+      "serializable": true
+    },
+    {
+      "type": "mage.utils.MageVersion",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.CardView",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.CardsView",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.ChatMessage",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.ChatMessage$MessageColor",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.ChatMessage$MessageType",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.CombatGroupView",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.CounterView",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.DeckView",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.ExileView",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.GameClientMessage",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.GameEndView",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.GameTypeView",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.GameView",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.ManaPoolView",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.MatchView",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.MutateView",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.PermanentView",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.PlayerView",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.SeatView",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.SimpleCardView",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.SimpleCardsView",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.StackAbilityView",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.TableClientMessage",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.TableView",
+      "serializable": true
+    },
+    {
+      "type": "mage.view.TournamentTypeView",
+      "serializable": true
+    },
+    {
+      "type": "org.apache.log4j.Log4jLoggerFactory"
+    },
+    {
+      "type": "org.jboss.logging.Logger",
+      "methods": [
+        {
+          "name": "debug",
+          "parameterTypes": [
+            "java.lang.Object"
+          ]
+        },
+        {
+          "name": "getLogger",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.jboss.logging.NullLoggerPlugin",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.jboss.logging.log4j.Log4jLoggerPlugin"
+    },
+    {
+      "type": "org.jboss.mx.util.propertyeditor.ThreadPoolEditor"
+    },
+    {
+      "type": "org.jboss.remoting.AbstractInvoker"
+    },
+    {
+      "type": "org.jboss.remoting.AbstractInvokerBeanInfo"
+    },
+    {
+      "type": "org.jboss.remoting.AbstractInvokerCustomizer"
+    },
+    {
+      "type": "org.jboss.remoting.Client"
+    },
+    {
+      "type": "org.jboss.remoting.ClientHolder",
+      "serializable": true
+    },
+    {
+      "type": "org.jboss.remoting.ConnectionNotifier"
+    },
+    {
+      "type": "org.jboss.remoting.ConnectionValidator"
+    },
+    {
+      "type": "org.jboss.remoting.Home",
+      "serializable": true
+    },
+    {
+      "type": "org.jboss.remoting.InvocationRequest",
+      "serializable": true
+    },
+    {
+      "type": "org.jboss.remoting.InvocationResponse",
+      "serializable": true
+    },
+    {
+      "type": "org.jboss.remoting.Invoker"
+    },
+    {
+      "type": "org.jboss.remoting.InvokerLocator",
+      "serializable": true
+    },
+    {
+      "type": "org.jboss.remoting.InvokerRegistry"
+    },
+    {
+      "type": "org.jboss.remoting.LeasePinger"
+    },
+    {
+      "type": "org.jboss.remoting.MicroRemoteClientInvoker"
+    },
+    {
+      "type": "org.jboss.remoting.MicroRemoteClientInvokerBeanInfo"
+    },
+    {
+      "type": "org.jboss.remoting.MicroRemoteClientInvokerCustomizer"
+    },
+    {
+      "type": "org.jboss.remoting.RemoteClientInvoker"
+    },
+    {
+      "type": "org.jboss.remoting.RemoteClientInvokerBeanInfo"
+    },
+    {
+      "type": "org.jboss.remoting.RemoteClientInvokerCustomizer"
+    },
+    {
+      "type": "org.jboss.remoting.ServerInvoker"
+    },
+    {
+      "type": "org.jboss.remoting.ServerInvokerBeanInfo"
+    },
+    {
+      "type": "org.jboss.remoting.ServerInvokerCustomizer"
+    },
+    {
+      "type": "org.jboss.remoting.ServerInvokerMBean"
+    },
+    {
+      "type": "org.jboss.remoting.Version"
+    },
+    {
+      "type": "org.jboss.remoting.callback.Callback",
+      "serializable": true
+    },
+    {
+      "type": "org.jboss.remoting.callback.ServerInvokerCallbackHandler"
+    },
+    {
+      "type": "org.jboss.remoting.invocation.InternalInvocation",
+      "serializable": true
+    },
+    {
+      "type": "org.jboss.remoting.invocation.NameBasedInvocation",
+      "serializable": true
+    },
+    {
+      "type": "org.jboss.remoting.invocation.OnewayInvocation",
+      "serializable": true
+    },
+    {
+      "type": "org.jboss.remoting.invocation.RemoteInvocation",
+      "serializable": true
+    },
+    {
+      "type": "org.jboss.remoting.loading.ClassByteClassLoader"
+    },
+    {
+      "type": "org.jboss.remoting.loading.ObjectInputStreamWithClassLoader"
+    },
+    {
+      "type": "org.jboss.remoting.loading.RemotingClassLoader"
+    },
+    {
+      "type": "org.jboss.remoting.marshal.MarshalFactory"
+    },
+    {
+      "type": "org.jboss.remoting.marshal.MarshallLoaderFactory"
+    },
+    {
+      "type": "org.jboss.remoting.marshal.http.HTTPUnMarshaller"
+    },
+    {
+      "type": "org.jboss.remoting.serialization.SerializationStreamFactory"
+    },
+    {
+      "type": "org.jboss.remoting.serialization.impl.java.ClearableObjectOutputStream"
+    },
+    {
+      "type": "org.jboss.remoting.serialization.impl.java.JavaEncryptionSerializationManager",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.jboss.remoting.serialization.impl.java.JavaSerializationManager",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.jboss.remoting.serialization.impl.jboss.JBossEncryptionSerializationManager",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.jboss.remoting.serialization.impl.jboss.JBossSerializationManager",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.jboss.remoting.transport.BidirectionalClientInvoker"
+    },
+    {
+      "type": "org.jboss.remoting.transport.ClientInvoker"
+    },
+    {
+      "type": "org.jboss.remoting.transport.Connector"
+    },
+    {
+      "type": "org.jboss.remoting.transport.PortUtil"
+    },
+    {
+      "type": "org.jboss.remoting.transport.bisocket.BisocketClientInvoker"
+    },
+    {
+      "type": "org.jboss.remoting.transport.bisocket.BisocketClientInvokerBeanInfo"
+    },
+    {
+      "type": "org.jboss.remoting.transport.bisocket.BisocketClientInvokerCustomizer"
+    },
+    {
+      "type": "org.jboss.remoting.transport.bisocket.BisocketServerInvoker"
+    },
+    {
+      "type": "org.jboss.remoting.transport.bisocket.BisocketServerInvokerBeanInfo"
+    },
+    {
+      "type": "org.jboss.remoting.transport.bisocket.BisocketServerInvokerCustomizer"
+    },
+    {
+      "type": "org.jboss.remoting.transport.bisocket.TransportClientFactory",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "createClientInvoker",
+          "parameterTypes": [
+            "org.jboss.remoting.InvokerLocator",
+            "java.util.Map"
+          ]
+        },
+        {
+          "name": "supportsSSL",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.jboss.remoting.transport.bisocket.TransportServerFactory",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "createServerInvoker",
+          "parameterTypes": [
+            "org.jboss.remoting.InvokerLocator",
+            "java.util.Map"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.jboss.remoting.transport.local.LocalClientInvoker"
+    },
+    {
+      "type": "org.jboss.remoting.transport.socket.ClientSocketWrapper",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.net.Socket",
+            "java.util.Map",
+            "java.lang.Integer"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.jboss.remoting.transport.socket.MicroSocketClientInvoker",
+      "methods": [
+        {
+          "name": "setGeneralizeSocketException",
+          "parameterTypes": [
+            "boolean"
+          ]
+        },
+        {
+          "name": "setNumberOfCallRetries",
+          "parameterTypes": [
+            "int"
+          ]
+        },
+        {
+          "name": "setWriteTimeout",
+          "parameterTypes": [
+            "int"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.jboss.remoting.transport.socket.MicroSocketClientInvokerBeanInfo"
+    },
+    {
+      "type": "org.jboss.remoting.transport.socket.MicroSocketClientInvokerCustomizer"
+    },
+    {
+      "type": "org.jboss.remoting.transport.socket.ServerSocketWrapper",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.net.Socket",
+            "java.util.Map",
+            "java.lang.Integer"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.jboss.remoting.transport.socket.ServerThread"
+    },
+    {
+      "type": "org.jboss.remoting.transport.socket.SocketClientInvoker"
+    },
+    {
+      "type": "org.jboss.remoting.transport.socket.SocketClientInvokerBeanInfo"
+    },
+    {
+      "type": "org.jboss.remoting.transport.socket.SocketClientInvokerCustomizer"
+    },
+    {
+      "type": "org.jboss.remoting.transport.socket.SocketServerInvoker",
+      "methods": [
+        {
+          "name": "setWriteTimeout",
+          "parameterTypes": [
+            "int"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.jboss.remoting.transport.socket.SocketServerInvokerBeanInfo"
+    },
+    {
+      "type": "org.jboss.remoting.transport.socket.SocketServerInvokerCustomizer"
+    },
+    {
+      "type": "org.jboss.remoting.transport.socket.SocketServerInvokerMBean"
+    },
+    {
+      "type": "org.jboss.remoting.transport.socket.SocketWrapper"
+    },
+    {
+      "type": "org.jboss.remoting.transport.socket.TimedOutputStream"
+    },
+    {
+      "type": "org.jboss.remoting.transporter.TransporterClient"
+    },
+    {
+      "type": "org.jboss.remoting.util.TimerUtil"
+    },
+    {
+      "type": "org.jboss.util.propertyeditor.ThreadPoolEditor"
+    },
+    {
+      "type": "org.jboss.util.threadpool.BasicThreadPool",
+      "fields": [
+        {
+          "name": "executor"
+        }
+      ]
+    },
+    {
+      "type": "org.jboss.util.threadpool.ThreadPoolEditor"
+    },
+    {
+      "type": "org.slf4j.reload4j.Reload4jServiceProvider"
+    },
+    {
+      "type": "sun.net.www.protocol.jar.Handler",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.NativePRNG",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.security.SecureRandomParameters"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.SHA",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.text.resources.cldr.FormatData"
+    },
+    {
+      "type": "sun.text.resources.cldr.FormatData_en"
+    },
+    {
+      "type": "sun.text.resources.cldr.FormatData_en_US"
+    },
+    {
+      "type": "sun.util.resources.cldr.CalendarData"
+    },
+    {
+      "type": "sun.util.resources.cldr.TimeZoneNames"
+    },
+    {
+      "type": "sun.util.resources.cldr.TimeZoneNames_en"
+    },
+    {
+      "type": "sun.util.resources.cldr.TimeZoneNames_en_US"
+    },
+    {
+      "type": {
+        "proxy": [
+          "mage.interfaces.MageServer"
+        ]
+      }
+    }
+  ],
+  "resources": [
+    {
+      "glob": "META-INF/services/java.net.spi.InetAddressResolverProvider"
+    },
+    {
+      "glob": "META-INF/services/java.nio.channels.spi.SelectorProvider"
+    },
+    {
+      "glob": "META-INF/services/java.time.zone.ZoneRulesProvider"
+    },
+    {
+      "glob": "META-INF/services/org.slf4j.spi.SLF4JServiceProvider"
+    },
+    {
+      "glob": "log4j.properties"
+    },
+    {
+      "glob": "log4j.xml"
+    },
+    {
+      "glob": "mage/interfaces/MageClient.class"
+    }
+  ]
+}

@@ -27,7 +27,17 @@ final class BridgeServer extends WebSocketServer {
 
     @Override
     public void onOpen(WebSocket conn, ClientHandshake handshake) {
-        ClientSession session = new ClientSession(conn, decks, defaultServer, defaultServerPort);
+        ClientSession session = new ClientSession(new Outbox() {
+            @Override
+            public boolean isOpen() {
+                return conn.isOpen();
+            }
+
+            @Override
+            public void send(String message) {
+                conn.send(message);
+            }
+        }, decks, defaultServer, defaultServerPort);
         sessions.put(conn, session);
         System.out.println("App connected from " + conn.getRemoteSocketAddress());
         session.hello();
