@@ -26,7 +26,7 @@ actor CardImageLoader {
         if let running = inFlight[key] { return await running.value }
 
         let urls = Self.candidateURLs(set: set, number: number, name: name)
-        let task = Task { await self.fetchFirst(urls) }
+        let task = Task { await self.fetchFirst(urls, faceName: name) }
         inFlight[key] = task
         let image = await task.value
         inFlight[key] = nil
@@ -58,11 +58,25 @@ actor CardImageLoader {
 
     private static let cardBackURL = URL(string: "https://backs.scryfall.io/normal/0/a/0aeebaf5-8c7d-4636-9e82-8c27447861f7.jpg")!
 
-    private func fetchFirst(_ urls: [URL]) async -> UIImage? {
+    private func fetchFirst(_ urls: [URL], faceName: String) async -> UIImage? {
         for url in urls {
-            if let image = await fetch(url) { return image }
+            guard let card = await lookup(url), let imageURL = card.imageURL(forFaceNamed: faceName) else { continue }
+            if let image = await fetch(imageURL) { return image }
         }
         return nil
+    }
+
+    private func lookup(_ url: URL) async -> ScryfallCard? {
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        if let cached = session.configuration.urlCache?.cachedResponse(for: request),
+           let card = try? JSONDecoder().decode(ScryfallCard.self, from: cached.data) {
+            return card
+        }
+        await waitForSlot()
+        guard let (data, response) = try? await session.data(for: request),
+              let http = response as? HTTPURLResponse, http.statusCode == 200 else { return nil }
+        return try? JSONDecoder().decode(ScryfallCard.self, from: data)
     }
 
     private func fetch(_ url: URL) async -> UIImage? {
@@ -71,7 +85,9 @@ actor CardImageLoader {
            let image = UIImage(data: cached.data) {
             return await image.byPreparingForDisplay() ?? image
         }
-        await waitForSlot()
+        if url.host() == "api.scryfall.com" {
+            await waitForSlot()
+        }
         guard let (data, response) = try? await session.data(for: request),
               let http = response as? HTTPURLResponse, http.statusCode == 200,
               let image = UIImage(data: data) else { return nil }
@@ -92,12 +108,11 @@ actor CardImageLoader {
         if let set, let number, !set.isEmpty, !number.isEmpty {
             var components = URLComponents(string: "https://api.scryfall.com")
             components?.path = "/cards/\(set.lowercased())/\(number.lowercased())"
-            components?.queryItems = [.init(name: "format", value: "image"), .init(name: "version", value: "normal")]
             if let url = components?.url { urls.append(url) }
         }
         let face = name.components(separatedBy: " // ").first ?? name
         var named = URLComponents(string: "https://api.scryfall.com/cards/named")
-        named?.queryItems = [.init(name: "exact", value: face), .init(name: "format", value: "image"), .init(name: "version", value: "normal")]
+        named?.queryItems = [.init(name: "exact", value: face)]
         if let url = named?.url { urls.append(url) }
         return urls
     }

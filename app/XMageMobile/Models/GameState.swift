@@ -12,6 +12,7 @@ nonisolated struct GameState: Codable, Hashable, Sendable {
     var hand: [Card]
     var stack: [Card]
     var combat: [CombatGroup]
+    var revealed: [RevealedGroup]?
 
     var me: Player? { players.first(where: \.isYou) }
     var opponents: [Player] { players.filter { !$0.isYou } }

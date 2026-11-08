@@ -4,10 +4,19 @@ struct TableMenu: View {
     @Environment(GameStore.self) private var store
     @Binding var showsLog: Bool
     @Binding var confirmsConcede: Bool
+    var revealed: [RevealedGroup] = []
+    var onShowRevealed: (RevealedGroup) -> Void = { _ in }
 
     var body: some View {
         Menu {
             Button("Game Log", systemImage: "text.bubble") { showsLog = true }
+            if !revealed.isEmpty {
+                Menu("Revealed Cards", systemImage: "eye") {
+                    ForEach(revealed.reversed()) { group in
+                        Button(group.heading) { onShowRevealed(group) }
+                    }
+                }
+            }
             Menu("Skip Ahead", systemImage: "forward.end.alt") {
                 Button("To Next Turn", systemImage: "forward.end") { store.perform(.passUntilNextTurn) }
                 Button("To End of Turn", systemImage: "moon") { store.perform(.passUntilEndOfTurn) }

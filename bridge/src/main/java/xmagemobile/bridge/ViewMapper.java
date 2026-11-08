@@ -9,14 +9,20 @@ import mage.view.CombatGroupView;
 import mage.view.CommandObjectView;
 import mage.view.CounterView;
 import mage.view.GameView;
+import mage.view.LookedAtView;
 import mage.view.ManaPoolView;
 import mage.view.PermanentView;
 import mage.view.PlayerView;
+import mage.view.RevealedView;
+import mage.view.SimpleCardView;
+import mage.view.SimpleCardsView;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 final class ViewMapper {
@@ -66,7 +72,69 @@ final class ViewMapper {
             combat.add(g);
         }
         o.add("combat", combat);
+        o.add("revealed", revealed(view));
         return o;
+    }
+
+    private JsonArray revealed(GameView view) {
+        JsonArray groups = new JsonArray();
+        if (view.getRevealed() != null) {
+            for (RevealedView r : view.getRevealed()) {
+                groups.add(group("revealed", r.getName(), cards(r.getCards(), view, null)));
+            }
+        }
+        if (view.getLookedAt() != null) {
+            for (LookedAtView l : view.getLookedAt()) {
+                groups.add(group("lookedAt", l.getName(), simple(l.getCards())));
+            }
+        }
+        if (view.getOpponentHands() != null) {
+            for (Map.Entry<String, SimpleCardsView> e : view.getOpponentHands().entrySet()) {
+                groups.add(group("hand", e.getKey(), simple(e.getValue())));
+            }
+        }
+        return groups;
+    }
+
+    private static JsonObject group(String kind, String title, JsonArray cards) {
+        JsonObject g = new JsonObject();
+        g.addProperty("kind", kind);
+        g.addProperty("title", promptText(title));
+        g.add("cards", cards);
+        return g;
+    }
+
+    private static JsonArray simple(SimpleCardsView cards) {
+        JsonArray a = new JsonArray();
+        if (cards != null) {
+            for (SimpleCardView c : cards.values()) {
+                JsonObject o = new JsonObject();
+                o.addProperty("id", str(c.getId()));
+                o.addProperty("set", c.getExpansionSetCode());
+                o.addProperty("number", c.getCardNumber());
+                a.add(o);
+            }
+        }
+        return a;
+    }
+
+    static String specialPaymentLabel(GameView view) {
+        StringBuilder text = new StringBuilder();
+        if (view.getStack() != null) {
+            for (CardView c : view.getStack().values()) {
+                if (c.getRules() != null) {
+                    text.append(String.join(" ", c.getRules())).append(' ');
+                }
+            }
+        }
+        String rules = text.toString().toLowerCase();
+        StringBuilder label = new StringBuilder();
+        for (String keyword : List.of("Delve", "Convoke", "Improvise")) {
+            if (rules.contains(keyword.toLowerCase())) {
+                label.append(label.length() == 0 ? "" : " / ").append(keyword);
+            }
+        }
+        return label.length() == 0 ? "Special" : label.toString();
     }
 
     JsonArray cards(CardsView cards, GameView view, UUID controllerId) {
@@ -127,6 +195,19 @@ final class ViewMapper {
             command.add(co);
         }
         o.add("command", command);
+
+        JsonArray companion = new JsonArray();
+        if (view != null && view.getCompanion() != null) {
+            String key = p.getName() + "'s companion";
+            for (RevealedView revealed : view.getCompanion()) {
+                if (key.equals(revealed.getName()) && revealed.getCards() != null) {
+                    for (CardView c : revealed.getCards().values()) {
+                        companion.add(card(c, view, p.getPlayerId()));
+                    }
+                }
+            }
+        }
+        o.add("companion", companion);
         return o;
     }
 
@@ -141,7 +222,7 @@ final class ViewMapper {
         o.addProperty("typeLine", c.getTypeText());
         o.add("types", strings(c.getCardTypes().stream().map(Object::toString).toList()));
         o.add("colors", colors(c.getColor()));
-        o.add("rules", strings(c.getRules()));
+        o.add("rules", rules(c.getRules(), c.isFaceDown() ? null : c.getName()));
         o.addProperty("power", emptyToNull(c.getPower()));
         o.addProperty("toughness", emptyToNull(c.getToughness()));
         o.addProperty("loyalty", emptyToNull(c.getLoyalty()));
@@ -210,13 +291,64 @@ final class ViewMapper {
         return a;
     }
 
+    private static JsonArray rules(Collection<String> values, String name) {
+        JsonArray a = strings(values);
+        if (name == null || name.isEmpty()) {
+            return a;
+        }
+        JsonArray named = new JsonArray();
+        for (int i = 0; i < a.size(); i++) {
+            named.add(a.get(i).getAsString().replace("{this}", name));
+        }
+        return named;
+    }
+
+    private static final Pattern ID_TAG = Pattern.compile("\\s*\\[[0-9a-f]{3}\\]");
+    private static final Pattern GLUED_SYMBOL = Pattern.compile("\\}(?=\\p{L})");
+
+    static String promptText(String html) {
+        String s = ID_TAG.matcher(plain(html)).replaceAll("");
+        return GLUED_SYMBOL.matcher(s).replaceAll("} ").trim();
+    }
+
     static String plain(String html) {
         if (html == null) {
             return "";
         }
         String s = html.replaceAll("(?i)<br\\s*/?>", "\n");
         s = TAGS.matcher(s).replaceAll("");
-        return s.replace("&nbsp;", " ").replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&").replace("&quot;", "\"").trim();
+        return entities(s).trim();
+    }
+
+    private static final Pattern ENTITY = Pattern.compile("&(#x[0-9a-fA-F]+|#[0-9]+|[a-zA-Z]+);");
+    private static final Map<String, String> NAMED = Map.ofEntries(
+            Map.entry("nbsp", " "), Map.entry("lt", "<"), Map.entry("gt", ">"), Map.entry("amp", "&"),
+            Map.entry("quot", "\""), Map.entry("apos", "'"), Map.entry("mdash", "—"), Map.entry("ndash", "–"),
+            Map.entry("minus", "−"), Map.entry("lsquo", "‘"), Map.entry("rsquo", "’"),
+            Map.entry("ldquo", "“"), Map.entry("rdquo", "”"), Map.entry("hellip", "…"),
+            Map.entry("bull", "•"), Map.entry("middot", "·"), Map.entry("times", "×"),
+            Map.entry("rarr", "→"), Map.entry("larr", "←"));
+
+    private static String entities(String s) {
+        if (s.indexOf('&') < 0) {
+            return s;
+        }
+        Matcher m = ENTITY.matcher(s);
+        StringBuilder out = new StringBuilder();
+        while (m.find()) {
+            String name = m.group(1);
+            String value;
+            if (name.startsWith("#x") || name.startsWith("#X")) {
+                value = new String(Character.toChars(Integer.parseInt(name.substring(2), 16)));
+            } else if (name.startsWith("#")) {
+                value = new String(Character.toChars(Integer.parseInt(name.substring(1))));
+            } else {
+                value = NAMED.getOrDefault(name.toLowerCase(), m.group());
+            }
+            m.appendReplacement(out, Matcher.quoteReplacement(value));
+        }
+        m.appendTail(out);
+        return out.toString();
     }
 
     private static JsonArray ids(Collection<UUID> ids) {

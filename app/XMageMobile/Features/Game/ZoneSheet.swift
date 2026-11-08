@@ -16,7 +16,7 @@ struct ZoneSheet: View {
                         .padding(.top, 60)
                 } else {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 104), spacing: 12)], spacing: 12) {
-                        ForEach(cards) { card in
+                        ForEach(orderedCards) { card in
                             CardTile(card: card, width: 104, showsTapped: false)
                                 .onTapGesture {
                                     if card.isActionable, let onTap {
@@ -43,5 +43,9 @@ struct ZoneSheet: View {
             }
         }
         .presentationDetents([.medium, .large])
+    }
+
+    private var orderedCards: [Card] {
+        cards.filter(\.isActionable) + cards.filter { !$0.isActionable }
     }
 }

@@ -59,7 +59,8 @@ struct ActionCluster: View {
                     .font(.caption2.weight(.semibold))
                     .lineLimit(action.title.contains(" ") ? 2 : 1)
                     .multilineTextAlignment(.center)
-                    .minimumScaleFactor(0.8)
+                    .allowsTightening(true)
+                    .minimumScaleFactor(0.6)
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 4)

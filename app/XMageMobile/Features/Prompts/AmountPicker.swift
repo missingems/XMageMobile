@@ -28,7 +28,11 @@ struct AmountPicker: View {
                         .contentTransition(.numericText(value: Double(value)))
                 }
             } footer: {
-                Text("Between \(range.lowerBound) and \(range.upperBound)")
+                if range.upperBound >= 1_000_000 {
+                    Text("\(range.lowerBound) or more")
+                } else {
+                    Text("Between \(range.lowerBound) and \(range.upperBound)")
+                }
             }
             Section {
                 Button("Choose \(value)") { onChoose(value) }

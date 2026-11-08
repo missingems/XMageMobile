@@ -829,7 +829,11 @@ final class ClientSession implements MageClient {
                 case GAME_PLAY_MANA -> {
                     GameClientMessage m = (GameClientMessage) data;
                     sendGame(m.getGameView(), null);
-                    sendPrompt(prompt("mana", m.getMessage(), m.getOptions()));
+                    JsonObject p = prompt("mana", m.getMessage(), m.getOptions());
+                    if (m.getGameView() != null && m.getGameView().getSpecial() && !p.has("specialLabel")) {
+                        p.addProperty("specialLabel", ViewMapper.specialPaymentLabel(m.getGameView()));
+                    }
+                    sendPrompt(p);
                 }
                 case GAME_PLAY_XMANA -> {
                     GameClientMessage m = (GameClientMessage) data;
@@ -983,7 +987,7 @@ final class ClientSession implements MageClient {
         JsonObject p = new JsonObject();
         p.addProperty("kind", kind);
         p.addProperty("gameId", ViewMapper.str(gameId));
-        p.addProperty("message", ViewMapper.plain(text));
+        p.addProperty("message", ViewMapper.promptText(text));
         if (options != null && options.get("UI.special.btn.text") instanceof String special) {
             p.addProperty("specialLabel", special);
         }

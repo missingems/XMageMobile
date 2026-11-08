@@ -11,6 +11,7 @@ struct GameScreen: View {
     @State private var showsLog = false
     @State private var confirmsConcede = false
     @State private var focusedHandId: String?
+    @State private var seenReveals: Set<String> = []
 
     var body: some View {
         @Bindable var store = store
@@ -39,6 +40,14 @@ struct GameScreen: View {
         .preferredColorScheme(.dark)
         .statusBarHidden()
         .persistentSystemOverlays(.hidden)
+        .onChange(of: store.game?.revealed?.map(\.signature) ?? []) { _, signatures in
+            let groups = store.game?.revealed ?? []
+            let fresh = groups.filter { !seenReveals.contains($0.signature) }
+            seenReveals.formUnion(signatures)
+            if let newest = fresh.last, store.presentedPrompt == nil, zone == nil, inspected == nil {
+                showRevealed(newest)
+            }
+        }
         .onChange(of: store.game?.hand.map(\.id)) { _, ids in
             if let focusedHandId, ids?.contains(focusedHandId) != true {
                 self.focusedHandId = nil
@@ -118,7 +127,8 @@ struct GameScreen: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             OpponentHandFan(count: opponent?.handCount ?? 0)
-            TableMenu(showsLog: $showsLog, confirmsConcede: $confirmsConcede)
+            TableMenu(showsLog: $showsLog, confirmsConcede: $confirmsConcede,
+                      revealed: state.revealed ?? [], onShowRevealed: showRevealed)
                 .frame(maxWidth: .infinity, alignment: .trailing)
         }
         .padding(.horizontal, TableMetrics.margin)
@@ -189,6 +199,8 @@ struct GameScreen: View {
             return "Choose your blockers, then confirm"
         case .target:
             return "\(prompt.message) · Tap a glowing card or player"
+        case .mana where prompt.specialLabel != nil:
+            return "\(prompt.message) · Tap lands first, then \(prompt.specialLabel ?? "Special") for the rest"
         case .mana, .xmana:
             return "\(prompt.message) · Tap lands or your mana"
         default:
@@ -356,11 +368,17 @@ struct GameScreen: View {
         return card.choosable ? "Choose" : "Play"
     }
 
+    private func showRevealed(_ group: RevealedGroup) {
+        focusedHandId = nil
+        zone = ZoneRequest(title: group.heading, cards: group.cards)
+    }
+
     private func show(_ zone: TableZone, of player: Player) {
         let cards: [Card] = switch zone {
         case .graveyard: player.graveyard.reversed()
         case .exile: player.exile
         case .command: player.command.map(\.asCard)
+        case .companion: player.companion
         }
         self.zone = ZoneRequest(title: "\(player.name) · \(zone.rawValue)", cards: cards)
     }

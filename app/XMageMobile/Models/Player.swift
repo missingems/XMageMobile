@@ -18,6 +18,7 @@ nonisolated struct Player: Codable, Identifiable, Hashable, Sendable {
     var graveyard: [Card]
     var exile: [Card]
     var command: [CommandObject]
+    var companion: [Card]
 
     var lands: [Card] { battlefield.filter { $0.isLand && $0.attachedTo == nil } }
     var creatures: [Card] { battlefield.filter { !$0.isLand && $0.isCreature && $0.attachedTo == nil } }
