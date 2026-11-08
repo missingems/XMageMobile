@@ -13,7 +13,21 @@ final class GameStore {
     private(set) var log: [LogLine] = []
     private(set) var banner: String?
     private(set) var matchup: (deck: String, opponent: String)?
+    private(set) var tables: [OnlineTable] = []
+    private(set) var hasLoadedTables = false
+    private(set) var waitingTable: OnlineTable?
+    private(set) var isTableOwner = false
+    private(set) var isSeating = false
+    private(set) var allowsComputer = true
+    private(set) var deckTypes: [String] = []
+    private(set) var isOnlineMatch = false
     var result: GameResult?
+    var lobbyAlert: String?
+
+    var showsLobbyAlert: Bool {
+        get { lobbyAlert != nil }
+        set { if !newValue { lobbyAlert = nil } }
+    }
     var presentedPrompt: Prompt?
     var lastError: String?
 
@@ -49,10 +63,13 @@ final class GameStore {
         connection?.close()
         connection = nil
         resetGame()
+        resetLobby()
         phase = .idle
     }
 
     func startGame(deck: String?, opponentDeck: String?) {
+        leaveTable()
+        isOnlineMatch = false
         lastDecks = (deck, opponentDeck)
         resetGame()
         phase = .startingGame
@@ -67,7 +84,31 @@ final class GameStore {
         send(.leaveGame)
         resetGame()
         lastDecks = nil
+        isOnlineMatch = false
         phase = connection == nil ? .idle : .lobby
+        if connection != nil {
+            send(.watchTables(true))
+        }
+    }
+
+    func createTable(deck: String?, format: String?, name: String?, password: String?) {
+        guard phase == .lobby else { return }
+        isSeating = true
+        send(.createTable(deck: deck, deckType: format, name: name, password: password))
+    }
+
+    func joinTable(_ table: OnlineTable, deck: String?, password: String?) {
+        guard phase == .lobby else { return }
+        isSeating = true
+        send(.joinTable(id: table.id, deck: deck, password: password))
+    }
+
+    func leaveTable() {
+        guard waitingTable != nil || isSeating else { return }
+        send(.leaveTable)
+        waitingTable = nil
+        isTableOwner = false
+        isSeating = false
     }
 
     func concede() {
@@ -168,6 +209,17 @@ final class GameStore {
         matchup = nil
     }
 
+    private func resetLobby() {
+        tables = []
+        hasLoadedTables = false
+        waitingTable = nil
+        isTableOwner = false
+        isSeating = false
+        isOnlineMatch = false
+        allowsComputer = true
+        deckTypes = []
+    }
+
     private func handle(_ event: BridgeConnection.Event) {
         switch event {
         case let .message(message):
@@ -193,11 +245,14 @@ final class GameStore {
             }
         case let .decks(names):
             decks = names
-        case let .status(state, text, name):
+        case let .status(state, text, name, computer, types):
             switch state {
             case "connected":
                 username = name
+                allowsComputer = computer ?? true
+                deckTypes = types
                 phase = .lobby
+                send(.watchTables(true))
             case "error":
                 phase = .failed(text)
             case "disconnected" where phase.isConnected:
@@ -208,7 +263,31 @@ final class GameStore {
         case let .tableReady(deck, opponent):
             matchup = (deck, opponent)
         case .gameStarted:
+            if waitingTable != nil || isOnlineMatch {
+                isOnlineMatch = true
+                waitingTable = nil
+                isSeating = false
+                result = nil
+                prompt = nil
+                presentedPrompt = nil
+                send(.watchTables(false))
+            }
             phase = .playing
+        case let .tables(list):
+            tables = list
+            hasLoadedTables = true
+        case let .tableWaiting(table, owner):
+            if isSeating || waitingTable != nil {
+                waitingTable = table
+                isTableOwner = owner
+                isSeating = false
+            }
+        case let .tableClosed(text):
+            if waitingTable != nil {
+                waitingTable = nil
+                isTableOwner = false
+                lobbyAlert = text
+            }
         case let .game(state):
             game = state
             if phase != .playing { phase = .playing }
@@ -224,17 +303,21 @@ final class GameStore {
         case let .info(text):
             showBanner(text)
         case let .error(text):
-            if phase == .startingGame || phase == .loggingIn {
+            if isSeating || (phase == .lobby && !text.isEmpty) {
+                isSeating = false
+                lobbyAlert = text
+            } else if phase == .startingGame || phase == .loggingIn {
                 phase = .failed(text)
             } else {
                 showBanner(text)
             }
         case let .gameOver(text):
             showBanner(text)
-        case let .gameEnd(won, info):
+        case let .gameEnd(won, info, matchInfo):
             prompt = nil
             presentedPrompt = nil
-            result = GameResult(won: won, summary: info)
+            let matchContinues = isOnlineMatch && matchInfo.localizedStandardContains("need")
+            result = GameResult(won: won, summary: matchContinues ? "\(info)\n\(matchInfo)" : info)
         case .unknown:
             break
         }

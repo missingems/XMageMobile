@@ -10,13 +10,32 @@ struct LobbyView: View {
     @AppStorage("username") private var username = "Planeswalker"
     @AppStorage("deck") private var deck = ""
     @AppStorage("opponentDeck") private var opponentDeck = ""
+    @State private var showsCreateTable = false
+    @State private var passwordTable: OnlineTable?
+    @State private var showsPasswordPrompt = false
+    @State private var tablePassword = ""
 
     var body: some View {
+        @Bindable var store = store
         NavigationStack {
             Form {
                 header
                 if store.phase.isConnected {
-                    playSection
+                    if let table = store.waitingTable {
+                        WaitingRoomSection(table: table, isOwner: store.isTableOwner, onLeave: store.leaveTable)
+                    } else {
+                        deckSection
+                        OnlineTablesSection(
+                            tables: store.tables,
+                            hasLoaded: store.hasLoadedTables,
+                            isSeating: store.isSeating,
+                            server: serverHost,
+                            onCreate: { showsCreateTable = true },
+                            onJoin: join)
+                        if store.allowsComputer {
+                            computerSection
+                        }
+                    }
                 }
                 connectionSection
             }
@@ -29,6 +48,36 @@ struct LobbyView: View {
                 }
             }
             .animation(.default, value: store.phase)
+            .animation(.default, value: store.waitingTable?.id)
+            .sheet(isPresented: $showsCreateTable) {
+                CreateTableView(formats: store.deckTypes, defaultName: "\(store.username ?? username)’s table") { format, name, password in
+                    store.createTable(deck: chosenDeck, format: format, name: name, password: password)
+                }
+            }
+            .alert("Table Password", isPresented: $showsPasswordPrompt, presenting: passwordTable) { table in
+                SecureField("Password", text: $tablePassword)
+                Button("Join") {
+                    store.joinTable(table, deck: chosenDeck, password: tablePassword)
+                }
+                Button("Cancel", role: .cancel) {}
+            } message: { table in
+                Text("\(table.owner)’s table “\(table.title)” needs a password.")
+            }
+            .alert(store.lobbyAlert ?? "", isPresented: $store.showsLobbyAlert) {
+                Button("OK", role: .cancel) {}
+            }
+        }
+    }
+
+    private var chosenDeck: String? { deck.isEmpty ? nil : deck }
+
+    private func join(_ table: OnlineTable) {
+        if table.passworded {
+            tablePassword = ""
+            passwordTable = table
+            showsPasswordPrompt = true
+        } else {
+            store.joinTable(table, deck: chosenDeck, password: nil)
         }
     }
 
@@ -56,7 +105,7 @@ struct LobbyView: View {
         case .idle: "Not Connected"
         case .reachingBridge: "Reaching the Bridge…"
         case .loggingIn: "Signing In…"
-        case .lobby: "Ready to Play"
+        case .lobby: store.waitingTable == nil ? "Ready to Play" : "Waiting for an Opponent"
         case .startingGame: "Starting Game…"
         case .playing: "In a Game"
         case .failed: "Connection Problem"
@@ -68,24 +117,31 @@ struct LobbyView: View {
         case let .failed(message): message
         case .lobby, .startingGame, .playing:
             "Signed in as \(store.username ?? username) · XMage \(store.xmageVersion ?? "")"
-        default: "Play Magic rules-enforced against the computer, powered by an XMage server."
+        default: "Play rules-enforced Magic online or against the computer, powered by XMage."
         }
     }
 
-    private var playSection: some View {
+    private var deckSection: some View {
         Section {
             NavigationLink {
                 DeckPickerView(title: "Your Deck", decks: store.decks, selection: $deck)
             } label: {
                 LabeledContent("Your Deck", value: label(for: deck))
             }
+        } footer: {
+            Text("\(store.decks.count) sample decks from XMage. A random deck is picked when none is chosen.")
+        }
+    }
+
+    private var computerSection: some View {
+        Section {
             NavigationLink {
                 DeckPickerView(title: "Computer’s Deck", decks: store.decks, selection: $opponentDeck)
             } label: {
                 LabeledContent("Computer’s Deck", value: label(for: opponentDeck))
             }
             Button {
-                store.startGame(deck: deck.isEmpty ? nil : deck, opponentDeck: opponentDeck.isEmpty ? nil : opponentDeck)
+                store.startGame(deck: chosenDeck, opponentDeck: opponentDeck.isEmpty ? nil : opponentDeck)
             } label: {
                 HStack {
                     Spacer()
@@ -99,9 +155,7 @@ struct LobbyView: View {
             }
             .disabled(store.phase == .startingGame)
         } header: {
-            Text("Duel")
-        } footer: {
-            Text("\(store.decks.count) sample decks from the XMage server. A random deck is picked when none is chosen.")
+            Text("Practice")
         }
     }
 

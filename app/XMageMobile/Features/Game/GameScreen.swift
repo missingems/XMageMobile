@@ -54,7 +54,7 @@ struct GameScreen: View {
             PromptSheet(prompt: prompt)
         }
         .sheet(item: $store.result) { result in
-            GameOverView(result: result, onRematch: store.rematch, onLeave: store.leaveGame)
+            GameOverView(result: result, onRematch: rematchAction, onLeave: store.leaveGame)
         }
         .sheet(isPresented: $showsLog) {
             GameLogView(lines: store.log)
@@ -63,6 +63,11 @@ struct GameScreen: View {
         .confirmationDialog("Concede this game?", isPresented: $confirmsConcede, titleVisibility: .visible) {
             Button("Concede", role: .destructive) { store.concede() }
         }
+    }
+
+    private var rematchAction: (() -> Void)? {
+        if store.isOnlineMatch { return nil }
+        return { store.rematch() }
     }
 
     private func table(_ state: GameState) -> some View {

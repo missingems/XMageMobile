@@ -9,12 +9,14 @@ import mage.constants.MatchTimeLimit;
 import mage.constants.MultiplayerAttackOption;
 import mage.constants.PlayerAction;
 import mage.constants.RangeOfInfluence;
+import mage.constants.TableState;
 import mage.game.match.MatchOptions;
 import mage.interfaces.MageClient;
 import mage.interfaces.callback.ClientCallback;
 import mage.players.PlayerType;
 import mage.players.net.UserData;
 import mage.remote.Connection;
+import mage.remote.MageRemoteException;
 import mage.remote.Session;
 import mage.remote.SessionImpl;
 import mage.util.MultiAmountMessage;
@@ -26,11 +28,15 @@ import mage.view.GameClientMessage;
 import mage.view.GameEndView;
 import mage.view.GameTypeView;
 import mage.view.GameView;
+import mage.view.SeatView;
 import mage.view.TableClientMessage;
 import mage.view.TableView;
 import org.java_websocket.WebSocket;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -38,6 +44,10 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 final class ClientSession implements MageClient {
 
@@ -55,12 +65,26 @@ final class ClientSession implements MageClient {
         return t;
     });
 
+    private final ScheduledExecutorService ticker = Executors.newSingleThreadScheduledExecutor(r -> {
+        Thread t = new Thread(r, "bridge-ticker");
+        t.setDaemon(true);
+        return t;
+    });
+
     private volatile Session session;
     private volatile String username;
     private volatile UUID roomId;
     private volatile UUID gameId;
     private volatile UUID playerId;
     private volatile GameView lastView;
+    private volatile UUID waitingTableId;
+    private volatile boolean waitingAsOwner;
+    private volatile boolean startRequested;
+    private volatile DeckCardLists matchDeck;
+    private volatile ScheduledFuture<?> tablesPoll;
+    private volatile ScheduledFuture<?> waitingPoll;
+    private final AtomicBoolean tablesInFlight = new AtomicBoolean();
+    private final AtomicBoolean waitingInFlight = new AtomicBoolean();
 
     ClientSession(WebSocket socket, DeckLibrary decks, String defaultServer, int defaultServerPort) {
         this.socket = socket;
@@ -108,6 +132,12 @@ final class ClientSession implements MageClient {
             case "respondManaType" -> requireSession().sendPlayerManaType(game(json), playerId, manaType(json.get("manaType").getAsString()));
             case "playerAction" -> requireSession().sendPlayerAction(PlayerAction.valueOf(json.get("action").getAsString()), game(json), null);
             case "leaveGame" -> leaveGame();
+            case "watchTables" -> watchTables(!json.has("on") || json.get("on").getAsBoolean());
+            case "createTable" -> createTable(optString(json, "deck", null), optString(json, "deckType", null),
+                    optString(json, "name", null), optString(json, "password", ""));
+            case "joinTable" -> joinTable(UUID.fromString(json.get("tableId").getAsString()),
+                    optString(json, "deck", null), optString(json, "password", ""));
+            case "leaveTable" -> leaveTable();
             default -> error("Unknown message type " + type);
         }
     }
@@ -136,10 +166,18 @@ final class ClientSession implements MageClient {
         o.addProperty("message", "Connected as " + name);
         o.addProperty("server", server);
         o.addProperty("username", name);
+        List<PlayerType> offered = Arrays.asList(s.getPlayerTypes());
+        o.addProperty("allowsComputer", offered.contains(PlayerType.COMPUTER_MAD) || offered.contains(PlayerType.COMPUTER_MONTE_CARLO));
+        String[] deckTypes = s.getDeckTypes();
+        o.add("deckTypes", ViewMapper.strings(deckTypes == null ? List.of() : Arrays.stream(deckTypes)
+                .filter(t -> t.startsWith("Constructed") || t.startsWith("Variant Magic"))
+                .toList()));
         send(o);
     }
 
     private void disconnect() {
+        stopTablesPoll();
+        leaveTable();
         Session s = session;
         session = null;
         gameId = null;
@@ -151,6 +189,7 @@ final class ClientSession implements MageClient {
     void close() {
         calls.submit(this::disconnect);
         calls.shutdown();
+        ticker.shutdownNow();
     }
 
     private void leaveGame() {
@@ -225,6 +264,229 @@ final class ClientSession implements MageClient {
         }
     }
 
+    private void watchTables(boolean on) {
+        stopTablesPoll();
+        if (on) {
+            tablesPoll = ticker.scheduleWithFixedDelay(() -> {
+                if (tablesInFlight.compareAndSet(false, true)) {
+                    calls.submit(() -> {
+                        try {
+                            sendTables();
+                        } finally {
+                            tablesInFlight.set(false);
+                        }
+                    });
+                }
+            }, 0, 4, TimeUnit.SECONDS);
+        }
+    }
+
+    private void stopTablesPoll() {
+        ScheduledFuture<?> f = tablesPoll;
+        tablesPoll = null;
+        if (f != null) {
+            f.cancel(false);
+        }
+    }
+
+    private void sendTables() {
+        Session s = session;
+        UUID room = roomId;
+        if (s == null || room == null || tablesPoll == null) {
+            return;
+        }
+        Collection<TableView> all;
+        try {
+            all = s.getTables(room);
+        } catch (MageRemoteException e) {
+            return;
+        }
+        UUID mine = waitingTableId;
+        JsonArray list = new JsonArray();
+        all.stream()
+                .filter(t -> !t.isTournament() && !t.isLimited())
+                .filter(t -> t.getSeats().size() == 2)
+                .filter(t -> t.getTableState() == TableState.WAITING)
+                .filter(t -> freeSeats(t) > 0)
+                .filter(t -> !t.getTableId().equals(mine))
+                .sorted(Comparator.comparing(TableView::getCreateTime, Comparator.nullsLast(Comparator.reverseOrder())))
+                .forEach(t -> list.add(table(t)));
+        JsonObject o = message("tables");
+        o.add("tables", list);
+        send(o);
+    }
+
+    private static long freeSeats(TableView t) {
+        return t.getSeats().stream()
+                .filter(seat -> seat.getPlayerName().isEmpty() && seat.getPlayerType() == PlayerType.HUMAN)
+                .count();
+    }
+
+    private static JsonObject table(TableView t) {
+        JsonObject o = new JsonObject();
+        o.addProperty("id", t.getTableId().toString());
+        o.addProperty("name", ViewMapper.plain(t.getTableName()));
+        String controller = t.getControllerName() == null ? "" : t.getControllerName();
+        int comma = controller.indexOf(", ");
+        o.addProperty("owner", comma >= 0 ? controller.substring(0, comma) : controller);
+        o.addProperty("gameType", t.getGameType());
+        o.addProperty("deckType", t.getDeckType());
+        o.addProperty("state", t.getTableState().name());
+        o.addProperty("info", ViewMapper.plain(t.getAdditionalInfoShort()));
+        o.addProperty("passworded", t.isPassworded());
+        o.addProperty("rated", t.isRated());
+        o.addProperty("skill", t.getSkillLevel() == null ? null : t.getSkillLevel().toString());
+        o.addProperty("createdAt", t.getCreateTime() == null ? 0 : t.getCreateTime().getTime());
+        o.addProperty("freeSeats", freeSeats(t));
+        JsonArray seats = new JsonArray();
+        for (SeatView seat : t.getSeats()) {
+            JsonObject so = new JsonObject();
+            so.addProperty("name", seat.getPlayerName());
+            so.addProperty("type", seat.getPlayerType() == null ? null : seat.getPlayerType().toString());
+            seats.add(so);
+        }
+        o.add("seats", seats);
+        return o;
+    }
+
+    private void createTable(String deckName, String deckType, String name, String password) {
+        Session s = requireSession();
+        leaveTable();
+        String mine = deckName != null ? deckName : decks.randomName("AI");
+        Optional<DeckCardLists> deck = decks.load(mine);
+        if (deck.isEmpty()) {
+            error("Couldn't load deck " + mine);
+            return;
+        }
+        GameTypeView gameType = s.getGameTypes().stream()
+                .filter(t -> t.getName().equals(GAME_TYPE))
+                .findFirst()
+                .orElseThrow(() -> new IllegalStateException("Server has no " + GAME_TYPE));
+        String[] offeredTypes = s.getDeckTypes();
+        String type = deckType != null && offeredTypes != null && Arrays.asList(offeredTypes).contains(deckType) ? deckType : DECK_TYPE;
+
+        MatchOptions options = new MatchOptions(name == null || name.isBlank() ? username + "'s table" : name, gameType.getName(), false);
+        options.getPlayerTypes().add(PlayerType.HUMAN);
+        options.getPlayerTypes().add(PlayerType.HUMAN);
+        options.setDeckType(type);
+        options.setLimited(false);
+        options.setAttackOption(MultiplayerAttackOption.MULTIPLE);
+        options.setRange(RangeOfInfluence.ALL);
+        options.setWinsNeeded(1);
+        options.setMatchTimeLimit(MatchTimeLimit.NONE);
+        options.setQuitRatio(100);
+        options.setMinimumRating(0);
+        options.setPassword(password == null ? "" : password);
+
+        TableView table = s.createTable(roomId, options);
+        if (table == null) {
+            error("Server refused to create a table: " + ViewMapper.plain(s.getLastError()));
+            return;
+        }
+        UUID tableId = table.getTableId();
+        if (!s.joinTable(roomId, tableId, username, PlayerType.HUMAN, 1, deck.get(), password == null ? "" : password)) {
+            error(joinFailure(s, mine));
+            s.removeTable(roomId, tableId);
+            return;
+        }
+        matchDeck = deck.get();
+        startWaiting(tableId, true);
+    }
+
+    private void joinTable(UUID tableId, String deckName, String password) {
+        Session s = requireSession();
+        leaveTable();
+        String mine = deckName != null ? deckName : decks.randomName("AI");
+        Optional<DeckCardLists> deck = decks.load(mine);
+        if (deck.isEmpty()) {
+            error("Couldn't load deck " + mine);
+            return;
+        }
+        if (!s.joinTable(roomId, tableId, username, PlayerType.HUMAN, 1, deck.get(), password == null ? "" : password)) {
+            error(joinFailure(s, mine));
+            return;
+        }
+        matchDeck = deck.get();
+        startWaiting(tableId, false);
+    }
+
+    private static String joinFailure(Session s, String deck) {
+        String reason = ViewMapper.plain(s.getLastError());
+        return reason.isEmpty() ? "Couldn't join the table with " + deck + "." : "Couldn't join the table: " + reason;
+    }
+
+    private void leaveTable() {
+        UUID id = waitingTableId;
+        boolean owner = waitingAsOwner;
+        stopWaiting();
+        Session s = session;
+        if (s != null && id != null) {
+            if (owner) {
+                s.removeTable(roomId, id);
+            } else {
+                s.leaveTable(roomId, id);
+            }
+        }
+    }
+
+    private void startWaiting(UUID tableId, boolean owner) {
+        stopWaiting();
+        waitingTableId = tableId;
+        waitingAsOwner = owner;
+        startRequested = false;
+        waitingPoll = ticker.scheduleWithFixedDelay(() -> {
+            if (waitingInFlight.compareAndSet(false, true)) {
+                calls.submit(() -> {
+                    try {
+                        pollWaiting();
+                    } finally {
+                        waitingInFlight.set(false);
+                    }
+                });
+            }
+        }, 0, 2, TimeUnit.SECONDS);
+    }
+
+    private void stopWaiting() {
+        ScheduledFuture<?> f = waitingPoll;
+        waitingPoll = null;
+        waitingTableId = null;
+        if (f != null) {
+            f.cancel(false);
+        }
+    }
+
+    private void pollWaiting() {
+        Session s = session;
+        UUID id = waitingTableId;
+        if (s == null || id == null) {
+            return;
+        }
+        Optional<TableView> found = s.getTable(roomId, id);
+        if (!id.equals(waitingTableId)) {
+            return;
+        }
+        if (found.isEmpty()) {
+            stopWaiting();
+            JsonObject o = message("tableClosed");
+            o.addProperty("text", "The table was closed.");
+            send(o);
+            return;
+        }
+        TableView t = found.get();
+        JsonObject o = message("tableWaiting");
+        o.add("table", table(t));
+        o.addProperty("isOwner", waitingAsOwner);
+        send(o);
+        if (waitingAsOwner && t.getTableState() == TableState.READY_TO_START && !startRequested) {
+            startRequested = true;
+            if (!s.startMatch(roomId, id)) {
+                startRequested = false;
+                error("Couldn't start the match: " + ViewMapper.plain(s.getLastError()));
+            }
+        }
+    }
+
     @Override
     public MageVersion getVersion() {
         return VERSION;
@@ -262,6 +524,7 @@ final class ClientSession implements MageClient {
             switch (callback.getMethod()) {
                 case START_GAME -> {
                     TableClientMessage m = (TableClientMessage) data;
+                    stopWaiting();
                     gameId = m.getGameId();
                     playerId = m.getPlayerId();
                     JsonObject o = message("gameStarted");
@@ -272,6 +535,17 @@ final class ClientSession implements MageClient {
                         Session s = session;
                         if (s != null) {
                             s.joinGame(m.getGameId());
+                        }
+                    });
+                }
+                case SIDEBOARD -> {
+                    TableClientMessage m = (TableClientMessage) data;
+                    DeckCardLists deck = matchDeck;
+                    info("Next game starting with the same deck.");
+                    calls.submit(() -> {
+                        Session s = session;
+                        if (s != null && deck != null) {
+                            s.submitDeck(m.getCurrentTableId(), deck);
                         }
                     });
                 }

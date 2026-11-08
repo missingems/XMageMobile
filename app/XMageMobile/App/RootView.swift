@@ -49,7 +49,35 @@ struct RootView: View {
             if case .failed = store.phase { return }
             try? await Task.sleep(for: .milliseconds(200))
         }
+        #if DEBUG
+        if await autoSeatIfRequested(defaults) { return }
+        #endif
         store.startGame(deck: defaults.string(forKey: "deck").flatMap { $0.isEmpty ? nil : $0 },
                         opponentDeck: defaults.string(forKey: "opponentDeck").flatMap { $0.isEmpty ? nil : $0 })
     }
+
+    #if DEBUG
+    private func autoSeatIfRequested(_ defaults: UserDefaults) async -> Bool {
+        let password = defaults.string(forKey: "autoTablePassword")
+        switch defaults.string(forKey: "autoTable") {
+        case "create":
+            store.createTable(deck: nil, format: nil, name: defaults.string(forKey: "autoTableName"), password: password)
+            return true
+        case "join":
+            let owner = defaults.string(forKey: "autoJoinOwner") ?? ""
+            for _ in 0..<150 {
+                if let table = store.tables.first(where: { $0.owner == owner }) {
+                    store.joinTable(table, deck: nil, password: password)
+                    return true
+                }
+                try? await Task.sleep(for: .milliseconds(200))
+            }
+            return true
+        case "lobby":
+            return true
+        default:
+            return false
+        }
+    }
+    #endif
 }

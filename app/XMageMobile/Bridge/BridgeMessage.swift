@@ -3,7 +3,10 @@ import Foundation
 nonisolated enum BridgeMessage: Sendable {
     case hello(xmageVersion: String, defaultServer: String, defaultPort: Int)
     case decks([String])
-    case status(state: String, message: String, username: String?)
+    case status(state: String, message: String, username: String?, allowsComputer: Bool?, deckTypes: [String])
+    case tables([OnlineTable])
+    case tableWaiting(OnlineTable, isOwner: Bool)
+    case tableClosed(String)
     case tableReady(deck: String, opponentDeck: String)
     case gameStarted(gameId: String, playerId: String)
     case game(GameState)
@@ -13,14 +16,15 @@ nonisolated enum BridgeMessage: Sendable {
     case info(String)
     case error(String)
     case gameOver(String)
-    case gameEnd(won: Bool, gameInfo: String)
+    case gameEnd(won: Bool, gameInfo: String, matchInfo: String)
     case unknown(String)
 }
 
 extension BridgeMessage: Decodable {
     private enum Keys: String, CodingKey {
         case type, xmageVersion, defaultServer, defaultPort, names, state, message, username
-        case deck, opponentDeck, gameId, playerId, prompt, text, won, gameInfo
+        case deck, opponentDeck, gameId, playerId, prompt, text, won, gameInfo, matchInfo
+        case allowsComputer, deckTypes, tables, table, isOwner
     }
 
     init(from decoder: Decoder) throws {
@@ -37,7 +41,18 @@ extension BridgeMessage: Decodable {
         case "decks":
             self = .decks(try c.decodeIfPresent([String].self, forKey: .names) ?? [])
         case "status":
-            self = .status(state: try text(.state), message: try text(.message), username: try c.decodeIfPresent(String.self, forKey: .username))
+            self = .status(
+                state: try text(.state),
+                message: try text(.message),
+                username: try c.decodeIfPresent(String.self, forKey: .username),
+                allowsComputer: try c.decodeIfPresent(Bool.self, forKey: .allowsComputer),
+                deckTypes: try c.decodeIfPresent([String].self, forKey: .deckTypes) ?? [])
+        case "tables":
+            self = .tables(try c.decodeIfPresent([OnlineTable].self, forKey: .tables) ?? [])
+        case "tableWaiting":
+            self = .tableWaiting(try c.decode(OnlineTable.self, forKey: .table), isOwner: try c.decodeIfPresent(Bool.self, forKey: .isOwner) ?? false)
+        case "tableClosed":
+            self = .tableClosed(try text(.text))
         case "tableReady":
             self = .tableReady(deck: try text(.deck), opponentDeck: try text(.opponentDeck))
         case "gameStarted":
@@ -57,7 +72,7 @@ extension BridgeMessage: Decodable {
         case "gameOver":
             self = .gameOver(try text(.text))
         case "gameEnd":
-            self = .gameEnd(won: try c.decodeIfPresent(Bool.self, forKey: .won) ?? false, gameInfo: try text(.gameInfo))
+            self = .gameEnd(won: try c.decodeIfPresent(Bool.self, forKey: .won) ?? false, gameInfo: try text(.gameInfo), matchInfo: try text(.matchInfo))
         default:
             self = .unknown(type)
         }

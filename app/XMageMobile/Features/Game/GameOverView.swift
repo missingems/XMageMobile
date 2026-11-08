@@ -2,7 +2,7 @@ import SwiftUI
 
 struct GameOverView: View {
     let result: GameResult
-    let onRematch: () -> Void
+    let onRematch: (() -> Void)?
     let onLeave: () -> Void
 
     var body: some View {
@@ -19,14 +19,21 @@ struct GameOverView: View {
                     .foregroundStyle(.secondary)
             }
             VStack(spacing: 10) {
-                Button(action: onRematch) {
-                    Text("Play Again").frame(maxWidth: .infinity)
+                if let onRematch {
+                    Button(action: onRematch) {
+                        Text("Play Again").frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.glassProminent)
+                    Button(action: onLeave) {
+                        Text("Back to Lobby").frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.glass)
+                } else {
+                    Button(action: onLeave) {
+                        Text("Back to Lobby").frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.glassProminent)
                 }
-                .buttonStyle(.glassProminent)
-                Button(action: onLeave) {
-                    Text("Back to Lobby").frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.glass)
             }
             .controlSize(.large)
             .frame(maxWidth: 320)
