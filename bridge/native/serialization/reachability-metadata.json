@@ -5757,6 +5757,346 @@
    "type": "org.apache.log4j.PatternLayout",
    "allDeclaredConstructors": true,
    "allPublicMethods": true
+  },
+  {
+   "type": "java.util.Arrays$ArrayList",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$UnmodifiableCollection",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$UnmodifiableSet",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$UnmodifiableSortedSet",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$UnmodifiableNavigableSet",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$UnmodifiableList",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$UnmodifiableRandomAccessList",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$UnmodifiableMap",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$UnmodifiableSortedMap",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$UnmodifiableNavigableMap",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$SynchronizedCollection",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$SynchronizedSet",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$SynchronizedList",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$SynchronizedRandomAccessList",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$SynchronizedMap",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$SingletonSet",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$SingletonList",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$SingletonMap",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$EmptyList",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$EmptySet",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$EmptyMap",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$ReverseComparator",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$ReverseComparator2",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$CopiesList",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Collections$SetFromMap",
+   "serializable": true
+  },
+  {
+   "type": "java.util.CollSer",
+   "serializable": true
+  },
+  {
+   "type": "java.util.ImmutableCollections$ListN",
+   "serializable": true
+  },
+  {
+   "type": "java.util.ImmutableCollections$List12",
+   "serializable": true
+  },
+  {
+   "type": "java.util.ImmutableCollections$SetN",
+   "serializable": true
+  },
+  {
+   "type": "java.util.ImmutableCollections$Set12",
+   "serializable": true
+  },
+  {
+   "type": "java.util.ImmutableCollections$MapN",
+   "serializable": true
+  },
+  {
+   "type": "java.util.ImmutableCollections$Map1",
+   "serializable": true
+  },
+  {
+   "type": "java.util.TreeSet",
+   "serializable": true
+  },
+  {
+   "type": "java.util.TreeMap",
+   "serializable": true
+  },
+  {
+   "type": "java.util.LinkedList",
+   "serializable": true
+  },
+  {
+   "type": "java.util.ArrayDeque",
+   "serializable": true
+  },
+  {
+   "type": "java.util.PriorityQueue",
+   "serializable": true
+  },
+  {
+   "type": "java.util.IdentityHashMap",
+   "serializable": true
+  },
+  {
+   "type": "java.util.EnumMap",
+   "serializable": true
+  },
+  {
+   "type": "java.util.RegularEnumSet",
+   "serializable": true
+  },
+  {
+   "type": "java.util.JumboEnumSet",
+   "serializable": true
+  },
+  {
+   "type": "java.util.EnumSet$SerializationProxy",
+   "serializable": true
+  },
+  {
+   "type": "java.util.BitSet",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Stack",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Properties",
+   "serializable": true
+  },
+  {
+   "type": "java.util.AbstractMap$SimpleEntry",
+   "serializable": true
+  },
+  {
+   "type": "java.util.AbstractMap$SimpleImmutableEntry",
+   "serializable": true
+  },
+  {
+   "type": "java.util.Random",
+   "serializable": true
+  },
+  {
+   "type": "java.util.concurrent.ConcurrentHashMap",
+   "serializable": true
+  },
+  {
+   "type": "java.util.concurrent.ConcurrentHashMap$Segment",
+   "serializable": true
+  },
+  {
+   "type": "java.util.concurrent.ConcurrentHashMap$KeySetView",
+   "serializable": true
+  },
+  {
+   "type": "java.util.concurrent.CopyOnWriteArrayList",
+   "serializable": true
+  },
+  {
+   "type": "java.util.concurrent.CopyOnWriteArraySet",
+   "serializable": true
+  },
+  {
+   "type": "java.util.concurrent.ConcurrentSkipListMap",
+   "serializable": true
+  },
+  {
+   "type": "java.util.concurrent.ConcurrentSkipListSet",
+   "serializable": true
+  },
+  {
+   "type": "java.util.concurrent.ConcurrentLinkedQueue",
+   "serializable": true
+  },
+  {
+   "type": "java.util.concurrent.ConcurrentLinkedDeque",
+   "serializable": true
+  },
+  {
+   "type": "java.util.concurrent.LinkedBlockingQueue",
+   "serializable": true
+  },
+  {
+   "type": "java.util.concurrent.atomic.AtomicInteger",
+   "serializable": true
+  },
+  {
+   "type": "java.util.concurrent.atomic.AtomicLong",
+   "serializable": true
+  },
+  {
+   "type": "java.util.concurrent.atomic.AtomicBoolean",
+   "serializable": true
+  },
+  {
+   "type": "java.util.concurrent.atomic.AtomicReference",
+   "serializable": true
+  },
+  {
+   "type": "java.lang.Long",
+   "serializable": true
+  },
+  {
+   "type": "java.lang.Short",
+   "serializable": true
+  },
+  {
+   "type": "java.lang.Byte",
+   "serializable": true
+  },
+  {
+   "type": "java.lang.Character",
+   "serializable": true
+  },
+  {
+   "type": "java.lang.Float",
+   "serializable": true
+  },
+  {
+   "type": "java.lang.Double",
+   "serializable": true
+  },
+  {
+   "type": "java.lang.StringBuilder",
+   "serializable": true
+  },
+  {
+   "type": "java.lang.StringBuffer",
+   "serializable": true
+  },
+  {
+   "type": "java.lang.String$CaseInsensitiveComparator",
+   "serializable": true
+  },
+  {
+   "type": "java.math.BigInteger",
+   "serializable": true
+  },
+  {
+   "type": "java.math.BigDecimal",
+   "serializable": true
+  },
+  {
+   "type": "int[]",
+   "serializable": true
+  },
+  {
+   "type": "long[]",
+   "serializable": true
+  },
+  {
+   "type": "boolean[]",
+   "serializable": true
+  },
+  {
+   "type": "byte[]",
+   "serializable": true
+  },
+  {
+   "type": "char[]",
+   "serializable": true
+  },
+  {
+   "type": "short[]",
+   "serializable": true
+  },
+  {
+   "type": "float[]",
+   "serializable": true
+  },
+  {
+   "type": "double[]",
+   "serializable": true
+  },
+  {
+   "type": "java.lang.String[]",
+   "serializable": true
+  },
+  {
+   "type": "java.lang.Object[]",
+   "serializable": true
+  },
+  {
+   "type": "java.lang.Integer[]",
+   "serializable": true
+  },
+  {
+   "type": "java.util.UUID[]",
+   "serializable": true
   }
  ]
 }

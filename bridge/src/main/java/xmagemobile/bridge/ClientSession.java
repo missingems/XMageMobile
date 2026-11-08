@@ -14,6 +14,7 @@ import mage.constants.TableState;
 import mage.game.match.MatchOptions;
 import mage.interfaces.MageClient;
 import mage.interfaces.callback.ClientCallback;
+import mage.players.PlayableObjectsList;
 import mage.players.PlayerType;
 import mage.players.net.UserData;
 import mage.remote.Connection;
@@ -80,6 +81,7 @@ final class ClientSession implements MageClient {
     private volatile UUID gameId;
     private volatile UUID playerId;
     private volatile GameView lastView;
+    private volatile PlayableObjectsList priorityPlayable;
     private volatile UUID waitingTableId;
     private volatile boolean waitingAsOwner;
     private volatile boolean startRequested;
@@ -139,12 +141,30 @@ final class ClientSession implements MageClient {
                     optString(json, "username", "Mobile"));
             case "disconnect" -> disconnect();
             case "startAIGame" -> startAIGame(optString(json, "deck", null), optString(json, "opponentDeck", null));
-            case "respondUUID" -> requireSession().sendPlayerUUID(game(json), UUID.fromString(json.get("id").getAsString()));
-            case "respondBoolean" -> requireSession().sendPlayerBoolean(game(json), json.get("value").getAsBoolean());
-            case "respondInteger" -> requireSession().sendPlayerInteger(game(json), json.get("value").getAsInt());
-            case "respondString" -> requireSession().sendPlayerString(game(json), json.get("value").getAsString());
-            case "respondManaType" -> requireSession().sendPlayerManaType(game(json), playerId, manaType(json.get("manaType").getAsString()));
-            case "playerAction" -> requireSession().sendPlayerAction(PlayerAction.valueOf(json.get("action").getAsString()), game(json), null);
+            case "respondUUID" -> {
+                answered();
+                requireSession().sendPlayerUUID(game(json), UUID.fromString(json.get("id").getAsString()));
+            }
+            case "respondBoolean" -> {
+                answered();
+                requireSession().sendPlayerBoolean(game(json), json.get("value").getAsBoolean());
+            }
+            case "respondInteger" -> {
+                answered();
+                requireSession().sendPlayerInteger(game(json), json.get("value").getAsInt());
+            }
+            case "respondString" -> {
+                answered();
+                requireSession().sendPlayerString(game(json), json.get("value").getAsString());
+            }
+            case "respondManaType" -> {
+                answered();
+                requireSession().sendPlayerManaType(game(json), playerId, manaType(json.get("manaType").getAsString()));
+            }
+            case "playerAction" -> {
+                answered();
+                requireSession().sendPlayerAction(PlayerAction.valueOf(json.get("action").getAsString()), game(json), null);
+            }
             case "leaveGame" -> leaveGame();
             case "watchTables" -> watchTables(!json.has("on") || json.get("on").getAsBoolean());
             case "createTable" -> createTable(optString(json, "deck", null), optString(json, "deckType", null),
@@ -775,6 +795,7 @@ final class ClientSession implements MageClient {
                 case GAME_ERROR -> error(String.valueOf(data));
                 case GAME_SELECT -> {
                     GameClientMessage m = (GameClientMessage) data;
+                    priorityPlayable = m.getGameView() == null ? null : m.getGameView().getCanPlayObjects();
                     sendGame(m.getGameView(), null);
                     JsonObject p = prompt("select", m.getMessage(), m.getOptions());
                     p.addProperty("doneLabel", label(m.getOptions(), "UI.right.btn.text", "Done"));
@@ -917,9 +938,18 @@ final class ClientSession implements MageClient {
         }
     }
 
+    private void answered() {
+        priorityPlayable = null;
+    }
+
     private void sendGame(GameView view, Set<UUID> targets) {
         if (view == null) {
             return;
+        }
+        PlayableObjectsList playable = priorityPlayable;
+        if (playable != null && !playable.isEmpty()
+                && (view.getCanPlayObjects() == null || view.getCanPlayObjects().isEmpty())) {
+            view.setCanPlayObjects(playable);
         }
         lastView = view;
         JsonObject o = message("game");
