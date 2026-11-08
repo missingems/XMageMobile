@@ -4,7 +4,7 @@ nonisolated enum BridgeMessage: Sendable {
     case hello(xmageVersion: String, defaultServer: String, defaultPort: Int)
     case decks([String])
     case status(state: String, message: String, username: String?, allowsComputer: Bool?, deckTypes: [String])
-    case tables([OnlineTable])
+    case tables([OnlineTable], rating: Int?)
     case tableWaiting(OnlineTable, isOwner: Bool)
     case tableClosed(String)
     case tableReady(deck: String, opponentDeck: String)
@@ -28,7 +28,7 @@ extension BridgeMessage: Decodable {
     private enum Keys: String, CodingKey {
         case type, xmageVersion, defaultServer, defaultPort, names, state, message, username
         case deck, opponentDeck, gameId, playerId, prompt, text, won, gameInfo, matchInfo
-        case allowsComputer, deckTypes, tables, table, isOwner
+        case allowsComputer, deckTypes, tables, table, isOwner, rating
         case seconds, main, sideboard, automatic
     }
 
@@ -53,7 +53,9 @@ extension BridgeMessage: Decodable {
                 allowsComputer: try c.decodeIfPresent(Bool.self, forKey: .allowsComputer),
                 deckTypes: try c.decodeIfPresent([String].self, forKey: .deckTypes) ?? [])
         case "tables":
-            self = .tables(try c.decodeIfPresent([OnlineTable].self, forKey: .tables) ?? [])
+            self = .tables(
+                try c.decodeIfPresent([OnlineTable].self, forKey: .tables) ?? [],
+                rating: try c.decodeIfPresent(Int.self, forKey: .rating))
         case "tableWaiting":
             self = .tableWaiting(try c.decode(OnlineTable.self, forKey: .table), isOwner: try c.decodeIfPresent(Bool.self, forKey: .isOwner) ?? false)
         case "tableClosed":

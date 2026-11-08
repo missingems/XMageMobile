@@ -19,7 +19,7 @@ struct OnlineTableRow: View {
                                 .accessibilityLabel("Password protected")
                         }
                         if table.rated {
-                            Text("Rated")
+                            Text("Ranked")
                                 .font(.caption2.weight(.semibold))
                                 .foregroundStyle(.secondary)
                                 .padding(.horizontal, 6)
@@ -27,10 +27,10 @@ struct OnlineTableRow: View {
                                 .background(.fill.tertiary, in: .capsule)
                         }
                     }
-                    Text(table.bestOf > 1 ? "\(table.owner) · \(table.format) · Best of \(table.bestOf)" : "\(table.owner) · \(table.format)")
+                    Text(subtitle)
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
-                        .lineLimit(1)
+                        .lineLimit(2)
                     if !table.info.isEmpty {
                         Text(table.info)
                             .font(.caption)
@@ -48,5 +48,13 @@ struct OnlineTableRow: View {
         .foregroundStyle(.primary)
         .accessibilityElement(children: .combine)
         .accessibilityHint("Joins \(table.owner)’s table")
+    }
+
+    private var subtitle: String {
+        var parts = [table.ownerRating.map { "\(table.owner) (\($0.formatted(.number.grouping(.never))))" } ?? table.owner, table.format]
+        if table.bestOf > 1 {
+            parts.append("Best of \(table.bestOf)")
+        }
+        return parts.joined(separator: " · ")
     }
 }

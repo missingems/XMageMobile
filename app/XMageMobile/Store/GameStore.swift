@@ -15,6 +15,7 @@ final class GameStore {
     private(set) var matchup: (deck: String, opponent: String)?
     private(set) var tables: [OnlineTable] = []
     private(set) var hasLoadedTables = false
+    private(set) var rating: Int?
     private(set) var waitingTable: OnlineTable?
     private(set) var isTableOwner = false
     private(set) var isSeating = false
@@ -118,10 +119,10 @@ final class GameStore {
         }
     }
 
-    func createTable(deck: String?, format: String?, name: String?, password: String?, bestOf: Int = 1) {
+    func createTable(deck: String?, format: String?, name: String?, password: String?, bestOf: Int = 1, rated: Bool = false) {
         guard phase == .lobby else { return }
         isSeating = true
-        send(.createTable(deck: deck, deckType: format, name: name, password: password, bestOf: bestOf))
+        send(.createTable(deck: deck, deckType: format, name: name, password: password, bestOf: bestOf, rated: rated))
     }
 
     func submitSideboard(main: [DeckCard], sideboard: [DeckCard]) {
@@ -257,6 +258,7 @@ final class GameStore {
     private func resetLobby() {
         tables = []
         hasLoadedTables = false
+        rating = nil
         waitingTable = nil
         isTableOwner = false
         isSeating = false
@@ -319,8 +321,9 @@ final class GameStore {
             }
             clearBetweenGames()
             phase = .playing
-        case let .tables(list):
+        case let .tables(list, myRating):
             tables = list
+            rating = myRating ?? rating
             hasLoadedTables = true
         case let .tableWaiting(table, owner):
             if isSeating || waitingTable != nil {

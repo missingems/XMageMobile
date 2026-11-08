@@ -12,7 +12,7 @@ nonisolated enum BridgeRequest: Sendable {
     case playerAction(PlayerAction)
     case leaveGame
     case watchTables(Bool)
-    case createTable(deck: String?, deckType: String?, name: String?, password: String?, bestOf: Int)
+    case createTable(deck: String?, deckType: String?, name: String?, password: String?, bestOf: Int, rated: Bool)
     case joinTable(id: String, deck: String?, password: String?)
     case leaveTable
     case submitDeck(main: [DeckCard], sideboard: [DeckCard])
@@ -43,9 +43,9 @@ nonisolated enum BridgeRequest: Sendable {
             ["type": "leaveGame"]
         case let .watchTables(on):
             ["type": "watchTables", "on": on]
-        case let .createTable(deck, deckType, name, password, bestOf):
+        case let .createTable(deck, deckType, name, password, bestOf, rated):
             Self.compact(["type": "createTable", "deck": deck, "deckType": deckType, "name": name, "password": password])
-                .merging(["bestOf": bestOf]) { _, new in new }
+                .merging(["bestOf": bestOf, "rated": rated]) { _, new in new }
         case let .joinTable(id, deck, password):
             Self.compact(["type": "joinTable", "tableId": id, "deck": deck, "password": password])
         case .leaveTable:

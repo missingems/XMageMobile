@@ -30,9 +30,11 @@ import mage.view.GameClientMessage;
 import mage.view.GameEndView;
 import mage.view.GameTypeView;
 import mage.view.GameView;
+import mage.view.RoomUsersView;
 import mage.view.SeatView;
 import mage.view.TableClientMessage;
 import mage.view.TableView;
+import mage.view.UsersView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -169,7 +171,8 @@ final class ClientSession implements MageClient {
             case "watchTables" -> watchTables(!json.has("on") || json.get("on").getAsBoolean());
             case "createTable" -> createTable(optString(json, "deck", null), optString(json, "deckType", null),
                     optString(json, "name", null), optString(json, "password", ""),
-                    json.has("bestOf") ? json.get("bestOf").getAsInt() : 1);
+                    json.has("bestOf") ? json.get("bestOf").getAsInt() : 1,
+                    json.has("rated") && json.get("rated").getAsBoolean());
             case "submitDeck" -> submitSideboard(json);
             case "joinTable" -> joinTable(UUID.fromString(json.get("tableId").getAsString()),
                     optString(json, "deck", null), optString(json, "password", ""));
@@ -355,6 +358,7 @@ final class ClientSession implements MageClient {
             return;
         }
         UUID mine = waitingTableId;
+        Map<String, Integer> ratings = ratings(s, room);
         JsonArray list = new JsonArray();
         all.stream()
                 .filter(t -> !t.isTournament() && !t.isLimited())
@@ -363,9 +367,10 @@ final class ClientSession implements MageClient {
                 .filter(t -> freeSeats(t) > 0)
                 .filter(t -> !t.getTableId().equals(mine))
                 .sorted(Comparator.comparing(TableView::getCreateTime, Comparator.nullsLast(Comparator.reverseOrder())))
-                .forEach(t -> list.add(table(t)));
+                .forEach(t -> list.add(table(t, ratings)));
         JsonObject o = message("tables");
         o.add("tables", list);
+        o.addProperty("rating", ratings.get(username));
         send(o);
     }
 
@@ -375,13 +380,31 @@ final class ClientSession implements MageClient {
                 .count();
     }
 
-    private static JsonObject table(TableView t) {
+    private static Map<String, Integer> ratings(Session s, UUID room) {
+        Map<String, Integer> ratings = new LinkedHashMap<>();
+        try {
+            for (RoomUsersView roomUsers : s.getRoomUsers(room)) {
+                for (UsersView user : roomUsers.getUsersView()) {
+                    if (user.getConstructedRating() > 0) {
+                        ratings.put(user.getUserName(), user.getConstructedRating());
+                    }
+                }
+            }
+        } catch (MageRemoteException e) {
+            return ratings;
+        }
+        return ratings;
+    }
+
+    private static JsonObject table(TableView t, Map<String, Integer> ratings) {
         JsonObject o = new JsonObject();
         o.addProperty("id", t.getTableId().toString());
         o.addProperty("name", ViewMapper.plain(t.getTableName()));
         String controller = t.getControllerName() == null ? "" : t.getControllerName();
         int comma = controller.indexOf(", ");
-        o.addProperty("owner", comma >= 0 ? controller.substring(0, comma) : controller);
+        String owner = comma >= 0 ? controller.substring(0, comma) : controller;
+        o.addProperty("owner", owner);
+        o.addProperty("ownerRating", ratings.get(owner));
         o.addProperty("gameType", t.getGameType());
         o.addProperty("deckType", t.getDeckType());
         o.addProperty("state", t.getTableState().name());
@@ -395,6 +418,7 @@ final class ClientSession implements MageClient {
         for (SeatView seat : t.getSeats()) {
             JsonObject so = new JsonObject();
             so.addProperty("name", seat.getPlayerName());
+            so.addProperty("rating", ratings.get(seat.getPlayerName()));
             so.addProperty("type", seat.getPlayerType() == null ? null : seat.getPlayerType().toString());
             seats.add(so);
         }
@@ -402,7 +426,7 @@ final class ClientSession implements MageClient {
         return o;
     }
 
-    private void createTable(String deckName, String deckType, String name, String password, int bestOf) {
+    private void createTable(String deckName, String deckType, String name, String password, int bestOf, boolean rated) {
         Session s = requireSession();
         leaveTable();
         String mine = deckName != null ? deckName : decks.randomName("AI");
@@ -429,6 +453,7 @@ final class ClientSession implements MageClient {
         options.setMatchTimeLimit(MatchTimeLimit.NONE);
         options.setQuitRatio(100);
         options.setMinimumRating(0);
+        options.setRated(rated);
         options.setPassword(password == null ? "" : password);
 
         TableView table = s.createTable(roomId, options);
@@ -690,7 +715,7 @@ final class ClientSession implements MageClient {
         }
         TableView t = found.get();
         JsonObject o = message("tableWaiting");
-        o.add("table", table(t));
+        o.add("table", table(t, ratings(s, roomId)));
         o.addProperty("isOwner", waitingAsOwner);
         send(o);
         if (waitingAsOwner && t.getTableState() == TableState.READY_TO_START && !startRequested) {

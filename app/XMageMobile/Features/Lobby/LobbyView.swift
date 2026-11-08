@@ -51,8 +51,8 @@ struct LobbyView: View {
             .animation(.default, value: store.phase)
             .animation(.default, value: store.waitingTable?.id)
             .sheet(isPresented: $showsCreateTable) {
-                CreateTableView(formats: store.deckTypes, defaultName: "\(store.username ?? username)’s table") { format, name, password, bestOf in
-                    store.createTable(deck: chosenDeck, format: format, name: name, password: password, bestOf: bestOf)
+                CreateTableView(formats: store.deckTypes, defaultName: "\(store.username ?? username)’s table") { format, name, password, bestOf, rated in
+                    store.createTable(deck: chosenDeck, format: format, name: name, password: password, bestOf: bestOf, rated: rated)
                 }
             }
             .alert("Table Password", isPresented: $showsPasswordPrompt, presenting: passwordTable) { table in
@@ -117,7 +117,11 @@ struct LobbyView: View {
         switch store.phase {
         case let .failed(message): message
         case .lobby, .startingGame, .playing:
-            "Signed in as \(store.username ?? username) · XMage \(store.xmageVersion ?? "")"
+            if let rating = store.rating {
+                "Signed in as \(store.username ?? username) · Rating \(rating.formatted(.number.grouping(.never))) · XMage \(store.xmageVersion ?? "")"
+            } else {
+                "Signed in as \(store.username ?? username) · XMage \(store.xmageVersion ?? "")"
+            }
         default: "Play rules-enforced Magic online or against the computer, powered by XMage."
         }
     }

@@ -4,6 +4,7 @@ nonisolated struct OnlineTable: Codable, Identifiable, Hashable, Sendable {
     let id: String
     let name: String
     let owner: String
+    let ownerRating: Int?
     let gameType: String
     let deckType: String
     let state: String

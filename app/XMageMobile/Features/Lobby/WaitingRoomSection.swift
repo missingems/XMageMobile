@@ -9,10 +9,19 @@ struct WaitingRoomSection: View {
         Section {
             LabeledContent("Table", value: table.title)
             LabeledContent("Format", value: table.format)
+            if table.rated {
+                LabeledContent("Match", value: "Ranked")
+            }
             ForEach(Array(table.seats.enumerated()), id: \.offset) { _, seat in
                 Label {
-                    Text(seat.isOpen ? "Open Seat" : seat.name)
-                        .foregroundStyle(seat.isOpen ? .secondary : .primary)
+                    LabeledContent {
+                        if let rating = seat.rating, !seat.isOpen {
+                            Text(rating, format: .number.grouping(.never))
+                        }
+                    } label: {
+                        Text(seat.isOpen ? "Open Seat" : seat.name)
+                            .foregroundStyle(seat.isOpen ? .secondary : .primary)
+                    }
                 } icon: {
                     Image(systemName: seat.isOpen ? "person.crop.circle.dashed" : "person.crop.circle.fill")
                         .foregroundStyle(seat.isOpen ? AnyShapeStyle(.secondary) : AnyShapeStyle(.tint))

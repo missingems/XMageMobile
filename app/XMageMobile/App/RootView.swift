@@ -76,7 +76,8 @@ struct RootView: View {
                 format: defaults.string(forKey: "autoTableFormat"),
                 name: defaults.string(forKey: "autoTableName"),
                 password: password,
-                bestOf: defaults.integer(forKey: "autoBestOf") > 1 ? 3 : 1)
+                bestOf: defaults.integer(forKey: "autoBestOf") > 1 ? 3 : 1,
+                rated: defaults.bool(forKey: "autoRated"))
             return true
         case "join":
             let owner = defaults.string(forKey: "autoJoinOwner") ?? ""

@@ -3,11 +3,12 @@ import SwiftUI
 struct CreateTableView: View {
     let formats: [String]
     let defaultName: String
-    let onCreate: (_ format: String?, _ name: String?, _ password: String?, _ bestOf: Int) -> Void
+    let onCreate: (_ format: String?, _ name: String?, _ password: String?, _ bestOf: Int, _ rated: Bool) -> Void
 
     @Environment(\.dismiss) private var dismiss
     @AppStorage("tableFormat") private var format = CreateTableView.modern
     @AppStorage("tableBestOf") private var bestOf = 1
+    @AppStorage("tableRated") private var rated = false
     @State private var name = ""
     @State private var password = ""
 
@@ -38,6 +39,11 @@ struct CreateTableView: View {
                     Text("In best of three, you can swap cards with your sideboard between games.")
                 }
                 Section {
+                    Toggle("Ranked", isOn: $rated)
+                } footer: {
+                    Text("Ranked matches change both players’ ratings on this server. Leaving early counts as a loss.")
+                }
+                Section {
                     SecureField("Password (Optional)", text: $password)
                 } footer: {
                     Text("With a password, only friends you share it with can join.")
@@ -52,7 +58,7 @@ struct CreateTableView: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Create", role: .confirm) {
                         let trimmed = name.trimmingCharacters(in: .whitespacesAndNewlines)
-                        onCreate(formats.isEmpty ? nil : format, trimmed.isEmpty ? nil : trimmed, password.isEmpty ? nil : password, bestOf)
+                        onCreate(formats.isEmpty ? nil : format, trimmed.isEmpty ? nil : trimmed, password.isEmpty ? nil : password, bestOf, rated)
                         dismiss()
                     }
                 }
