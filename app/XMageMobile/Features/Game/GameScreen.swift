@@ -53,8 +53,15 @@ struct GameScreen: View {
         .sheet(item: $store.presentedPrompt) { prompt in
             PromptSheet(prompt: prompt)
         }
-        .sheet(item: $store.result) { result in
-            GameOverView(result: result, onRematch: rematchAction, onLeave: store.leaveGame)
+        .sheet(item: $store.matchSheet) { sheet in
+            switch sheet {
+            case let .result(result):
+                GameOverView(result: result, onRematch: rematchAction, onLeave: store.leaveGame)
+            case let .sideboard(session):
+                SideboardView(session: session)
+            case .waitingForNextGame:
+                NextGameWaitView(onLeave: store.leaveGame)
+            }
         }
         .sheet(isPresented: $showsLog) {
             GameLogView(lines: store.log)

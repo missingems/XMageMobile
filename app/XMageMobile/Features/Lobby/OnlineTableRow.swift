@@ -27,7 +27,7 @@ struct OnlineTableRow: View {
                                 .background(.fill.tertiary, in: .capsule)
                         }
                     }
-                    Text("\(table.owner) · \(table.format)")
+                    Text(table.bestOf > 1 ? "\(table.owner) · \(table.format) · Best of \(table.bestOf)" : "\(table.owner) · \(table.format)")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                         .lineLimit(1)

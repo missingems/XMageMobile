@@ -9,8 +9,10 @@ import org.graalvm.nativeimage.c.type.CCharPointer;
 import org.graalvm.nativeimage.c.type.CTypeConversion;
 import org.graalvm.word.WordFactory;
 
+import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -30,7 +32,10 @@ public final class Embedded {
         try {
             close(thread);
             if (decks == null) {
-                decks = new DeckLibrary(Paths.get(CTypeConversion.toJavaString(decksDir)));
+                decks = new DeckLibrary(Arrays.stream(CTypeConversion.toJavaString(decksDir).split(File.pathSeparator))
+                        .filter(path -> !path.isEmpty())
+                        .map(Paths::get)
+                        .toList());
             }
             OUTBOX.clear();
             AtomicBoolean alive = new AtomicBoolean(true);

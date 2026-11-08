@@ -24,6 +24,7 @@ The rules engine, AI and card implementations all stay in XMage.
 | `bridge/` | Java 21 WebSocket bridge (Gradle), compiled against XMage's release jars |
 | `schema/PROTOCOL.md` | The bridge ⇄ app JSON contract |
 | `scripts/` | Fetch XMage, run the server, run the bridge |
+| `decks/` | Decks bundled with the app, listed under **My Decks** (XMage `.dck` format) |
 | `vendor/` | Downloaded XMage release (git-ignored) |
 
 ## Running it locally
@@ -56,6 +57,16 @@ For screenshots and testing without touching the screen (Debug builds only):
 ```
 
 `-autoStart` connects and starts a game against the computer. `-autopilotTurns N` plays lands and spells and passes priority until turn N, then hands control back.
+
+For online tables, `-autoTable create|join|lobby` seats the app. `-autoTableFormat`, `-autoTableDeck`, `-autoBestOf 3` and `-autoTablePassword` configure the table it creates. `-autoSideboard keep|swap` answers the sideboard step on its own.
+
+## Matches and sideboarding
+
+A new table can be a single game or best of three. Between games of a match, the app shows your main deck and sideboard, and you tap cards to move copies across before the server's three-minute window runs out. The bridge only accepts swaps between the two lists, and submits your deck unchanged if the app doesn't answer in time.
+
+## Your own decks
+
+Put `.dck` files in `decks/My Decks/` and they ship with the app, listed first in the deck picker. Each line is `count [SET:number] Card Name`, with `SB:` in front for sideboard cards. Use set codes and collector numbers that XMage knows. `Mono-Black Necro` is a Modern deck imported from Moxfield.
 
 ## Built-in engine (no Mac needed)
 

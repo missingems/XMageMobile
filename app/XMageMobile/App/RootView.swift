@@ -33,6 +33,15 @@ struct RootView: View {
                 autopilot?.respond(to: prompt, in: store)
             }
         }
+        .onChange(of: store.sideboarding?.id) {
+            guard let session = store.sideboarding, let mode = UserDefaults.standard.string(forKey: "autoSideboard") else { return }
+            Task {
+                try? await Task.sleep(for: .seconds(4))
+                guard store.sideboarding?.id == session.id else { return }
+                let (main, side) = Autopilot.sideboard(session, swap: mode == "swap")
+                store.submitSideboard(main: main, sideboard: side)
+            }
+        }
         #endif
     }
 
@@ -62,7 +71,12 @@ struct RootView: View {
         let password = defaults.string(forKey: "autoTablePassword")
         switch defaults.string(forKey: "autoTable") {
         case "create":
-            store.createTable(deck: nil, format: nil, name: defaults.string(forKey: "autoTableName"), password: password)
+            store.createTable(
+                deck: defaults.string(forKey: "autoTableDeck"),
+                format: defaults.string(forKey: "autoTableFormat"),
+                name: defaults.string(forKey: "autoTableName"),
+                password: password,
+                bestOf: defaults.integer(forKey: "autoBestOf") > 1 ? 3 : 1)
             return true
         case "join":
             let owner = defaults.string(forKey: "autoJoinOwner") ?? ""

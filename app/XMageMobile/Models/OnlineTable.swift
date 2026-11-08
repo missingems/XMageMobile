@@ -24,6 +24,11 @@ nonisolated struct OnlineTable: Codable, Identifiable, Hashable, Sendable {
 
     var createdDate: Date? { createdAt > 0 ? Date(timeIntervalSince1970: createdAt / 1000) : nil }
 
+    var bestOf: Int {
+        guard let match = info.firstMatch(of: /Wins:\s*(\d+)/), let wins = Int(match.1), wins > 1 else { return 1 }
+        return wins * 2 - 1
+    }
+
     var isReadyToStart: Bool { state == "READY_TO_START" || state == "STARTING" }
 
     static func formatName(_ deckType: String) -> String {

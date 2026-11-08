@@ -9,7 +9,7 @@ struct LobbyView: View {
     @AppStorage("usesMacBridge") private var usesMacBridge = false
     @AppStorage("serverPort") private var serverPort = 17171
     @AppStorage("username") private var username = "Planeswalker"
-    @AppStorage("deck") private var deck = ""
+    @AppStorage("deck") private var deck = "My Decks/Mono-Black Necro.dck"
     @AppStorage("opponentDeck") private var opponentDeck = ""
     @State private var showsCreateTable = false
     @State private var passwordTable: OnlineTable?
@@ -51,8 +51,8 @@ struct LobbyView: View {
             .animation(.default, value: store.phase)
             .animation(.default, value: store.waitingTable?.id)
             .sheet(isPresented: $showsCreateTable) {
-                CreateTableView(formats: store.deckTypes, defaultName: "\(store.username ?? username)’s table") { format, name, password in
-                    store.createTable(deck: chosenDeck, format: format, name: name, password: password)
+                CreateTableView(formats: store.deckTypes, defaultName: "\(store.username ?? username)’s table") { format, name, password, bestOf in
+                    store.createTable(deck: chosenDeck, format: format, name: name, password: password, bestOf: bestOf)
                 }
             }
             .alert("Table Password", isPresented: $showsPasswordPrompt, presenting: passwordTable) { table in
@@ -130,7 +130,7 @@ struct LobbyView: View {
                 LabeledContent("Your Deck", value: label(for: deck))
             }
         } footer: {
-            Text("\(store.decks.count) sample decks from XMage. A random deck is picked when none is chosen.")
+            Text("Your own decks are under My Decks, followed by XMage’s sample decks. A random deck is picked when none is chosen.")
         }
     }
 

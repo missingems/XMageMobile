@@ -11,6 +11,21 @@ struct Autopilot {
         self.holdStep = holdStep
     }
 
+    static func sideboard(_ session: SideboardSession, swap: Bool) -> (main: [DeckCard], sideboard: [DeckCard]) {
+        var main = session.main
+        var side = session.sideboard
+        guard swap, !main.isEmpty, !side.isEmpty else { return (main, side) }
+        var out = main[0]
+        var incoming = side[0]
+        main[0].count -= 1
+        side[0].count -= 1
+        out.count = 1
+        incoming.count = 1
+        main.append(incoming)
+        side.append(out)
+        return (main.filter { $0.count > 0 }, side.filter { $0.count > 0 })
+    }
+
     mutating func respond(to prompt: Prompt, in store: GameStore) {
         guard let state = store.game else { return }
         if let holdStep {

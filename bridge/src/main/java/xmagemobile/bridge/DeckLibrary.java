@@ -19,16 +19,20 @@ final class DeckLibrary {
 
     private static final Pattern LINE = Pattern.compile("^(SB:\\s*)?(\\d+)\\s+\\[([^:\\]]+):([^\\]]+)]\\s+(.+)$");
 
-    private final Path root;
+    private final List<Path> roots;
     private final List<String> names;
 
-    DeckLibrary(Path root) {
-        this.root = root;
+    DeckLibrary(List<Path> roots) {
+        this.roots = List.copyOf(roots);
         List<String> found = new ArrayList<>();
-        if (Files.isDirectory(root)) {
+        for (Path root : this.roots) {
+            if (!Files.isDirectory(root)) {
+                continue;
+            }
             try (Stream<Path> files = Files.walk(root)) {
                 files.filter(p -> p.toString().endsWith(".dck"))
                         .map(p -> root.relativize(p).toString())
+                        .filter(name -> !found.contains(name))
                         .sorted()
                         .forEach(found::add);
             } catch (IOException e) {
@@ -38,8 +42,8 @@ final class DeckLibrary {
         this.names = List.copyOf(found);
     }
 
-    Path root() {
-        return root;
+    List<Path> roots() {
+        return roots;
     }
 
     List<String> names() {
@@ -55,10 +59,16 @@ final class DeckLibrary {
     }
 
     Optional<DeckCardLists> load(String name) {
-        Path file = root.resolve(name).normalize();
-        if (!file.startsWith(root) || !Files.isRegularFile(file)) {
-            return Optional.empty();
+        for (Path root : roots) {
+            Path file = root.resolve(name).normalize();
+            if (file.startsWith(root) && Files.isRegularFile(file)) {
+                return read(file);
+            }
         }
+        return Optional.empty();
+    }
+
+    private static Optional<DeckCardLists> read(Path file) {
         try {
             DeckCardLists deck = new DeckCardLists();
             deck.setName(file.getFileName().toString().replaceFirst("\\.dck$", ""));

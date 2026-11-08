@@ -7,14 +7,33 @@ nonisolated final class EmbeddedEngine: @unchecked Sendable {
 
     let control = DispatchQueue(label: "xmage-bridge-control", qos: .userInitiated)
 
+    private static let log = Logger(subsystem: "com.missingems.XMageMobile", category: "engine")
+
     private let isolate: OpaquePointer?
+    private(set) var startupCode: Int32 = 0
     private let sink = OSAllocatedUnfairLock<AsyncStream<BridgeEvent>.Continuation?>(initialState: nil)
     private let pollerStarted = OSAllocatedUnfairLock(initialState: false)
 
     private init() {
-        var isolate: OpaquePointer?
-        var thread: OpaquePointer?
-        self.isolate = graal_create_isolate(nil, &isolate, &thread) == 0 ? isolate : nil
+        var created: OpaquePointer?
+        var code: Int32 = -1
+        for gigabytes in [2, 1] as [UInt] {
+            var params = graal_create_isolate_params_t()
+            params.version = Int32(__graal_create_isolate_params_version)
+            params.reserved_address_space_size = gigabytes << 30
+            var isolate: OpaquePointer?
+            var thread: OpaquePointer?
+            code = graal_create_isolate(&params, &isolate, &thread)
+            if code == 0 {
+                created = isolate
+                break
+            }
+        }
+        if code != 0 {
+            Self.log.error("graal_create_isolate failed with \(code)")
+        }
+        startupCode = code
+        isolate = created
     }
 
     var isAvailable: Bool { isolate != nil }
@@ -24,6 +43,9 @@ nonisolated final class EmbeddedEngine: @unchecked Sendable {
         sink.withLock { $0 = continuation }
         startPollerIfNeeded()
         let result = decksPath.withCString { xmb_open(thread, UnsafeMutablePointer(mutating: $0)) }
+        if result != 0 {
+            Self.log.error("xmb_open failed with \(result)")
+        }
         return result == 0
     }
 

@@ -17,6 +17,10 @@ nonisolated enum BridgeMessage: Sendable {
     case error(String)
     case gameOver(String)
     case gameEnd(won: Bool, gameInfo: String, matchInfo: String)
+    case sideboard(deck: String, seconds: Int, main: [DeckCard], sideboard: [DeckCard])
+    case sideboardDone(automatic: Bool)
+    case sideboardRejected(String)
+    case matchEnded(String)
     case unknown(String)
 }
 
@@ -25,6 +29,7 @@ extension BridgeMessage: Decodable {
         case type, xmageVersion, defaultServer, defaultPort, names, state, message, username
         case deck, opponentDeck, gameId, playerId, prompt, text, won, gameInfo, matchInfo
         case allowsComputer, deckTypes, tables, table, isOwner
+        case seconds, main, sideboard, automatic
     }
 
     init(from decoder: Decoder) throws {
@@ -73,6 +78,18 @@ extension BridgeMessage: Decodable {
             self = .gameOver(try text(.text))
         case "gameEnd":
             self = .gameEnd(won: try c.decodeIfPresent(Bool.self, forKey: .won) ?? false, gameInfo: try text(.gameInfo), matchInfo: try text(.matchInfo))
+        case "sideboard":
+            self = .sideboard(
+                deck: try text(.deck),
+                seconds: try c.decodeIfPresent(Int.self, forKey: .seconds) ?? 180,
+                main: try c.decodeIfPresent([DeckCard].self, forKey: .main) ?? [],
+                sideboard: try c.decodeIfPresent([DeckCard].self, forKey: .sideboard) ?? [])
+        case "sideboardDone":
+            self = .sideboardDone(automatic: try c.decodeIfPresent(Bool.self, forKey: .automatic) ?? false)
+        case "sideboardRejected":
+            self = .sideboardRejected(try text(.text))
+        case "matchEnded":
+            self = .matchEnded(try text(.text))
         default:
             self = .unknown(type)
         }

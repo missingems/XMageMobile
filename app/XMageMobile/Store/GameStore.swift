@@ -22,6 +22,23 @@ final class GameStore {
     private(set) var deckTypes: [String] = []
     private(set) var isOnlineMatch = false
     var result: GameResult?
+    private(set) var sideboarding: SideboardSession?
+    private(set) var isSubmittingDeck = false
+    private(set) var sideboardMessage: String?
+    private(set) var isAwaitingNextGame = false
+    private var pendingResult: GameResult?
+    private var pendingResultTask: Task<Void, Never>?
+
+    var matchSheet: MatchSheet? {
+        get {
+            if let sideboarding { return .sideboard(sideboarding) }
+            if isAwaitingNextGame { return .waitingForNextGame }
+            return result.map(MatchSheet.result)
+        }
+        set {
+            if newValue == nil { result = nil }
+        }
+    }
     var lobbyAlert: String?
 
     var showsLobbyAlert: Bool {
@@ -50,11 +67,12 @@ final class GameStore {
             }
             connection = BridgeConnection(url: url)
         } else {
-            guard let decks = Bundle.main.url(forResource: "sample-decks", withExtension: nil) else {
+            guard let samples = Bundle.main.url(forResource: "sample-decks", withExtension: nil) else {
                 phase = .failed("The sample decks are missing from this build.")
                 return
             }
-            connection = EmbeddedBridge(decksPath: decks.path(percentEncoded: false))
+            let folders = [Bundle.main.url(forResource: "decks", withExtension: nil), samples].compactMap { $0 }
+            connection = EmbeddedBridge(decksPath: folders.map { $0.path(percentEncoded: false) }.joined(separator: ":"))
         }
         phase = .reachingBridge
         pendingLogin = settings
@@ -100,10 +118,17 @@ final class GameStore {
         }
     }
 
-    func createTable(deck: String?, format: String?, name: String?, password: String?) {
+    func createTable(deck: String?, format: String?, name: String?, password: String?, bestOf: Int = 1) {
         guard phase == .lobby else { return }
         isSeating = true
-        send(.createTable(deck: deck, deckType: format, name: name, password: password))
+        send(.createTable(deck: deck, deckType: format, name: name, password: password, bestOf: bestOf))
+    }
+
+    func submitSideboard(main: [DeckCard], sideboard: [DeckCard]) {
+        guard sideboarding != nil, !isSubmittingDeck else { return }
+        isSubmittingDeck = true
+        sideboardMessage = nil
+        send(.submitDeck(main: main, sideboard: sideboard))
     }
 
     func joinTable(_ table: OnlineTable, deck: String?, password: String?) {
@@ -216,6 +241,17 @@ final class GameStore {
         log = []
         result = nil
         matchup = nil
+        clearBetweenGames()
+    }
+
+    private func clearBetweenGames() {
+        sideboarding = nil
+        isSubmittingDeck = false
+        sideboardMessage = nil
+        isAwaitingNextGame = false
+        pendingResult = nil
+        pendingResultTask?.cancel()
+        pendingResultTask = nil
     }
 
     private func resetLobby() {
@@ -281,6 +317,7 @@ final class GameStore {
                 presentedPrompt = nil
                 send(.watchTables(false))
             }
+            clearBetweenGames()
             phase = .playing
         case let .tables(list):
             tables = list
@@ -326,9 +363,57 @@ final class GameStore {
             prompt = nil
             presentedPrompt = nil
             let matchContinues = isOnlineMatch && matchInfo.localizedStandardContains("need")
-            result = GameResult(won: won, summary: matchContinues ? "\(info)\n\(matchInfo)" : info)
+            let showsMatch = isOnlineMatch && !matchInfo.isEmpty
+            let ended = GameResult(won: won, summary: showsMatch ? "\(info)\n\(matchInfo)" : info)
+            if matchContinues {
+                holdResultForSideboarding(ended)
+            } else {
+                result = ended
+            }
+        case let .sideboard(deck, seconds, main, sideboard):
+            let previous = pendingResult ?? result
+            pendingResultTask?.cancel()
+            pendingResultTask = nil
+            pendingResult = nil
+            result = nil
+            prompt = nil
+            presentedPrompt = nil
+            isAwaitingNextGame = false
+            isSubmittingDeck = false
+            sideboardMessage = nil
+            sideboarding = SideboardSession(
+                deckName: deck,
+                main: main,
+                sideboard: sideboard,
+                deadline: .now.addingTimeInterval(TimeInterval(seconds)),
+                previousGame: previous)
+        case let .sideboardDone(automatic):
+            guard sideboarding != nil else { break }
+            sideboarding = nil
+            isSubmittingDeck = false
+            isAwaitingNextGame = true
+            if automatic {
+                showBanner("Time ran out, so your deck was locked in as it was.")
+            }
+        case let .sideboardRejected(text):
+            isSubmittingDeck = false
+            sideboardMessage = text
+        case let .matchEnded(text):
+            clearBetweenGames()
+            result = GameResult(won: true, summary: text)
         case .unknown:
             break
+        }
+    }
+
+    private func holdResultForSideboarding(_ ended: GameResult) {
+        pendingResult = ended
+        pendingResultTask?.cancel()
+        pendingResultTask = Task {
+            try? await Task.sleep(for: .seconds(3))
+            guard !Task.isCancelled, sideboarding == nil, let pendingResult else { return }
+            result = pendingResult
+            self.pendingResult = nil
         }
     }
 

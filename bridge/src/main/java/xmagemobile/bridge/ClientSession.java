@@ -2,6 +2,7 @@ package xmagemobile.bridge;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import mage.cards.decks.DeckCardInfo;
 import mage.cards.decks.DeckCardLists;
 import mage.choices.Choice;
 import mage.constants.ManaType;
@@ -33,9 +34,11 @@ import mage.view.TableClientMessage;
 import mage.view.TableView;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -80,10 +83,19 @@ final class ClientSession implements MageClient {
     private volatile boolean waitingAsOwner;
     private volatile boolean startRequested;
     private volatile DeckCardLists matchDeck;
+    private volatile UUID sideboardTableId;
+    private volatile ScheduledFuture<?> sideboardFallback;
+    private volatile UUID betweenGamesTableId;
+    private volatile UUID abandonedTableId;
+    private volatile UUID abandonedGameId;
+    private volatile ScheduledFuture<?> betweenGamesPoll;
+    private final AtomicBoolean betweenGamesInFlight = new AtomicBoolean();
     private volatile ScheduledFuture<?> tablesPoll;
     private volatile ScheduledFuture<?> waitingPoll;
     private final AtomicBoolean tablesInFlight = new AtomicBoolean();
     private final AtomicBoolean waitingInFlight = new AtomicBoolean();
+
+    private static final int SIDEBOARD_MARGIN_SECONDS = 8;
 
     ClientSession(Outbox socket, DeckLibrary decks, String defaultServer, int defaultServerPort) {
         this.socket = socket;
@@ -135,7 +147,9 @@ final class ClientSession implements MageClient {
             case "leaveGame" -> leaveGame();
             case "watchTables" -> watchTables(!json.has("on") || json.get("on").getAsBoolean());
             case "createTable" -> createTable(optString(json, "deck", null), optString(json, "deckType", null),
-                    optString(json, "name", null), optString(json, "password", ""));
+                    optString(json, "name", null), optString(json, "password", ""),
+                    json.has("bestOf") ? json.get("bestOf").getAsInt() : 1);
+            case "submitDeck" -> submitSideboard(json);
             case "joinTable" -> joinTable(UUID.fromString(json.get("tableId").getAsString()),
                     optString(json, "deck", null), optString(json, "password", ""));
             case "leaveTable" -> leaveTable();
@@ -177,6 +191,8 @@ final class ClientSession implements MageClient {
     }
 
     private void disconnect() {
+        endSideboarding();
+        stopWatchingBetweenGames();
         stopTablesPoll();
         leaveTable();
         Session s = session;
@@ -205,7 +221,13 @@ final class ClientSession implements MageClient {
     private void leaveGame() {
         Session s = session;
         UUID g = gameId;
-        if (s != null && g != null) {
+        UUID sideboarding = sideboardTableId != null ? sideboardTableId : betweenGamesTableId;
+        endSideboarding();
+        stopWatchingBetweenGames();
+        if (s != null && sideboarding != null) {
+            abandonedTableId = sideboarding;
+            s.leaveTable(roomId, sideboarding);
+        } else if (s != null && g != null) {
             s.sendPlayerAction(PlayerAction.CONCEDE, g, null);
             s.quitMatch(g);
         }
@@ -359,7 +381,7 @@ final class ClientSession implements MageClient {
         return o;
     }
 
-    private void createTable(String deckName, String deckType, String name, String password) {
+    private void createTable(String deckName, String deckType, String name, String password, int bestOf) {
         Session s = requireSession();
         leaveTable();
         String mine = deckName != null ? deckName : decks.randomName("AI");
@@ -382,7 +404,7 @@ final class ClientSession implements MageClient {
         options.setLimited(false);
         options.setAttackOption(MultiplayerAttackOption.MULTIPLE);
         options.setRange(RangeOfInfluence.ALL);
-        options.setWinsNeeded(1);
+        options.setWinsNeeded(bestOf >= 3 ? 2 : 1);
         options.setMatchTimeLimit(MatchTimeLimit.NONE);
         options.setQuitRatio(100);
         options.setMinimumRating(0);
@@ -418,6 +440,168 @@ final class ClientSession implements MageClient {
         }
         matchDeck = deck.get();
         startWaiting(tableId, false);
+    }
+
+    private void beginSideboarding(UUID tableId, int seconds) {
+        DeckCardLists deck = matchDeck;
+        if (deck == null || tableId == null) {
+            return;
+        }
+        endSideboarding();
+        sideboardTableId = tableId;
+        watchBetweenGames(tableId);
+        JsonObject o = message("sideboard");
+        o.addProperty("seconds", seconds);
+        o.addProperty("deck", deck.getName());
+        o.add("main", deckCards(deck.getCards()));
+        o.add("sideboard", deckCards(deck.getSideboard()));
+        send(o);
+        long delay = Math.max(1, seconds - SIDEBOARD_MARGIN_SECONDS);
+        sideboardFallback = ticker.schedule(() -> calls.submit(() -> {
+            if (tableId.equals(sideboardTableId)) {
+                submitSideboard(tableId, matchDeck, true);
+            }
+        }), delay, TimeUnit.SECONDS);
+    }
+
+    private void watchBetweenGames(UUID tableId) {
+        stopWatchingBetweenGames();
+        betweenGamesTableId = tableId;
+        betweenGamesPoll = ticker.scheduleWithFixedDelay(() -> {
+            if (betweenGamesInFlight.compareAndSet(false, true)) {
+                calls.submit(() -> {
+                    try {
+                        pollBetweenGames();
+                    } finally {
+                        betweenGamesInFlight.set(false);
+                    }
+                });
+            }
+        }, 3, 3, TimeUnit.SECONDS);
+    }
+
+    private void stopWatchingBetweenGames() {
+        betweenGamesTableId = null;
+        ScheduledFuture<?> f = betweenGamesPoll;
+        betweenGamesPoll = null;
+        if (f != null) {
+            f.cancel(false);
+        }
+    }
+
+    private void pollBetweenGames() {
+        Session s = session;
+        UUID id = betweenGamesTableId;
+        if (s == null || id == null) {
+            return;
+        }
+        Optional<TableView> found = s.getTable(roomId, id);
+        if (!id.equals(betweenGamesTableId)) {
+            return;
+        }
+        if (found.isEmpty() || found.get().getTableState() == TableState.FINISHED) {
+            endSideboarding();
+            stopWatchingBetweenGames();
+            JsonObject o = message("matchEnded");
+            o.addProperty("text", "Your opponent left the match.");
+            send(o);
+        }
+    }
+
+    private void endSideboarding() {
+        sideboardTableId = null;
+        ScheduledFuture<?> f = sideboardFallback;
+        sideboardFallback = null;
+        if (f != null) {
+            f.cancel(false);
+        }
+    }
+
+    private void submitSideboard(JsonObject json) {
+        UUID tableId = sideboardTableId;
+        DeckCardLists original = matchDeck;
+        if (tableId == null || original == null) {
+            rejectSideboard("Sideboarding is already over.");
+            return;
+        }
+        DeckCardLists deck = new DeckCardLists();
+        deck.setName(original.getName());
+        deck.setAuthor(original.getAuthor());
+        deck.getCards().addAll(readCards(json.getAsJsonArray("main")));
+        deck.getSideboard().addAll(readCards(json.getAsJsonArray("sideboard")));
+        if (!cardTotals(deck).equals(cardTotals(original))) {
+            rejectSideboard("Only swap cards between your deck and sideboard.");
+            return;
+        }
+        submitSideboard(tableId, deck, false);
+    }
+
+    private void submitSideboard(UUID tableId, DeckCardLists deck, boolean automatic) {
+        Session s = session;
+        if (s == null || deck == null) {
+            return;
+        }
+        if (s.submitDeck(tableId, deck)) {
+            endSideboarding();
+            matchDeck = deck;
+            JsonObject o = message("sideboardDone");
+            o.addProperty("automatic", automatic);
+            send(o);
+        } else {
+            String reason = ViewMapper.plain(s.getLastError());
+            rejectSideboard(reason.isEmpty() ? "The server didn't accept this deck." : reason);
+        }
+    }
+
+    private void rejectSideboard(String text) {
+        JsonObject o = message("sideboardRejected");
+        o.addProperty("text", text);
+        send(o);
+    }
+
+    private static JsonArray deckCards(List<DeckCardInfo> cards) {
+        Map<String, DeckCardInfo> merged = new LinkedHashMap<>();
+        Map<String, Integer> counts = new LinkedHashMap<>();
+        for (DeckCardInfo card : cards) {
+            String key = card.getSetCode() + "/" + card.getCardNumber() + "/" + card.getCardName();
+            merged.putIfAbsent(key, card);
+            counts.merge(key, card.getAmount(), Integer::sum);
+        }
+        JsonArray array = new JsonArray();
+        merged.forEach((key, card) -> {
+            JsonObject o = new JsonObject();
+            o.addProperty("name", card.getCardName());
+            o.addProperty("set", card.getSetCode());
+            o.addProperty("number", card.getCardNumber());
+            o.addProperty("count", counts.get(key));
+            array.add(o);
+        });
+        return array;
+    }
+
+    private static List<DeckCardInfo> readCards(JsonArray array) {
+        List<DeckCardInfo> cards = new ArrayList<>();
+        if (array == null) {
+            return cards;
+        }
+        for (var element : array) {
+            JsonObject o = element.getAsJsonObject();
+            int count = o.has("count") ? o.get("count").getAsInt() : 0;
+            if (count > 0) {
+                cards.add(new DeckCardInfo(o.get("name").getAsString(), o.get("number").getAsString(), o.get("set").getAsString(), count));
+            }
+        }
+        return cards;
+    }
+
+    private static Map<String, Integer> cardTotals(DeckCardLists deck) {
+        Map<String, Integer> totals = new java.util.HashMap<>();
+        for (List<DeckCardInfo> list : List.of(deck.getCards(), deck.getSideboard())) {
+            for (DeckCardInfo card : list) {
+                totals.merge(card.getSetCode() + "/" + card.getCardNumber() + "/" + card.getCardName(), card.getAmount(), Integer::sum);
+            }
+        }
+        return totals;
     }
 
     private static String joinFailure(Session s, String deck) {
@@ -531,10 +715,28 @@ final class ClientSession implements MageClient {
         try {
             callback.decompressData();
             Object data = callback.getData();
+            UUID abandoned = abandonedGameId;
+            if (abandoned != null && abandoned.equals(callback.getObjectId())) {
+                return;
+            }
             switch (callback.getMethod()) {
                 case START_GAME -> {
                     TableClientMessage m = (TableClientMessage) data;
+                    if (m.getCurrentTableId() != null && m.getCurrentTableId().equals(abandonedTableId)) {
+                        abandonedGameId = m.getGameId();
+                        calls.submit(() -> {
+                            Session s = session;
+                            if (s != null) {
+                                s.joinGame(m.getGameId());
+                                s.sendPlayerAction(PlayerAction.CONCEDE, m.getGameId(), null);
+                                s.quitMatch(m.getGameId());
+                            }
+                        });
+                        return;
+                    }
                     stopWaiting();
+                    endSideboarding();
+                    stopWatchingBetweenGames();
                     gameId = m.getGameId();
                     playerId = m.getPlayerId();
                     JsonObject o = message("gameStarted");
@@ -550,14 +752,7 @@ final class ClientSession implements MageClient {
                 }
                 case SIDEBOARD -> {
                     TableClientMessage m = (TableClientMessage) data;
-                    DeckCardLists deck = matchDeck;
-                    info("Next game starting with the same deck.");
-                    calls.submit(() -> {
-                        Session s = session;
-                        if (s != null && deck != null) {
-                            s.submitDeck(m.getCurrentTableId(), deck);
-                        }
-                    });
+                    calls.submit(() -> beginSideboarding(m.getCurrentTableId(), m.getTime()));
                 }
                 case GAME_INIT -> {
                     gameId = callback.getObjectId();

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00EE1589192ABAE1978F752D /* ConnectionPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32157DC6F5EA7D311D31784 /* ConnectionPhase.swift */; };
+		038A313F1405278CEDB68129 /* SideboardCardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D05004A02A8AEFF81464E0 /* SideboardCardRow.swift */; };
 		06468995C9FF64126C6A8DC3 /* ZoneRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5617C1664B821913AF0B3BE /* ZoneRequest.swift */; };
 		07D00D7B427B4F43E362A420 /* ManaPoolChips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939CCB7251ADB3E8F697EB3E /* ManaPoolChips.swift */; };
 		081ACDC792C98A3CF04368FA /* PlayerAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CEC8EAA74D1F7291CC8F28 /* PlayerAvatar.swift */; };
@@ -51,12 +52,17 @@
 		7B19F37881F6597B31C350CF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22CBDAA60511A31FFA2191A3 /* CFNetwork.framework */; };
 		7DF7F054E52A67F8D23AF532 /* OnlineSeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D600C0F80644B4EA4F02982 /* OnlineSeat.swift */; };
 		7F5C97FD4ACA44162C75770D /* EmbeddedBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D11998720392E7E62335F /* EmbeddedBridge.swift */; };
+		820122A0CBCC108E182A62DF /* SideboardSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF3DB91B791F50FA48CF7C7 /* SideboardSession.swift */; };
 		878C39B5DCBCD80137A71D4B /* CombatRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00B490B75E3CA22749C31CF /* CombatRole.swift */; };
 		87AD48832CDED98A99B71917 /* OpponentHandFan.swift in Sources */ = {isa = PBXBuildFile; fileRef = D285091AA6FA06F4405814A2 /* OpponentHandFan.swift */; };
 		8D0AF6953C8898AC634177ED /* ServerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC97C2D61956DAF96F2298C6 /* ServerSettings.swift */; };
 		8E1323B8F6BEA82153C43662 /* PhaseTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F996C1A83CD8BC59C1511CD /* PhaseTracker.swift */; };
 		8E62E0A66B3E01C91C62D888 /* XMageMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761161383D77D8DA91A3A900 /* XMageMobileApp.swift */; };
+		905EA01315890B57165A504C /* DeckCardImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE167157E8E87CBCE3BB8C8E /* DeckCardImage.swift */; };
+		93CEBCE63AC7B05636C659A3 /* DeckCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6FE27F90A642D64591B048 /* DeckCard.swift */; };
 		93CFDD2FEB125DE287EE6D96 /* CardImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7A10A6925493CA42F186D5 /* CardImageLoader.swift */; };
+		993D2FB8C3D142F68B4D3F36 /* SideboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D46FF425C462D7BE4974C4 /* SideboardView.swift */; };
+		995F9CF7DF850D626BE2C18B /* decks in Resources */ = {isa = PBXBuildFile; fileRef = 56077ECAB886B457E3E44BB8 /* decks */; };
 		9B86083C29757F1D74B2D9EC /* ChoiceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF87B758C6C2825DA189467 /* ChoiceList.swift */; };
 		9D06D3C568A69C1B9591FBC0 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D8990B7047370DC757611F /* RootView.swift */; };
 		9D1B111C70EEAC88A4EED98B /* PromptSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767D91350D447D72C1E8A148 /* PromptSheet.swift */; };
@@ -76,12 +82,14 @@
 		C5576DA50659629E8C3C59CB /* Prompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABFD068D742C34A64E30084 /* Prompt.swift */; };
 		C63B0B6FCD575A7FD6B5DE25 /* TableLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E91FFBD30AF897F6E5E7A4 /* TableLines.swift */; };
 		C6FDA6F0E3764C8F35B62D99 /* CreateTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6FC8F6A759805A157D1A76 /* CreateTableView.swift */; };
+		C9BC3F02708B09F86176EE63 /* NextGameWaitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56DE0A494EBA46812BA8FD8 /* NextGameWaitView.swift */; };
 		CF9AA7EC659C1BFB01777E93 /* TableAnchorKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA99F65CE25C2456DD406BA0 /* TableAnchorKey.swift */; };
 		D0A3A449202A6A21F2772919 /* GameStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F3457BF8B7788DBBC5E07 /* GameStep.swift */; };
 		DF2340E186A1851E013B3F94 /* DeckEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1A56242445FDCFD329DD14 /* DeckEntry.swift */; };
 		DF93CE9D13FF2810FACBC992 /* CombatGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0FC47264DA5343332336E2 /* CombatGroup.swift */; };
 		E6E2160308F93094307B16E8 /* LogLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D826C956FBB7F61F75CDA /* LogLine.swift */; };
 		E7CF787965BBB5D478259928 /* ManaSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6100DF8210D0E76CB8E4AE4B /* ManaSymbol.swift */; };
+		E89FF5259DAC24BD8B9A2227 /* MatchSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6276BBEC1B312B92678B4C02 /* MatchSheet.swift */; };
 		EB39F93CE40740B867C7151E /* BridgeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483CA531D5B6A53826141C2 /* BridgeRequest.swift */; };
 		ED5DCB8F5E4A97194CA27533 /* BridgeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34639339F69FB10E705EC0AC /* BridgeEvent.swift */; };
 		ED8FE5D9C84CCE6A9D8D5F5D /* TableMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92885F9BD1628423A2A9E1B /* TableMetrics.swift */; };
@@ -116,11 +124,14 @@
 		47312F21C0094526239CD5FB /* GameLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogView.swift; sourceTree = "<group>"; };
 		491E4725ED6472C2FFE5F80D /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		4A6FC8F6A759805A157D1A76 /* CreateTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTableView.swift; sourceTree = "<group>"; };
+		4A6FE27F90A642D64591B048 /* DeckCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckCard.swift; sourceTree = "<group>"; };
 		4DAF016DBD0155A7883271FB /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		56077ECAB886B457E3E44BB8 /* decks */ = {isa = PBXFileReference; lastKnownFileType = folder; name = decks; path = ../decks; sourceTree = SOURCE_ROOT; };
 		586F398A4A0508D82B6A106F /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
 		59E2131D1279EDF1D081D1F3 /* CardBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBack.swift; sourceTree = "<group>"; };
 		5B7A10A6925493CA42F186D5 /* CardImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImageLoader.swift; sourceTree = "<group>"; };
 		6100DF8210D0E76CB8E4AE4B /* ManaSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaSymbol.swift; sourceTree = "<group>"; };
+		6276BBEC1B312B92678B4C02 /* MatchSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchSheet.swift; sourceTree = "<group>"; };
 		62E91FFBD30AF897F6E5E7A4 /* TableLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableLines.swift; sourceTree = "<group>"; };
 		6A590412EEC31D6C39493F18 /* CardBadges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBadges.swift; sourceTree = "<group>"; };
 		6A83052D434C1EA8E2EFA24E /* XMageMobile.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = XMageMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +147,7 @@
 		8537E9FE7F943EAA61D17F31 /* TableMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableMenu.swift; sourceTree = "<group>"; };
 		879EBB04312FB15840878834 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A05B52DADB05AE1F25D2255 /* CardFrameStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFrameStyle.swift; sourceTree = "<group>"; };
+		8CF3DB91B791F50FA48CF7C7 /* SideboardSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideboardSession.swift; sourceTree = "<group>"; };
 		932995FA53A18CFF96ECF67B /* GameStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStore.swift; sourceTree = "<group>"; };
 		939CCB7251ADB3E8F697EB3E /* ManaPoolChips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaPoolChips.swift; sourceTree = "<group>"; };
 		94CEFDF4D4FF188143652551 /* PlayerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAction.swift; sourceTree = "<group>"; };
@@ -143,6 +155,7 @@
 		97CEC8EAA74D1F7291CC8F28 /* PlayerAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAvatar.swift; sourceTree = "<group>"; };
 		9B4C20B8829D5A5EA76F9716 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		9D600C0F80644B4EA4F02982 /* OnlineSeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineSeat.swift; sourceTree = "<group>"; };
+		A2D05004A02A8AEFF81464E0 /* SideboardCardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideboardCardRow.swift; sourceTree = "<group>"; };
 		ACBC71A0E2BBF04155E157BC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		AFB01B5878A4F9C482974A44 /* StackColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackColumn.swift; sourceTree = "<group>"; };
 		B2DEBDBBFEA7C35B03D73A83 /* PromptChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptChoice.swift; sourceTree = "<group>"; };
@@ -168,8 +181,11 @@
 		DFF87B758C6C2825DA189467 /* ChoiceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceList.swift; sourceTree = "<group>"; };
 		E0BCF3466840EB78329739B8 /* CardFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFace.swift; sourceTree = "<group>"; };
 		E152D56A3E0215898601AE51 /* ActionCluster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCluster.swift; sourceTree = "<group>"; };
+		E2D46FF425C462D7BE4974C4 /* SideboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideboardView.swift; sourceTree = "<group>"; };
 		E483CA531D5B6A53826141C2 /* BridgeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeRequest.swift; sourceTree = "<group>"; };
+		E56DE0A494EBA46812BA8FD8 /* NextGameWaitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextGameWaitView.swift; sourceTree = "<group>"; };
 		EA9F3457BF8B7788DBBC5E07 /* GameStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStep.swift; sourceTree = "<group>"; };
+		EE167157E8E87CBCE3BB8C8E /* DeckCardImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckCardImage.swift; sourceTree = "<group>"; };
 		F00B490B75E3CA22749C31CF /* CombatRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatRole.swift; sourceTree = "<group>"; };
 		F2A5E70E5B92BD04D0EBB4FE /* ZoneSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneSheet.swift; sourceTree = "<group>"; };
 		F2D8990B7047370DC757611F /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -198,6 +214,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02BF655F6CE3F4FDD95D2ED9 /* Sideboard */ = {
+			isa = PBXGroup;
+			children = (
+				EE167157E8E87CBCE3BB8C8E /* DeckCardImage.swift */,
+				E56DE0A494EBA46812BA8FD8 /* NextGameWaitView.swift */,
+				A2D05004A02A8AEFF81464E0 /* SideboardCardRow.swift */,
+				E2D46FF425C462D7BE4974C4 /* SideboardView.swift */,
+			);
+			path = Sideboard;
+			sourceTree = "<group>";
+		};
 		09E96CD437F6A4B08275B932 /* XMageMobile */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +254,7 @@
 				EAB3193C5BD52CED0326D78D /* Game */,
 				5DEE0C4B7BD3CE534676E3B7 /* Lobby */,
 				3855D6C57372A7858864F686 /* Prompts */,
+				02BF655F6CE3F4FDD95D2ED9 /* Sideboard */,
 				E7C7BBA043D2B8DDEE6B866D /* Table */,
 			);
 			path = Features;
@@ -261,6 +289,7 @@
 				2A0FC47264DA5343332336E2 /* CombatGroup.swift */,
 				39B16B6B2A989227AD814722 /* CommandObject.swift */,
 				9B4C20B8829D5A5EA76F9716 /* Counter.swift */,
+				4A6FE27F90A642D64591B048 /* DeckCard.swift */,
 				491E4725ED6472C2FFE5F80D /* GameState.swift */,
 				EA9F3457BF8B7788DBBC5E07 /* GameStep.swift */,
 				3C3C0497EDE649F4ECF7915F /* ManaPool.swift */,
@@ -269,6 +298,7 @@
 				42AA013C6206181FFE98FCBF /* Player.swift */,
 				FABFD068D742C34A64E30084 /* Prompt.swift */,
 				B2DEBDBBFEA7C35B03D73A83 /* PromptChoice.swift */,
+				8CF3DB91B791F50FA48CF7C7 /* SideboardSession.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -316,6 +346,7 @@
 		6ABD510209A008AB57DA6CC3 /* XMageMobile */ = {
 			isa = PBXGroup;
 			children = (
+				56077ECAB886B457E3E44BB8 /* decks */,
 				75C4FAE04A37414434C98CBA /* vendor */,
 			);
 			name = XMageMobile;
@@ -345,6 +376,7 @@
 				B32157DC6F5EA7D311D31784 /* ConnectionPhase.swift */,
 				96F38003C66E9F11F4BEA021 /* GameResult.swift */,
 				932995FA53A18CFF96ECF67B /* GameStore.swift */,
+				6276BBEC1B312B92678B4C02 /* MatchSheet.swift */,
 				FC97C2D61956DAF96F2298C6 /* ServerSettings.swift */,
 			);
 			path = Store;
@@ -512,6 +544,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55EA4AA749E4F267E9231816 /* Assets.xcassets in Resources */,
+				995F9CF7DF850D626BE2C18B /* decks in Resources */,
 				FE0FBA438FA3792513BBF881 /* sample-decks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,6 +581,8 @@
 				00EE1589192ABAE1978F752D /* ConnectionPhase.swift in Sources */,
 				A11484812B256E8B59CAD55B /* Counter.swift in Sources */,
 				C6FDA6F0E3764C8F35B62D99 /* CreateTableView.swift in Sources */,
+				93CEBCE63AC7B05636C659A3 /* DeckCard.swift in Sources */,
+				905EA01315890B57165A504C /* DeckCardImage.swift in Sources */,
 				DF2340E186A1851E013B3F94 /* DeckEntry.swift in Sources */,
 				F49A83C0A40269495265DFE3 /* DeckPickerView.swift in Sources */,
 				7F5C97FD4ACA44162C75770D /* EmbeddedBridge.swift in Sources */,
@@ -569,7 +604,9 @@
 				42B0E701AF8B79F726A9DBC7 /* ManaPool.swift in Sources */,
 				07D00D7B427B4F43E362A420 /* ManaPoolChips.swift in Sources */,
 				E7CF787965BBB5D478259928 /* ManaSymbol.swift in Sources */,
+				E89FF5259DAC24BD8B9A2227 /* MatchSheet.swift in Sources */,
 				F73AB093EB2EE699256A0EB6 /* MultiAmountPicker.swift in Sources */,
+				C9BC3F02708B09F86176EE63 /* NextGameWaitView.swift in Sources */,
 				7DF7F054E52A67F8D23AF532 /* OnlineSeat.swift in Sources */,
 				4730E0EAAA20345781962322 /* OnlineTable.swift in Sources */,
 				B55692C89C659B10E02C235D /* OnlineTableRow.swift in Sources */,
@@ -588,6 +625,9 @@
 				9D1B111C70EEAC88A4EED98B /* PromptSheet.swift in Sources */,
 				9D06D3C568A69C1B9591FBC0 /* RootView.swift in Sources */,
 				8D0AF6953C8898AC634177ED /* ServerSettings.swift in Sources */,
+				038A313F1405278CEDB68129 /* SideboardCardRow.swift in Sources */,
+				820122A0CBCC108E182A62DF /* SideboardSession.swift in Sources */,
+				993D2FB8C3D142F68B4D3F36 /* SideboardView.swift in Sources */,
 				5AEA9BB679212F0F27F601D2 /* StackColumn.swift in Sources */,
 				CF9AA7EC659C1BFB01777E93 /* TableAnchorKey.swift in Sources */,
 				C63B0B6FCD575A7FD6B5DE25 /* TableLines.swift in Sources */,
@@ -640,7 +680,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 25WL36ABTN;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -702,7 +742,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 25WL36ABTN;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

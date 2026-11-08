@@ -12,8 +12,13 @@ final class EmbeddedBridge: BridgeTransport {
         let decksPath = decksPath
         return AsyncStream { continuation in
             engine.control.async {
-                guard engine.isAvailable, engine.open(decksPath: decksPath, into: continuation) else {
-                    continuation.yield(.closed("The built-in XMage engine couldn't start."))
+                guard engine.isAvailable else {
+                    continuation.yield(.closed("The built-in XMage engine couldn't start (error \(engine.startupCode))."))
+                    continuation.finish()
+                    return
+                }
+                guard engine.open(decksPath: decksPath, into: continuation) else {
+                    continuation.yield(.closed("The built-in XMage engine couldn't open a session."))
                     continuation.finish()
                     return
                 }
