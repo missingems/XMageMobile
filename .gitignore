@@ -1,0 +1,10 @@
+vendor/
+bridge/build/
+bridge/.gradle/
+bridge/.kotlin/
+app/XMageMobile.xcodeproj/xcuserdata/
+app/XMageMobile.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcuserstate
+DerivedData/
+.DS_Store
+*.log

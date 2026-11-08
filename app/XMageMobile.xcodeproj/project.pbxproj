@@ -1,0 +1,692 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00EE1589192ABAE1978F752D /* ConnectionPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32157DC6F5EA7D311D31784 /* ConnectionPhase.swift */; };
+		06468995C9FF64126C6A8DC3 /* ZoneRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5617C1664B821913AF0B3BE /* ZoneRequest.swift */; };
+		07D00D7B427B4F43E362A420 /* ManaPoolChips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939CCB7251ADB3E8F697EB3E /* ManaPoolChips.swift */; };
+		081ACDC792C98A3CF04368FA /* PlayerAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CEC8EAA74D1F7291CC8F28 /* PlayerAvatar.swift */; };
+		0C2B0ED869ECEA6D61779EB6 /* ManaIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AD662363B892BFAED41C2C /* ManaIdentity.swift */; };
+		0C4477C3244B0D778C7C51F4 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491E4725ED6472C2FFE5F80D /* GameState.swift */; };
+		0ECF501931B1EB4F1F944030 /* CardTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF001532EC2DF86A1F1E1AF2 /* CardTile.swift */; };
+		1618AE21D55C168BD37C019A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256E4566A64CEFA51553419 /* Card.swift */; };
+		16E9A4BC20E356A0C35ACAC3 /* GameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932995FA53A18CFF96ECF67B /* GameStore.swift */; };
+		18278913B273142C9869EC58 /* CardFrameStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A05B52DADB05AE1F25D2255 /* CardFrameStyle.swift */; };
+		1C41CE5C703A23E11DCA83EE /* AmountPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82A1EF6EF079EDA89C90FBB /* AmountPicker.swift */; };
+		1E60C78C719B7FB8DCA784C9 /* ZoneSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5E70E5B92BD04D0EBB4FE /* ZoneSheet.swift */; };
+		2027C9DEFEA15A30FA7EED52 /* CardBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E2131D1279EDF1D081D1F3 /* CardBack.swift */; };
+		222ED943DCD66C7FA5B034F7 /* GameResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F38003C66E9F11F4BEA021 /* GameResult.swift */; };
+		27A352A53610EE7020003674 /* ActionCluster.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152D56A3E0215898601AE51 /* ActionCluster.swift */; };
+		2E7EF824499724CD8CB344C0 /* TargetCardsPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92529CA40A43FBC4330457B /* TargetCardsPicker.swift */; };
+		42B0E701AF8B79F726A9DBC7 /* ManaPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3C0497EDE649F4ECF7915F /* ManaPool.swift */; };
+		4C0C424CB5C4C76572EFDE05 /* PermanentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C50657BFC044BF3E68B6161 /* PermanentRow.swift */; };
+		55EA4AA749E4F267E9231816 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 879EBB04312FB15840878834 /* Assets.xcassets */; };
+		5ADD4D6A21EAF6BDF6FCFB7B /* PermanentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CE16A246F4351E2E54BD73 /* PermanentStack.swift */; };
+		5AEA9BB679212F0F27F601D2 /* StackColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB01B5878A4F9C482974A44 /* StackColumn.swift */; };
+		5E5BB0AE456AEAF742405D25 /* PromptChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DEBDBBFEA7C35B03D73A83 /* PromptChoice.swift */; };
+		6034BEBDB885B4E6DE27921E /* Playmat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C9165B350CD8679EC17081 /* Playmat.swift */; };
+		63208A8B96F9CE5C0E95DC1B /* ZonePiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2CE99CCD18A29E99BD270E /* ZonePiles.swift */; };
+		63E495D158807CB5F0510505 /* AmountRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AD683DFE9D2DEEDA8CF81A /* AmountRow.swift */; };
+		65AEF9A965DA6A33E6709368 /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3793353D661D0E199CFCBF93 /* GameOverView.swift */; };
+		67B44B06A87607B612644154 /* CardArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA2EB5565C45AEDB47F2FDD /* CardArt.swift */; };
+		6831CB245C7F6394D78A2466 /* BridgeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74328BE36942C95DD2C1019 /* BridgeMessage.swift */; };
+		6D05FDA85200502BD6B9CD24 /* CardFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BCF3466840EB78329739B8 /* CardFace.swift */; };
+		6EE4982BDBDCD6F4781317C7 /* LobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B99105FDFAC8D89F3C1C0C4 /* LobbyView.swift */; };
+		76258A3542D2300102EB891C /* LandGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91C3028AFB2FE911600E64F /* LandGroup.swift */; };
+		76A725569567DE4BA949ABD1 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586F398A4A0508D82B6A106F /* GameScreen.swift */; };
+		7A063209250DE99FF686B53F /* TableZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9D05E9B3C3A1E33CF13E17 /* TableZone.swift */; };
+		878C39B5DCBCD80137A71D4B /* CombatRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00B490B75E3CA22749C31CF /* CombatRole.swift */; };
+		87AD48832CDED98A99B71917 /* OpponentHandFan.swift in Sources */ = {isa = PBXBuildFile; fileRef = D285091AA6FA06F4405814A2 /* OpponentHandFan.swift */; };
+		8D0AF6953C8898AC634177ED /* ServerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC97C2D61956DAF96F2298C6 /* ServerSettings.swift */; };
+		8E1323B8F6BEA82153C43662 /* PhaseTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F996C1A83CD8BC59C1511CD /* PhaseTracker.swift */; };
+		8E62E0A66B3E01C91C62D888 /* XMageMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761161383D77D8DA91A3A900 /* XMageMobileApp.swift */; };
+		93CFDD2FEB125DE287EE6D96 /* CardImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7A10A6925493CA42F186D5 /* CardImageLoader.swift */; };
+		9B86083C29757F1D74B2D9EC /* ChoiceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF87B758C6C2825DA189467 /* ChoiceList.swift */; };
+		9D06D3C568A69C1B9591FBC0 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D8990B7047370DC757611F /* RootView.swift */; };
+		9D1B111C70EEAC88A4EED98B /* PromptSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767D91350D447D72C1E8A148 /* PromptSheet.swift */; };
+		9F80B0E1E0FAF468E70DCD39 /* TableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8537E9FE7F943EAA61D17F31 /* TableMenu.swift */; };
+		A11484812B256E8B59CAD55B /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4C20B8829D5A5EA76F9716 /* Counter.swift */; };
+		A9E3285F494800E740CA4554 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AA013C6206181FFE98FCBF /* Player.swift */; };
+		AA25DE59CE2759008CA7DC4A /* GameLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47312F21C0094526239CD5FB /* GameLogView.swift */; };
+		AA4EE3EFED22AC7A4213569D /* PlayerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CEFDF4D4FF188143652551 /* PlayerAction.swift */; };
+		B15824136E71784482B7853C /* BridgeConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A6120ECFA19D5FE14C9E6 /* BridgeConnection.swift */; };
+		B994CB39C5F43399CFB7B78A /* CardBadges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A590412EEC31D6C39493F18 /* CardBadges.swift */; };
+		BAAAF229E7212B188A1CA445 /* HandFan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EAF8A4E6619113FA3D14A4 /* HandFan.swift */; };
+		C0253C3E05E9D4A19A216293 /* CommandObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B16B6B2A989227AD814722 /* CommandObject.swift */; };
+		C1BEC5E122231C578C6BC1CB /* Autopilot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C732E3E521363C5B0BAE9F21 /* Autopilot.swift */; };
+		C2AB40B5C891AFEF22502726 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE399D9D537A51EFE99B601D /* CardDetailView.swift */; };
+		C539D5158D36775764D03414 /* ManaCostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187437E6A6C4F9B571A55E2E /* ManaCostView.swift */; };
+		C5576DA50659629E8C3C59CB /* Prompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABFD068D742C34A64E30084 /* Prompt.swift */; };
+		C63B0B6FCD575A7FD6B5DE25 /* TableLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E91FFBD30AF897F6E5E7A4 /* TableLines.swift */; };
+		CF9AA7EC659C1BFB01777E93 /* TableAnchorKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA99F65CE25C2456DD406BA0 /* TableAnchorKey.swift */; };
+		D0A3A449202A6A21F2772919 /* GameStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F3457BF8B7788DBBC5E07 /* GameStep.swift */; };
+		DF2340E186A1851E013B3F94 /* DeckEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1A56242445FDCFD329DD14 /* DeckEntry.swift */; };
+		DF93CE9D13FF2810FACBC992 /* CombatGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0FC47264DA5343332336E2 /* CombatGroup.swift */; };
+		E6E2160308F93094307B16E8 /* LogLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D826C956FBB7F61F75CDA /* LogLine.swift */; };
+		E7CF787965BBB5D478259928 /* ManaSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6100DF8210D0E76CB8E4AE4B /* ManaSymbol.swift */; };
+		EB39F93CE40740B867C7151E /* BridgeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483CA531D5B6A53826141C2 /* BridgeRequest.swift */; };
+		ED8FE5D9C84CCE6A9D8D5F5D /* TableMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92885F9BD1628423A2A9E1B /* TableMetrics.swift */; };
+		F49A83C0A40269495265DFE3 /* DeckPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4A52C036284D2D24B4E00E /* DeckPickerView.swift */; };
+		F4FD8595A9C16E5E37E3DE16 /* PilePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74C87B715206130A09F5BF9 /* PilePicker.swift */; };
+		F73AB093EB2EE699256A0EB6 /* MultiAmountPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135C248BDEBD1ECCB2C5B4CD /* MultiAmountPicker.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		06EAF8A4E6619113FA3D14A4 /* HandFan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandFan.swift; sourceTree = "<group>"; };
+		0D1A56242445FDCFD329DD14 /* DeckEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckEntry.swift; sourceTree = "<group>"; };
+		0D4A52C036284D2D24B4E00E /* DeckPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckPickerView.swift; sourceTree = "<group>"; };
+		135C248BDEBD1ECCB2C5B4CD /* MultiAmountPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiAmountPicker.swift; sourceTree = "<group>"; };
+		187437E6A6C4F9B571A55E2E /* ManaCostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaCostView.swift; sourceTree = "<group>"; };
+		24CE16A246F4351E2E54BD73 /* PermanentStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermanentStack.swift; sourceTree = "<group>"; };
+		2A0FC47264DA5343332336E2 /* CombatGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatGroup.swift; sourceTree = "<group>"; };
+		2DA2EB5565C45AEDB47F2FDD /* CardArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardArt.swift; sourceTree = "<group>"; };
+		3793353D661D0E199CFCBF93 /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
+		39B16B6B2A989227AD814722 /* CommandObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandObject.swift; sourceTree = "<group>"; };
+		3C3C0497EDE649F4ECF7915F /* ManaPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaPool.swift; sourceTree = "<group>"; };
+		42AA013C6206181FFE98FCBF /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		42C9165B350CD8679EC17081 /* Playmat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playmat.swift; sourceTree = "<group>"; };
+		47312F21C0094526239CD5FB /* GameLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogView.swift; sourceTree = "<group>"; };
+		491E4725ED6472C2FFE5F80D /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		586F398A4A0508D82B6A106F /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
+		59E2131D1279EDF1D081D1F3 /* CardBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBack.swift; sourceTree = "<group>"; };
+		5B7A10A6925493CA42F186D5 /* CardImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImageLoader.swift; sourceTree = "<group>"; };
+		6100DF8210D0E76CB8E4AE4B /* ManaSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaSymbol.swift; sourceTree = "<group>"; };
+		62E91FFBD30AF897F6E5E7A4 /* TableLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableLines.swift; sourceTree = "<group>"; };
+		6A590412EEC31D6C39493F18 /* CardBadges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBadges.swift; sourceTree = "<group>"; };
+		6A83052D434C1EA8E2EFA24E /* XMageMobile.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = XMageMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B99105FDFAC8D89F3C1C0C4 /* LobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyView.swift; sourceTree = "<group>"; };
+		6C50657BFC044BF3E68B6161 /* PermanentRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermanentRow.swift; sourceTree = "<group>"; };
+		6F996C1A83CD8BC59C1511CD /* PhaseTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseTracker.swift; sourceTree = "<group>"; };
+		713340862AD8518D3960FF49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		736D826C956FBB7F61F75CDA /* LogLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLine.swift; sourceTree = "<group>"; };
+		761161383D77D8DA91A3A900 /* XMageMobileApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMageMobileApp.swift; sourceTree = "<group>"; };
+		767D91350D447D72C1E8A148 /* PromptSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptSheet.swift; sourceTree = "<group>"; };
+		8537E9FE7F943EAA61D17F31 /* TableMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableMenu.swift; sourceTree = "<group>"; };
+		879EBB04312FB15840878834 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8A05B52DADB05AE1F25D2255 /* CardFrameStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFrameStyle.swift; sourceTree = "<group>"; };
+		932995FA53A18CFF96ECF67B /* GameStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStore.swift; sourceTree = "<group>"; };
+		939CCB7251ADB3E8F697EB3E /* ManaPoolChips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaPoolChips.swift; sourceTree = "<group>"; };
+		94CEFDF4D4FF188143652551 /* PlayerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAction.swift; sourceTree = "<group>"; };
+		96F38003C66E9F11F4BEA021 /* GameResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResult.swift; sourceTree = "<group>"; };
+		97CEC8EAA74D1F7291CC8F28 /* PlayerAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAvatar.swift; sourceTree = "<group>"; };
+		9B4C20B8829D5A5EA76F9716 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
+		AFB01B5878A4F9C482974A44 /* StackColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackColumn.swift; sourceTree = "<group>"; };
+		B2DEBDBBFEA7C35B03D73A83 /* PromptChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptChoice.swift; sourceTree = "<group>"; };
+		B32157DC6F5EA7D311D31784 /* ConnectionPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionPhase.swift; sourceTree = "<group>"; };
+		B92529CA40A43FBC4330457B /* TargetCardsPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetCardsPicker.swift; sourceTree = "<group>"; };
+		BA99F65CE25C2456DD406BA0 /* TableAnchorKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableAnchorKey.swift; sourceTree = "<group>"; };
+		BE399D9D537A51EFE99B601D /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
+		C4AD683DFE9D2DEEDA8CF81A /* AmountRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountRow.swift; sourceTree = "<group>"; };
+		C732E3E521363C5B0BAE9F21 /* Autopilot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autopilot.swift; sourceTree = "<group>"; };
+		C74C87B715206130A09F5BF9 /* PilePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PilePicker.swift; sourceTree = "<group>"; };
+		C82A1EF6EF079EDA89C90FBB /* AmountPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountPicker.swift; sourceTree = "<group>"; };
+		C91C3028AFB2FE911600E64F /* LandGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandGroup.swift; sourceTree = "<group>"; };
+		D256E4566A64CEFA51553419 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		D285091AA6FA06F4405814A2 /* OpponentHandFan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentHandFan.swift; sourceTree = "<group>"; };
+		D74328BE36942C95DD2C1019 /* BridgeMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeMessage.swift; sourceTree = "<group>"; };
+		D92885F9BD1628423A2A9E1B /* TableMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableMetrics.swift; sourceTree = "<group>"; };
+		DF001532EC2DF86A1F1E1AF2 /* CardTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTile.swift; sourceTree = "<group>"; };
+		DFF87B758C6C2825DA189467 /* ChoiceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceList.swift; sourceTree = "<group>"; };
+		E0BCF3466840EB78329739B8 /* CardFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFace.swift; sourceTree = "<group>"; };
+		E152D56A3E0215898601AE51 /* ActionCluster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCluster.swift; sourceTree = "<group>"; };
+		E483CA531D5B6A53826141C2 /* BridgeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeRequest.swift; sourceTree = "<group>"; };
+		EA9F3457BF8B7788DBBC5E07 /* GameStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStep.swift; sourceTree = "<group>"; };
+		F00B490B75E3CA22749C31CF /* CombatRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatRole.swift; sourceTree = "<group>"; };
+		F2A5E70E5B92BD04D0EBB4FE /* ZoneSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneSheet.swift; sourceTree = "<group>"; };
+		F2D8990B7047370DC757611F /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		F5617C1664B821913AF0B3BE /* ZoneRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneRequest.swift; sourceTree = "<group>"; };
+		F6AD662363B892BFAED41C2C /* ManaIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaIdentity.swift; sourceTree = "<group>"; };
+		FABFD068D742C34A64E30084 /* Prompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prompt.swift; sourceTree = "<group>"; };
+		FC2CE99CCD18A29E99BD270E /* ZonePiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZonePiles.swift; sourceTree = "<group>"; };
+		FC97C2D61956DAF96F2298C6 /* ServerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSettings.swift; sourceTree = "<group>"; };
+		FC9D05E9B3C3A1E33CF13E17 /* TableZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableZone.swift; sourceTree = "<group>"; };
+		FF3A6120ECFA19D5FE14C9E6 /* BridgeConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeConnection.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		09E96CD437F6A4B08275B932 /* XMageMobile */ = {
+			isa = PBXGroup;
+			children = (
+				63C66A024CEF29BCA4C3ED8A /* App */,
+				5D223C16C26860573760BEBE /* Bridge */,
+				D7AD173720E535B0114B57A5 /* Debug */,
+				275E036760A9E262B7FCDCF6 /* Features */,
+				4B15C8A72DDD3525266C85E3 /* Models */,
+				81DB060E4C2233ECC0BF14B4 /* Resources */,
+				85A854022E8ACBFA7FAB1E73 /* Store */,
+			);
+			path = XMageMobile;
+			sourceTree = "<group>";
+		};
+		275E036760A9E262B7FCDCF6 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				F9DEF9292834F74B7ACED40A /* Cards */,
+				EAB3193C5BD52CED0326D78D /* Game */,
+				5DEE0C4B7BD3CE534676E3B7 /* Lobby */,
+				3855D6C57372A7858864F686 /* Prompts */,
+				E7C7BBA043D2B8DDEE6B866D /* Table */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		3855D6C57372A7858864F686 /* Prompts */ = {
+			isa = PBXGroup;
+			children = (
+				C82A1EF6EF079EDA89C90FBB /* AmountPicker.swift */,
+				DFF87B758C6C2825DA189467 /* ChoiceList.swift */,
+				135C248BDEBD1ECCB2C5B4CD /* MultiAmountPicker.swift */,
+				C74C87B715206130A09F5BF9 /* PilePicker.swift */,
+				767D91350D447D72C1E8A148 /* PromptSheet.swift */,
+				B92529CA40A43FBC4330457B /* TargetCardsPicker.swift */,
+			);
+			path = Prompts;
+			sourceTree = "<group>";
+		};
+		4B15C8A72DDD3525266C85E3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C4AD683DFE9D2DEEDA8CF81A /* AmountRow.swift */,
+				D256E4566A64CEFA51553419 /* Card.swift */,
+				2A0FC47264DA5343332336E2 /* CombatGroup.swift */,
+				39B16B6B2A989227AD814722 /* CommandObject.swift */,
+				9B4C20B8829D5A5EA76F9716 /* Counter.swift */,
+				491E4725ED6472C2FFE5F80D /* GameState.swift */,
+				EA9F3457BF8B7788DBBC5E07 /* GameStep.swift */,
+				3C3C0497EDE649F4ECF7915F /* ManaPool.swift */,
+				42AA013C6206181FFE98FCBF /* Player.swift */,
+				FABFD068D742C34A64E30084 /* Prompt.swift */,
+				B2DEBDBBFEA7C35B03D73A83 /* PromptChoice.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5D223C16C26860573760BEBE /* Bridge */ = {
+			isa = PBXGroup;
+			children = (
+				FF3A6120ECFA19D5FE14C9E6 /* BridgeConnection.swift */,
+				D74328BE36942C95DD2C1019 /* BridgeMessage.swift */,
+				E483CA531D5B6A53826141C2 /* BridgeRequest.swift */,
+				736D826C956FBB7F61F75CDA /* LogLine.swift */,
+				94CEFDF4D4FF188143652551 /* PlayerAction.swift */,
+			);
+			path = Bridge;
+			sourceTree = "<group>";
+		};
+		5DEE0C4B7BD3CE534676E3B7 /* Lobby */ = {
+			isa = PBXGroup;
+			children = (
+				0D1A56242445FDCFD329DD14 /* DeckEntry.swift */,
+				0D4A52C036284D2D24B4E00E /* DeckPickerView.swift */,
+				6B99105FDFAC8D89F3C1C0C4 /* LobbyView.swift */,
+			);
+			path = Lobby;
+			sourceTree = "<group>";
+		};
+		63C66A024CEF29BCA4C3ED8A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F2D8990B7047370DC757611F /* RootView.swift */,
+				761161383D77D8DA91A3A900 /* XMageMobileApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		81DB060E4C2233ECC0BF14B4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				879EBB04312FB15840878834 /* Assets.xcassets */,
+				713340862AD8518D3960FF49 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		85A854022E8ACBFA7FAB1E73 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				B32157DC6F5EA7D311D31784 /* ConnectionPhase.swift */,
+				96F38003C66E9F11F4BEA021 /* GameResult.swift */,
+				932995FA53A18CFF96ECF67B /* GameStore.swift */,
+				FC97C2D61956DAF96F2298C6 /* ServerSettings.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		AB708FDEED20FE2183C45F8E = {
+			isa = PBXGroup;
+			children = (
+				09E96CD437F6A4B08275B932 /* XMageMobile */,
+				F429DE481E11454440C04263 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D7AD173720E535B0114B57A5 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				C732E3E521363C5B0BAE9F21 /* Autopilot.swift */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		E7C7BBA043D2B8DDEE6B866D /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				E152D56A3E0215898601AE51 /* ActionCluster.swift */,
+				06EAF8A4E6619113FA3D14A4 /* HandFan.swift */,
+				F6AD662363B892BFAED41C2C /* ManaIdentity.swift */,
+				939CCB7251ADB3E8F697EB3E /* ManaPoolChips.swift */,
+				D285091AA6FA06F4405814A2 /* OpponentHandFan.swift */,
+				6F996C1A83CD8BC59C1511CD /* PhaseTracker.swift */,
+				97CEC8EAA74D1F7291CC8F28 /* PlayerAvatar.swift */,
+				42C9165B350CD8679EC17081 /* Playmat.swift */,
+				AFB01B5878A4F9C482974A44 /* StackColumn.swift */,
+				BA99F65CE25C2456DD406BA0 /* TableAnchorKey.swift */,
+				62E91FFBD30AF897F6E5E7A4 /* TableLines.swift */,
+				8537E9FE7F943EAA61D17F31 /* TableMenu.swift */,
+				D92885F9BD1628423A2A9E1B /* TableMetrics.swift */,
+				FC9D05E9B3C3A1E33CF13E17 /* TableZone.swift */,
+				FC2CE99CCD18A29E99BD270E /* ZonePiles.swift */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		EAB3193C5BD52CED0326D78D /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				47312F21C0094526239CD5FB /* GameLogView.swift */,
+				3793353D661D0E199CFCBF93 /* GameOverView.swift */,
+				586F398A4A0508D82B6A106F /* GameScreen.swift */,
+				C91C3028AFB2FE911600E64F /* LandGroup.swift */,
+				6C50657BFC044BF3E68B6161 /* PermanentRow.swift */,
+				24CE16A246F4351E2E54BD73 /* PermanentStack.swift */,
+				F5617C1664B821913AF0B3BE /* ZoneRequest.swift */,
+				F2A5E70E5B92BD04D0EBB4FE /* ZoneSheet.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		F429DE481E11454440C04263 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6A83052D434C1EA8E2EFA24E /* XMageMobile.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F9DEF9292834F74B7ACED40A /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				2DA2EB5565C45AEDB47F2FDD /* CardArt.swift */,
+				59E2131D1279EDF1D081D1F3 /* CardBack.swift */,
+				6A590412EEC31D6C39493F18 /* CardBadges.swift */,
+				BE399D9D537A51EFE99B601D /* CardDetailView.swift */,
+				E0BCF3466840EB78329739B8 /* CardFace.swift */,
+				8A05B52DADB05AE1F25D2255 /* CardFrameStyle.swift */,
+				5B7A10A6925493CA42F186D5 /* CardImageLoader.swift */,
+				DF001532EC2DF86A1F1E1AF2 /* CardTile.swift */,
+				F00B490B75E3CA22749C31CF /* CombatRole.swift */,
+				187437E6A6C4F9B571A55E2E /* ManaCostView.swift */,
+				6100DF8210D0E76CB8E4AE4B /* ManaSymbol.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		69277D6444093D07A262975E /* XMageMobile */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDBB11DE7218A6031177267D /* Build configuration list for PBXNativeTarget "XMageMobile" */;
+			buildPhases = (
+				81078EAF632E39F214B1D14C /* Sources */,
+				3EC1657BEED6EAEA9F8E0416 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XMageMobile;
+			packageProductDependencies = (
+			);
+			productName = XMageMobile;
+			productReference = 6A83052D434C1EA8E2EFA24E /* XMageMobile.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B21B607D07E2B052820E297E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					69277D6444093D07A262975E = {
+						DevelopmentTeam = 25WL36ABTN;
+					};
+				};
+			};
+			buildConfigurationList = 360816EBF0631EC1CDC903BB /* Build configuration list for PBXProject "XMageMobile" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = AB708FDEED20FE2183C45F8E;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = F429DE481E11454440C04263 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				69277D6444093D07A262975E /* XMageMobile */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3EC1657BEED6EAEA9F8E0416 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55EA4AA749E4F267E9231816 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		81078EAF632E39F214B1D14C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27A352A53610EE7020003674 /* ActionCluster.swift in Sources */,
+				1C41CE5C703A23E11DCA83EE /* AmountPicker.swift in Sources */,
+				63E495D158807CB5F0510505 /* AmountRow.swift in Sources */,
+				C1BEC5E122231C578C6BC1CB /* Autopilot.swift in Sources */,
+				B15824136E71784482B7853C /* BridgeConnection.swift in Sources */,
+				6831CB245C7F6394D78A2466 /* BridgeMessage.swift in Sources */,
+				EB39F93CE40740B867C7151E /* BridgeRequest.swift in Sources */,
+				1618AE21D55C168BD37C019A /* Card.swift in Sources */,
+				67B44B06A87607B612644154 /* CardArt.swift in Sources */,
+				2027C9DEFEA15A30FA7EED52 /* CardBack.swift in Sources */,
+				B994CB39C5F43399CFB7B78A /* CardBadges.swift in Sources */,
+				C2AB40B5C891AFEF22502726 /* CardDetailView.swift in Sources */,
+				6D05FDA85200502BD6B9CD24 /* CardFace.swift in Sources */,
+				18278913B273142C9869EC58 /* CardFrameStyle.swift in Sources */,
+				93CFDD2FEB125DE287EE6D96 /* CardImageLoader.swift in Sources */,
+				0ECF501931B1EB4F1F944030 /* CardTile.swift in Sources */,
+				9B86083C29757F1D74B2D9EC /* ChoiceList.swift in Sources */,
+				DF93CE9D13FF2810FACBC992 /* CombatGroup.swift in Sources */,
+				878C39B5DCBCD80137A71D4B /* CombatRole.swift in Sources */,
+				C0253C3E05E9D4A19A216293 /* CommandObject.swift in Sources */,
+				00EE1589192ABAE1978F752D /* ConnectionPhase.swift in Sources */,
+				A11484812B256E8B59CAD55B /* Counter.swift in Sources */,
+				DF2340E186A1851E013B3F94 /* DeckEntry.swift in Sources */,
+				F49A83C0A40269495265DFE3 /* DeckPickerView.swift in Sources */,
+				AA25DE59CE2759008CA7DC4A /* GameLogView.swift in Sources */,
+				65AEF9A965DA6A33E6709368 /* GameOverView.swift in Sources */,
+				222ED943DCD66C7FA5B034F7 /* GameResult.swift in Sources */,
+				76A725569567DE4BA949ABD1 /* GameScreen.swift in Sources */,
+				0C4477C3244B0D778C7C51F4 /* GameState.swift in Sources */,
+				D0A3A449202A6A21F2772919 /* GameStep.swift in Sources */,
+				16E9A4BC20E356A0C35ACAC3 /* GameStore.swift in Sources */,
+				BAAAF229E7212B188A1CA445 /* HandFan.swift in Sources */,
+				76258A3542D2300102EB891C /* LandGroup.swift in Sources */,
+				6EE4982BDBDCD6F4781317C7 /* LobbyView.swift in Sources */,
+				E6E2160308F93094307B16E8 /* LogLine.swift in Sources */,
+				C539D5158D36775764D03414 /* ManaCostView.swift in Sources */,
+				0C2B0ED869ECEA6D61779EB6 /* ManaIdentity.swift in Sources */,
+				42B0E701AF8B79F726A9DBC7 /* ManaPool.swift in Sources */,
+				07D00D7B427B4F43E362A420 /* ManaPoolChips.swift in Sources */,
+				E7CF787965BBB5D478259928 /* ManaSymbol.swift in Sources */,
+				F73AB093EB2EE699256A0EB6 /* MultiAmountPicker.swift in Sources */,
+				87AD48832CDED98A99B71917 /* OpponentHandFan.swift in Sources */,
+				4C0C424CB5C4C76572EFDE05 /* PermanentRow.swift in Sources */,
+				5ADD4D6A21EAF6BDF6FCFB7B /* PermanentStack.swift in Sources */,
+				8E1323B8F6BEA82153C43662 /* PhaseTracker.swift in Sources */,
+				F4FD8595A9C16E5E37E3DE16 /* PilePicker.swift in Sources */,
+				A9E3285F494800E740CA4554 /* Player.swift in Sources */,
+				AA4EE3EFED22AC7A4213569D /* PlayerAction.swift in Sources */,
+				081ACDC792C98A3CF04368FA /* PlayerAvatar.swift in Sources */,
+				6034BEBDB885B4E6DE27921E /* Playmat.swift in Sources */,
+				C5576DA50659629E8C3C59CB /* Prompt.swift in Sources */,
+				5E5BB0AE456AEAF742405D25 /* PromptChoice.swift in Sources */,
+				9D1B111C70EEAC88A4EED98B /* PromptSheet.swift in Sources */,
+				9D06D3C568A69C1B9591FBC0 /* RootView.swift in Sources */,
+				8D0AF6953C8898AC634177ED /* ServerSettings.swift in Sources */,
+				5AEA9BB679212F0F27F601D2 /* StackColumn.swift in Sources */,
+				CF9AA7EC659C1BFB01777E93 /* TableAnchorKey.swift in Sources */,
+				C63B0B6FCD575A7FD6B5DE25 /* TableLines.swift in Sources */,
+				9F80B0E1E0FAF468E70DCD39 /* TableMenu.swift in Sources */,
+				ED8FE5D9C84CCE6A9D8D5F5D /* TableMetrics.swift in Sources */,
+				7A063209250DE99FF686B53F /* TableZone.swift in Sources */,
+				2E7EF824499724CD8CB344C0 /* TargetCardsPicker.swift in Sources */,
+				8E62E0A66B3E01C91C62D888 /* XMageMobileApp.swift in Sources */,
+				63208A8B96F9CE5C0E95DC1B /* ZonePiles.swift in Sources */,
+				06468995C9FF64126C6A8DC3 /* ZoneRequest.swift in Sources */,
+				1E60C78C719B7FB8DCA784C9 /* ZoneSheet.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		08D96696BFF69D558F7B3971 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 25WL36ABTN;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		1D6A476E21E999AC76A32C5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 25WL36ABTN;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		ED2313E0F838740A8E5032B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = XMageMobile/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = XMage;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "XMage connects to the bridge running on your Mac or home server.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.XMageMobile;
+				PRODUCT_NAME = XMage;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FCF47498E024CC6240979EB3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = XMageMobile/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = XMage;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "XMage connects to the bridge running on your Mac or home server.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.XMageMobile;
+				PRODUCT_NAME = XMage;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		360816EBF0631EC1CDC903BB /* Build configuration list for PBXProject "XMageMobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6A476E21E999AC76A32C5B /* Debug */,
+				08D96696BFF69D558F7B3971 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		BDBB11DE7218A6031177267D /* Build configuration list for PBXNativeTarget "XMageMobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCF47498E024CC6240979EB3 /* Debug */,
+				ED2313E0F838740A8E5032B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B21B607D07E2B052820E297E /* Project object */;
+}
