@@ -29,6 +29,7 @@ import mage.view.ChatMessage;
 import mage.view.GameClientMessage;
 import mage.view.GameEndView;
 import mage.view.GameTypeView;
+import mage.view.CombatGroupView;
 import mage.view.GameView;
 import mage.view.RoomUsersView;
 import mage.view.SeatView;
@@ -821,7 +822,7 @@ final class ClientSession implements MageClient {
                 case GAME_SELECT -> {
                     GameClientMessage m = (GameClientMessage) data;
                     priorityPlayable = m.getGameView() == null ? null : m.getGameView().getCanPlayObjects();
-                    sendGame(m.getGameView(), null);
+                    sendGame(m.getGameView(), combatChoices(m.getOptions(), m.getGameView()));
                     JsonObject p = prompt("select", m.getMessage(), m.getOptions());
                     p.addProperty("doneLabel", label(m.getOptions(), "UI.right.btn.text", "Done"));
                     sendPrompt(p);
@@ -991,6 +992,35 @@ final class ClientSession implements MageClient {
         data.getUserSkipPrioritySteps().getYourTurn().setEndOfTurn(true);
         data.getUserSkipPrioritySteps().getOpponentTurn().setEndOfTurn(true);
         return data;
+    }
+
+    private static Set<UUID> combatChoices(Map<String, Serializable> options, GameView view) {
+        Set<UUID> ids = new LinkedHashSet<>();
+        if (options == null) {
+            return ids;
+        }
+        boolean attacking = options.get("possibleAttackers") instanceof Collection<?>;
+        boolean blocking = options.get("possibleBlockers") instanceof Collection<?>;
+        for (String key : List.of("possibleAttackers", "possibleBlockers")) {
+            if (options.get(key) instanceof Collection<?> possible) {
+                for (Object id : possible) {
+                    if (id instanceof UUID uuid) {
+                        ids.add(uuid);
+                    }
+                }
+            }
+        }
+        if (view != null && view.getCombat() != null) {
+            for (CombatGroupView group : view.getCombat()) {
+                if (attacking) {
+                    ids.addAll(group.getAttackers().keySet());
+                }
+                if (blocking) {
+                    ids.addAll(group.getBlockers().keySet());
+                }
+            }
+        }
+        return ids;
     }
 
     private static Set<UUID> targetsOf(GameClientMessage m) {
