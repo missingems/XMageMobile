@@ -5,6 +5,7 @@ struct CardBadges: View {
     let combatRole: CombatRole?
     let count: Int
     let scale: Double
+    var isProminent = false
 
     var body: some View {
         ZStack {
@@ -24,15 +25,18 @@ struct CardBadges: View {
                     pill("\(counter.count) \(Self.shortName(counter.name))", tint: .purple)
                 }
                 Spacer(minLength: 0)
-                if let stat = statText {
-                    pill(stat, tint: (card.damage ?? 0) > 0 ? .red : .black.opacity(0.78))
+                if !isProminent, let stat = statText {
+                    pill(stat, tint: isDamaged ? .red : .black.opacity(0.78))
                 }
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
         .padding(3 * scale)
+        .padding(.top, isProminent ? 12 * scale : 0)
         .allowsHitTesting(false)
     }
+
+    private var isDamaged: Bool { (card.damage ?? 0) > 0 }
 
     private var statText: String? {
         if card.showsPowerToughness, let power = card.power, let toughness = card.toughness {

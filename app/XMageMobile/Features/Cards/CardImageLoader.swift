@@ -6,6 +6,8 @@ actor CardImageLoader {
     private let session: URLSession
     private let memory = NSCache<NSString, UIImage>()
     private var inFlight: [String: Task<UIImage?, Never>] = [:]
+    private var cards: [URL: ScryfallCard] = [:]
+    private var cardLookups: [URL: Task<ScryfallCard?, Never>] = [:]
     private var misses: Set<String> = []
     private var nextSlot = ContinuousClock.now
     private var cardBackRetryAfter: ContinuousClock.Instant?
@@ -19,14 +21,14 @@ actor CardImageLoader {
         memory.countLimit = 300
     }
 
-    func image(set: String?, number: String?, name: String) async -> UIImage? {
-        let key = "\(set ?? "")/\(number ?? "")/\(name)"
+    func image(set: String?, number: String?, name: String, variant: CardImageVariant = .normal) async -> UIImage? {
+        let key = "\(variant.rawValue)/\(set ?? "")/\(number ?? "")/\(name)"
         if let cached = memory.object(forKey: key as NSString) { return cached }
         if misses.contains(key) { return nil }
         if let running = inFlight[key] { return await running.value }
 
         let urls = Self.candidateURLs(set: set, number: number, name: name)
-        let task = Task { await self.fetchFirst(urls, faceName: name) }
+        let task = Task { await self.fetchFirst(urls, faceName: name, variant: variant) }
         inFlight[key] = task
         let image = await task.value
         inFlight[key] = nil
@@ -58,15 +60,26 @@ actor CardImageLoader {
 
     private static let cardBackURL = URL(string: "https://backs.scryfall.io/normal/0/a/0aeebaf5-8c7d-4636-9e82-8c27447861f7.jpg")!
 
-    private func fetchFirst(_ urls: [URL], faceName: String) async -> UIImage? {
+    private func fetchFirst(_ urls: [URL], faceName: String, variant: CardImageVariant) async -> UIImage? {
         for url in urls {
-            guard let card = await lookup(url), let imageURL = card.imageURL(forFaceNamed: faceName) else { continue }
+            guard let card = await lookup(url), let imageURL = card.imageURL(forFaceNamed: faceName, variant: variant) else { continue }
             if let image = await fetch(imageURL) { return image }
         }
         return nil
     }
 
     private func lookup(_ url: URL) async -> ScryfallCard? {
+        if let card = cards[url] { return card }
+        if let running = cardLookups[url] { return await running.value }
+        let task = Task { await self.loadCard(url) }
+        cardLookups[url] = task
+        let card = await task.value
+        cardLookups[url] = nil
+        if let card { cards[url] = card }
+        return card
+    }
+
+    private func loadCard(_ url: URL) async -> ScryfallCard? {
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         if let cached = session.configuration.urlCache?.cachedResponse(for: request),

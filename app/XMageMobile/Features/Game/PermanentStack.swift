@@ -15,12 +15,12 @@ struct PermanentStack: View {
         let peek = width * 0.24
         ZStack(alignment: .leading) {
             ForEach(Array(attachments.enumerated().reversed()), id: \.element.id) { index, attachment in
-                CardTile(card: attachment, width: width)
+                CardTile(card: attachment, width: width, style: .battlefield)
                     .offset(x: Double(index + 1) * peek)
                     .tableAnchor(attachment.id)
                     .onTapGesture { onTap(attachment) }
             }
-            CardTile(card: card, width: width, combatRole: combatRole, count: count)
+            CardTile(card: card, width: width, style: .battlefield, combatRole: combatRole, count: count)
                 .cardMotion(card.id, in: motion)
                 .tableAnchor(card.id)
                 .onTapGesture { onTap(card) }

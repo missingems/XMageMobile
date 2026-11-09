@@ -172,6 +172,14 @@ final class GameStore {
         respond(.respondUUID(player.id))
     }
 
+    #if DEBUG
+    func loadSample(_ state: GameState, prompt: Prompt?) {
+        game = state
+        self.prompt = prompt
+        phase = .playing
+    }
+    #endif
+
     func payMana(_ symbol: String) {
         guard let kind = prompt?.kind, kind == .mana || kind == .xmana else { return }
         respond(.respondManaType(symbol))

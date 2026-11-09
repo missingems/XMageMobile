@@ -3,6 +3,19 @@ import Foundation
 nonisolated struct ScryfallCard: Decodable, Sendable {
     struct Images: Decodable, Sendable {
         let normal: URL?
+        let artCrop: URL?
+
+        enum CodingKeys: String, CodingKey {
+            case normal
+            case artCrop = "art_crop"
+        }
+
+        func url(for variant: CardImageVariant) -> URL? {
+            switch variant {
+            case .normal: normal
+            case .artCrop: artCrop ?? normal
+            }
+        }
     }
 
     struct Face: Decodable, Sendable {
@@ -23,11 +36,11 @@ nonisolated struct ScryfallCard: Decodable, Sendable {
         case cardFaces = "card_faces"
     }
 
-    func imageURL(forFaceNamed name: String) -> URL? {
-        let faces = (cardFaces ?? []).filter { $0.imageURIs?.normal != nil }
+    func imageURL(forFaceNamed name: String, variant: CardImageVariant = .normal) -> URL? {
+        let faces = (cardFaces ?? []).filter { $0.imageURIs?.url(for: variant) != nil }
         if let face = faces.first(where: { $0.name.caseInsensitiveCompare(name) == .orderedSame }) {
-            return face.imageURIs?.normal
+            return face.imageURIs?.url(for: variant)
         }
-        return imageURIs?.normal ?? faces.first?.imageURIs?.normal
+        return imageURIs?.url(for: variant) ?? faces.first?.imageURIs?.url(for: variant)
     }
 }

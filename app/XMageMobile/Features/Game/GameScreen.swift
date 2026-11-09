@@ -7,6 +7,7 @@ struct GameScreen: View {
 
     @State private var metrics = TableMetrics(size: CGSize(width: 390, height: 700))
     @State private var inspected: Card?
+    @State private var panelCard: Card?
     @State private var zone: ZoneRequest?
     @State private var showsLog = false
     @State private var confirmsConcede = false
@@ -20,7 +21,7 @@ struct GameScreen: View {
             if let state = store.game {
                 Color.clear
                     .onGeometryChange(for: TableMetrics.self) { proxy in
-                        TableMetrics(size: proxy.size, trailingInset: proxy.safeAreaInsets.trailing)
+                        TableMetrics(size: proxy.size, leadingInset: proxy.safeAreaInsets.leading, trailingInset: proxy.safeAreaInsets.trailing)
                     } action: { newValue in
                         metrics = newValue
                     }
@@ -29,6 +30,7 @@ struct GameScreen: View {
                     .overlay(alignment: .bottomTrailing) { sideStrip(state) }
                     .overlay(alignment: .top) { toast }
                     .overlay { focusLayer(state) }
+                    .overlay { detailPanel }
                     .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
                     .animation(reduceMotion ? nil : .snappy(duration: 0.35), value: motionKey(state))
             } else {
@@ -87,29 +89,12 @@ struct GameScreen: View {
     }
 
     private func table(_ state: GameState) -> some View {
-        let opponent = state.opponents.first
-        let order = combatOrder(state)
-        return VStack(spacing: 0) {
-            topBand(opponent, state: state)
-                .frame(height: TableMetrics.topBand)
-            VStack(spacing: 0) {
-                if let opponent {
-                    row(opponent.otherPermanents + opponent.lands, of: opponent, lands: true, state: state, direction: 1, order: order)
-                    row(opponent.creatures, of: opponent, lands: false, state: state, direction: 1, order: order)
-                }
+        Group {
+            if metrics.isLandscape {
+                landscapeTable(state)
+            } else {
+                portraitTable(state)
             }
-            .frame(maxHeight: .infinity)
-            .overlay(alignment: .bottomTrailing) { stack(state) }
-            centerBand(state)
-                .frame(height: TableMetrics.centerGap)
-            VStack(spacing: 0) {
-                if let me = state.me {
-                    row(me.creatures, of: me, lands: false, state: state, direction: -1, order: order)
-                    row(me.otherPermanents + me.lands, of: me, lands: true, state: state, direction: -1, order: order)
-                }
-            }
-            .frame(maxHeight: .infinity)
-            bottomBand(state)
         }
         .ignoresSafeArea(.container, edges: .bottom)
         .overlayPreferenceValue(TableAnchorKey.self) { anchors in
@@ -117,22 +102,143 @@ struct GameScreen: View {
         }
     }
 
-    private func topBand(_ opponent: Player?, state: GameState) -> some View {
-        HStack(alignment: .top, spacing: 8) {
-            HStack(alignment: .top, spacing: 10) {
-                if let opponent {
-                    PlayerAvatar(player: opponent, identity: ManaIdentity.colors(of: opponent, in: state)) { store.choosePlayer(opponent) }
-                    ZonePiles(player: opponent) { show($0, of: opponent) }
+    private func portraitTable(_ state: GameState) -> some View {
+        VStack(spacing: 0) {
+            topBand(state.opponents.first, state: state)
+                .frame(height: metrics.topBand)
+            battlefield(state)
+            bottomBand(state)
+        }
+    }
+
+    private func landscapeTable(_ state: GameState) -> some View {
+        VStack(spacing: 0) {
+            landscapeTop(state)
+                .frame(height: metrics.topBand)
+            battlefield(state, showsStack: false)
+                .rotation3DEffect(.degrees(TableMetrics.tableTilt), axis: (x: 1, y: 0, z: 0), anchor: .bottom, perspective: 0.45)
+                .padding(.horizontal, metrics.sideColumn)
+                .padding(.bottom, 12)
+                .overlay(alignment: .leading) { playerColumn(state) }
+            landscapeBottom(state)
+                .frame(height: metrics.bottomBand)
+        }
+        .overlay(alignment: .topTrailing) {
+            stack(state)
+                .padding(.top, metrics.topBand + 4)
+                .padding(.trailing, metrics.trailingInset)
+        }
+        .overlay(alignment: .bottomTrailing) {
+            ActionCluster(state: state, showsPhase: false)
+                .frame(width: metrics.actionColumn)
+                .padding(.trailing, metrics.trailingInset + TableMetrics.margin)
+                .padding(.bottom, metrics.bottomBand + 4)
+        }
+        .frame(width: metrics.fullWidth)
+        .offset(x: (metrics.trailingInset - metrics.leadingInset) / 2)
+    }
+
+    private func battlefield(_ state: GameState, showsStack: Bool = true) -> some View {
+        let order = combatOrder(state)
+        return VStack(spacing: 0) {
+            VStack(spacing: 0) {
+                if let opponent = state.opponents.first {
+                    row(opponent.otherPermanents + opponent.lands, of: opponent, lands: true, state: state, direction: 1, order: order)
+                    row(opponent.creatures, of: opponent, lands: false, state: state, direction: 1, order: order)
                 }
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            OpponentHandFan(count: opponent?.handCount ?? 0)
-            TableMenu(showsLog: $showsLog, confirmsConcede: $confirmsConcede,
-                      revealed: state.revealed ?? [], onShowRevealed: showRevealed)
-                .frame(maxWidth: .infinity, alignment: .trailing)
+            .frame(maxHeight: .infinity)
+            .overlay(alignment: .bottomTrailing) {
+                if showsStack { stack(state) }
+            }
+            centerBand(state)
+                .frame(height: metrics.centerGap)
+            VStack(spacing: 0) {
+                if let me = state.me {
+                    row(me.creatures, of: me, lands: false, state: state, direction: -1, order: order)
+                    row(me.otherPermanents + me.lands, of: me, lands: true, state: state, direction: -1, order: order)
+                }
+            }
+            .frame(maxHeight: .infinity)
         }
-        .padding(.horizontal, TableMetrics.margin)
-        .padding(.top, 8)
+    }
+
+    private func landscapeTop(_ state: GameState) -> some View {
+        let opponent = state.opponents.first
+        return ZStack(alignment: .top) {
+            OpponentHandFan(count: opponent?.handCount ?? 0)
+                .offset(y: -OpponentHandFan.cardHeight * 0.55)
+            HStack(alignment: .top, spacing: 12) {
+                if let opponent {
+                    ZonePiles(player: opponent) { show($0, of: opponent) }
+                }
+                Spacer(minLength: 0)
+                TableMenu(showsLog: $showsLog, confirmsConcede: $confirmsConcede,
+                          revealed: state.revealed ?? [], onShowRevealed: showRevealed)
+            }
+            .padding(.leading, metrics.leadingInset + TableMetrics.margin)
+            .padding(.trailing, metrics.trailingInset + TableMetrics.margin)
+            .padding(.top, 4)
+        }
+        .frame(maxHeight: .infinity, alignment: .top)
+    }
+
+    private func playerColumn(_ state: GameState) -> some View {
+        VStack(spacing: metrics.centerGap + 4) {
+            if let opponent = state.opponents.first {
+                LifePlate(player: opponent, state: state, identity: ManaIdentity.colors(of: opponent, in: state)) { store.choosePlayer(opponent) }
+            }
+            if let me = state.me {
+                LifePlate(player: me, state: state, identity: ManaIdentity.colors(of: me, in: state)) { store.choosePlayer(me) }
+                    .overlay(alignment: .bottom) {
+                        ManaPoolChips(pool: me.manaPool, canPay: isPayingMana, onPay: store.payMana)
+                            .fixedSize()
+                            .alignmentGuide(.bottom) { $0[.top] - 8 }
+                    }
+            }
+        }
+        .frame(width: max(120, metrics.sideColumn))
+        .padding(.bottom, 12)
+    }
+
+    private func landscapeBottom(_ state: GameState) -> some View {
+        ZStack(alignment: .bottomTrailing) {
+            VStack(spacing: 0) {
+                Color.clear
+                    .frame(height: metrics.lifeRow)
+                HandFan(cards: state.hand, cardWidth: metrics.handCardWidth, availableWidth: metrics.handFanWidth,
+                        focusedId: focusedHandId, motion: motion, onTap: tapHand)
+                    .frame(width: metrics.handFanWidth, height: metrics.handBand, alignment: .top)
+            }
+            .frame(maxWidth: .infinity)
+            if let me = state.me {
+                ZonePiles(player: me, isMirrored: true) { show($0, of: me) }
+                    .padding(.trailing, metrics.trailingInset + TableMetrics.margin)
+                    .padding(.bottom, 10)
+            }
+        }
+    }
+
+    private func topBand(_ opponent: Player?, state: GameState) -> some View {
+        ZStack(alignment: .top) {
+            OpponentHandFan(count: opponent?.handCount ?? 0)
+                .offset(y: -OpponentHandFan.cardHeight * 0.5)
+            HStack(alignment: .top, spacing: 8) {
+                if let opponent {
+                    ZonePiles(player: opponent) { show($0, of: opponent) }
+                }
+                Spacer(minLength: 0)
+                TableMenu(showsLog: $showsLog, confirmsConcede: $confirmsConcede,
+                          revealed: state.revealed ?? [], onShowRevealed: showRevealed)
+            }
+            .padding(.horizontal, TableMetrics.margin)
+            if let opponent {
+                PlayerAvatar(player: opponent, identity: ManaIdentity.colors(of: opponent, in: state)) { store.choosePlayer(opponent) }
+                    .padding(.top, 10)
+            }
+        }
+        .padding(.top, 6)
+        .frame(maxHeight: .infinity, alignment: .top)
     }
 
     private func row(_ cards: [Card], of player: Player, lands: Bool, state: GameState, direction: Double, order: [String: Int]) -> some View {
@@ -160,6 +266,14 @@ struct GameScreen: View {
     private func centerBand(_ state: GameState) -> some View {
         let message = centerMessage(state)
         return ZStack {
+            LinearGradient(colors: [.clear, .white.opacity(0.16), .clear], startPoint: .leading, endPoint: .trailing)
+                .frame(height: 1)
+            if metrics.isLandscape {
+                PhaseRail(side: .all, current: state.step.flatMap(GameStep.init(rawValue:)), isActive: true, length: 150,
+                          litColor: state.isMyTurn ? PhaseRail.lit : Color(red: 1, green: 0.42, blue: 0.36))
+                    .accessibilityElement()
+                    .accessibilityLabel("\(state.isMyTurn ? "Your" : "Opponent’s") turn, \(state.step.flatMap(GameStep.init(rawValue:))?.title ?? "")")
+            }
             if let message {
                 Text(message)
                     .font(.footnote.weight(.medium))
@@ -182,6 +296,9 @@ struct GameScreen: View {
     private func centerMessage(_ state: GameState) -> String? {
         guard let prompt = store.prompt else { return store.waitingText }
         let step = state.step.flatMap(GameStep.init(rawValue:))
+        if prompt.isPriority, metrics.isLandscape {
+            return nil
+        }
         if prompt.isPriority {
             if let top = state.stack.first {
                 return "\(top.name) is on the stack · Respond or resolve"
@@ -218,7 +335,7 @@ struct GameScreen: View {
                     .padding(.horizontal, 14)
                     .padding(.vertical, 8)
                     .glassEffect(.regular, in: .capsule)
-                    .padding(.top, TableMetrics.topBand + 4)
+                    .padding(.top, metrics.topBand + 4)
                     .padding(.horizontal, 48)
                     .id(banner)
                     .transition(.move(edge: .top).combined(with: .opacity))
@@ -243,27 +360,15 @@ struct GameScreen: View {
     }
 
     private func bottomBand(_ state: GameState) -> some View {
-        HStack(alignment: .bottom, spacing: 0) {
-            HStack(alignment: .bottom, spacing: 10) {
-                if let me = state.me {
-                    PlayerAvatar(player: me, identity: ManaIdentity.colors(of: me, in: state)) { store.choosePlayer(me) }
-                    ZonePiles(player: me) { show($0, of: me) }
-                }
-            }
-            .padding(.leading, TableMetrics.margin)
-            .padding(.bottom, TableMetrics.margin)
-            .frame(width: metrics.sideColumn, alignment: .leading)
-            .overlay(alignment: .topLeading) {
-                if let me = state.me {
-                    ManaPoolChips(pool: me.manaPool, canPay: isPayingMana, onPay: store.payMana)
-                        .padding(.leading, TableMetrics.margin)
-                        .offset(y: -44)
-                }
-            }
+        VStack(spacing: 0) {
+            playerHUD(state)
+                .frame(height: metrics.lifeRow)
             HandFan(cards: state.hand, cardWidth: metrics.handCardWidth, availableWidth: metrics.handFanWidth,
                     focusedId: focusedHandId, motion: motion, onTap: tapHand)
-                .padding(.top, 8)
-                .frame(width: metrics.handFanWidth, height: metrics.bottomBand, alignment: .top)
+                .frame(width: metrics.handFanWidth, height: metrics.handBand, alignment: .top)
+                .frame(maxWidth: .infinity, alignment: metrics.usesSideStrip ? .center : .leading)
+        }
+        .overlay(alignment: .bottomTrailing) {
             if !metrics.usesSideStrip {
                 ActionCluster(state: state)
                     .padding(.trailing, TableMetrics.margin)
@@ -271,7 +376,27 @@ struct GameScreen: View {
                     .frame(width: metrics.actionColumn, alignment: .trailing)
             }
         }
-        .frame(height: metrics.bottomBand, alignment: .bottom)
+        .frame(height: metrics.bottomBand, alignment: .top)
+    }
+
+    private func playerHUD(_ state: GameState) -> some View {
+        ZStack {
+            HStack(spacing: 8) {
+                if let me = state.me {
+                    ZonePiles(player: me) { show($0, of: me) }
+                }
+                Spacer(minLength: 0)
+            }
+            .padding(.horizontal, TableMetrics.margin)
+            if let me = state.me {
+                PlayerAvatar(player: me, identity: ManaIdentity.colors(of: me, in: state)) { store.choosePlayer(me) }
+                    .overlay(alignment: .trailing) {
+                        ManaPoolChips(pool: me.manaPool, canPay: isPayingMana, onPay: store.payMana)
+                            .fixedSize()
+                            .alignmentGuide(.trailing) { $0[.leading] - 10 }
+                    }
+            }
+        }
     }
 
     @ViewBuilder
@@ -355,12 +480,61 @@ struct GameScreen: View {
         if canPlay(card) {
             store.activate(card)
         } else {
-            inspected = card
+            inspect(card)
         }
     }
 
     private func inspect(_ card: Card) {
-        inspected = card
+        if metrics.isLandscape {
+            panelCard = card
+        } else {
+            inspected = card
+        }
+    }
+
+    private var detailPanel: some View {
+        let width = min(250, metrics.size.height * 0.56 * CardFrameStyle.aspectRatio)
+        return ZStack(alignment: .trailing) {
+            if let card = panelCard {
+                Color.black.opacity(0.25)
+                    .ignoresSafeArea()
+                    .contentShape(.rect)
+                    .onTapGesture { panelCard = nil }
+                    .accessibilityLabel("Close card")
+                    .accessibilityAddTraits(.isButton)
+                    .transition(.opacity)
+                VStack(spacing: 12) {
+                    CardArt(card: card, width: width)
+                        .shadow(color: .black.opacity(0.6), radius: 16, y: 6)
+                        .accessibilityLabel(card.name)
+                    HStack(spacing: 10) {
+                        Button("Details", systemImage: "info.circle") {
+                            panelCard = nil
+                            inspected = card
+                        }
+                        .buttonStyle(.glass)
+                        if canPlay(card) {
+                            Button(card.choosable ? "Choose" : "Play", systemImage: "play.fill") {
+                                panelCard = nil
+                                store.activate(card)
+                            }
+                            .buttonStyle(.glassProminent)
+                        }
+                    }
+                }
+                .padding(.trailing, TableMetrics.margin + 8)
+                .transition(.move(edge: .trailing).combined(with: .opacity))
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
+        .animation(.snappy, value: panelCard?.id)
+        #if DEBUG
+        .task {
+            if let id = UserDefaults.standard.string(forKey: "sampleInspect"), let card = store.game?.card(withId: id) {
+                panelCard = card
+            }
+        }
+        #endif
     }
 
     private func actionTitle(for card: Card) -> String? {

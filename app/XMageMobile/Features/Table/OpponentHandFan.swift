@@ -3,12 +3,15 @@ import SwiftUI
 struct OpponentHandFan: View {
     let count: Int
 
-    private let cardWidth = 30.0
+    static let cardWidth = 28.0
+    static let cardHeight = cardWidth * TableMetrics.ratio
+
+    private var cardWidth: Double { Self.cardWidth }
 
     var body: some View {
         let shown = min(count, 12)
         let middle = Double(shown - 1) / 2
-        let step = cardWidth * 0.62
+        let step = cardWidth * 0.5
         ZStack {
             ForEach(0..<shown, id: \.self) { index in
                 let distance = Double(index) - middle
@@ -25,14 +28,14 @@ struct OpponentHandFan: View {
         }
         .frame(width: max(cardWidth, Double(max(shown - 1, 0)) * step + cardWidth + 16),
                height: cardWidth * TableMetrics.ratio)
-        .overlay(alignment: .bottom) {
+        .overlay(alignment: .bottomTrailing) {
             if count > 0 {
                 Text(count, format: .number)
                     .font(.caption.weight(.semibold).monospacedDigit())
                     .padding(.horizontal, 8)
                     .padding(.vertical, 2)
                     .glassEffect(.regular, in: .capsule)
-                    .offset(y: 10)
+                    .offset(x: 10, y: 10)
             }
         }
         .accessibilityElement(children: .ignore)

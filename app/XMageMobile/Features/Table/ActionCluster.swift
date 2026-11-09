@@ -4,6 +4,7 @@ struct ActionCluster: View {
     @Environment(GameStore.self) private var store
     let state: GameState
     var isStrip = false
+    var showsPhase = true
 
     private struct Action {
         var title: String
@@ -14,7 +15,9 @@ struct ActionCluster: View {
 
     var body: some View {
         VStack(spacing: isStrip ? 10 : 12) {
-            PhaseTracker(state: state, style: isStrip ? .strip : .full)
+            if showsPhase {
+                PhaseTracker(state: state, style: isStrip ? .strip : .full)
+            }
             buttons
         }
     }
@@ -24,7 +27,7 @@ struct ActionCluster: View {
             VStack(spacing: 8) {
                 ForEach(Array(secondaryActions.enumerated()), id: \.offset) { _, action in
                     Button(action: action.perform) {
-                        label(action)
+                        label(action, isPrimary: false)
                     }
                     .buttonStyle(.glass)
                     .controlSize(.large)
@@ -37,7 +40,7 @@ struct ActionCluster: View {
                             .frame(maxWidth: .infinity)
                             .accessibilityLabel("Waiting for opponent")
                     } else {
-                        label(primary)
+                        label(primary, isPrimary: true)
                     }
                 }
                 .buttonStyle(.glassProminent)
@@ -50,7 +53,7 @@ struct ActionCluster: View {
     }
 
     @ViewBuilder
-    private func label(_ action: Action) -> some View {
+    private func label(_ action: Action, isPrimary: Bool) -> some View {
         if isStrip {
             VStack(spacing: 4) {
                 Image(systemName: action.systemImage)
@@ -64,6 +67,11 @@ struct ActionCluster: View {
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 4)
+        } else if !showsPhase && isPrimary {
+            Label(action.title, systemImage: action.systemImage)
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
+                .frame(maxWidth: .infinity)
         } else {
             Text(action.title)
                 .lineLimit(1)

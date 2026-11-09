@@ -2,50 +2,55 @@ import SwiftUI
 
 struct ZonePiles: View {
     let player: Player
+    var isMirrored = false
     let onShowZone: (TableZone) -> Void
 
-    private let cardWidth = 16.0
+    static let cardWidth = 38.0
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(player.name)
-                .font(.footnote.weight(.semibold))
-                .lineLimit(1)
-            HStack(alignment: .top, spacing: 10) {
-                VStack(alignment: .leading, spacing: 4) {
-                    pile("Library", player.libraryCount, zone: nil) {
-                        CardBack(width: cardWidth)
-                    }
-                    pile("Graveyard", player.graveyard.count, zone: .graveyard, actionable: actionable(in: player.graveyard)) {
-                        topCard(actionable(in: player.graveyard) ?? player.graveyard.last)
-                    }
-                }
-                if !player.exile.isEmpty || !player.command.isEmpty || !player.companion.isEmpty {
-                    VStack(alignment: .leading, spacing: 4) {
-                        if !player.exile.isEmpty {
-                            let usable = actionable(in: player.exile)
-                            pile("Exile", player.exile.count, zone: .exile, actionable: usable) {
-                                topCard(usable ?? player.exile.last)
-                                    .saturation(usable == nil ? 0 : 1)
-                            }
-                        }
-                        if !player.command.isEmpty {
-                            let commandCards = player.command.map(\.asCard)
-                            let usable = actionable(in: commandCards)
-                            pile("Command zone", player.command.count, zone: .command, actionable: usable) {
-                                topCard(usable ?? commandCards.first)
-                            }
-                        }
-                        if !player.companion.isEmpty {
-                            pile("Companion", player.companion.count, zone: .companion, actionable: actionable(in: player.companion)) {
-                                topCard(player.companion.first)
-                            }
-                        }
-                    }
-                }
-            }
+        HStack(alignment: .top, spacing: 8) {
+            if isMirrored { otherZones }
+            if isMirrored { graveyard }
+            library
+            if !isMirrored { graveyard }
+            if !isMirrored { otherZones }
         }
         .fixedSize()
+    }
+
+    private var graveyard: some View {
+        pile("Graveyard", player.graveyard.count, zone: .graveyard, actionable: actionable(in: player.graveyard)) {
+            topCard(actionable(in: player.graveyard) ?? player.graveyard.last)
+        }
+    }
+
+    @ViewBuilder
+    private var otherZones: some View {
+        if !player.exile.isEmpty {
+            let usable = actionable(in: player.exile)
+            pile("Exile", player.exile.count, zone: .exile, actionable: usable) {
+                topCard(usable ?? player.exile.last)
+                    .saturation(usable == nil ? 0 : 1)
+            }
+        }
+        if !player.command.isEmpty {
+            let commandCards = player.command.map(\.asCard)
+            let usable = actionable(in: commandCards)
+            pile("Command zone", player.command.count, zone: .command, actionable: usable) {
+                topCard(usable ?? commandCards.first)
+            }
+        }
+        if !player.companion.isEmpty {
+            pile("Companion", player.companion.count, zone: .companion, actionable: actionable(in: player.companion)) {
+                topCard(player.companion.first)
+            }
+        }
+    }
+
+    private var library: some View {
+        pile("Library", player.libraryCount, zone: nil) {
+            CardBack(width: Self.cardWidth)
+        }
     }
 
     private func actionable(in cards: [Card]) -> Card? {
@@ -55,23 +60,27 @@ struct ZonePiles: View {
     @ViewBuilder
     private func pile<Thumbnail: View>(_ label: String, _ count: Int, zone: TableZone?, actionable: Card? = nil, @ViewBuilder thumbnail: () -> Thumbnail) -> some View {
         let glow: Color? = actionable.map { $0.choosable ? .yellow : CardTile.playableEdge }
-        let content = HStack(spacing: 5) {
-            thumbnail()
-                .frame(width: cardWidth, height: cardWidth * TableMetrics.ratio)
-            Text(count, format: .number)
-                .font(.footnote)
-                .monospacedDigit()
-                .foregroundStyle(glow ?? .secondary)
-        }
-        .background {
-            if let glow {
-                Capsule()
-                    .fill(glow.opacity(0.18))
-                    .strokeBorder(glow, lineWidth: 1.5)
-                    .padding(-4)
-                    .shadow(color: glow.opacity(0.6), radius: 6)
+        let radius = CardFrameStyle.cornerRadius(forWidth: Self.cardWidth) + 1
+        let content = thumbnail()
+            .frame(width: Self.cardWidth, height: Self.cardWidth * TableMetrics.ratio)
+            .overlay {
+                RoundedRectangle(cornerRadius: radius)
+                    .strokeBorder(glow ?? .white.opacity(0.18), lineWidth: glow == nil ? 0.5 : 2)
             }
-        }
+            .shadow(color: (glow ?? .black).opacity(glow == nil ? 0.4 : 0.7), radius: glow == nil ? 2 : 6, y: 1)
+            .overlay(alignment: .bottom) {
+                Text(count, format: .number)
+                    .font(.caption2.weight(.bold))
+                    .monospacedDigit()
+                    .foregroundStyle(glow ?? .white)
+                    .padding(.horizontal, 6)
+                    .padding(.vertical, 1)
+                    .background(.black.opacity(0.75), in: .capsule)
+                    .offset(y: 7)
+            }
+            .padding(.horizontal, 3)
+            .padding(.bottom, 7)
+            .contentShape(.rect)
         let description = actionable == nil ? "\(label), \(count) cards" : "\(label), \(count) cards, has cards you can use"
 
         if let zone {
@@ -88,10 +97,11 @@ struct ZonePiles: View {
     @ViewBuilder
     private func topCard(_ card: Card?) -> some View {
         if let card {
-            CardArt(card: card, width: cardWidth)
+            CardArt(card: card, width: Self.cardWidth)
         } else {
-            RoundedRectangle(cornerRadius: 2)
-                .strokeBorder(.white.opacity(0.3), style: StrokeStyle(lineWidth: 1, dash: [2, 2]))
+            RoundedRectangle(cornerRadius: CardFrameStyle.cornerRadius(forWidth: Self.cardWidth))
+                .fill(.white.opacity(0.04))
+                .strokeBorder(.white.opacity(0.25), style: StrokeStyle(lineWidth: 1, dash: [3, 3]))
         }
     }
 }

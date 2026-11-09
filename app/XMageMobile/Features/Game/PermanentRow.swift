@@ -25,7 +25,7 @@ struct PermanentRow: View {
                 }
             }
             .padding(.horizontal, 12)
-            .frame(minHeight: width / CardFrameStyle.aspectRatio)
+            .frame(minHeight: width / CardCrop.aspectRatio)
         }
         .scrollIndicators(.hidden)
         .scrollClipDisabled()

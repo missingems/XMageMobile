@@ -60,39 +60,56 @@ struct TableLines: View {
     }
 
     private func draw(_ segment: Segment, in context: inout GraphicsContext) {
-        let dx = segment.to.x - segment.from.x
-        let dy = segment.to.y - segment.from.y
+        let from = segment.from
+        let to = segment.to
+        let dx = to.x - from.x
+        let dy = to.y - from.y
         let length = max(1, hypot(dx, dy))
-        let ux = dx / length
-        let uy = dy / length
-        let end = CGPoint(x: segment.to.x - ux * 16, y: segment.to.y - uy * 16)
+        let bend = min(90, length * 0.28)
+        let control = CGPoint(x: (from.x + to.x) / 2 - dy / length * bend * 0.35,
+                              y: min(from.y, to.y) - bend)
+        let tx = to.x - control.x
+        let ty = to.y - control.y
+        let tl = max(1, hypot(tx, ty))
+        let ux = tx / tl
+        let uy = ty / tl
+        let headLength = 18.0
+        let end = CGPoint(x: to.x - ux * (headLength + 6), y: to.y - uy * (headLength + 6))
 
-        let color: Color
-        let style: StrokeStyle
+        let core: Color
+        let glow: Color
         switch segment.kind {
         case .block:
-            color = Color(red: 1, green: 0.45, blue: 0.32)
-            style = StrokeStyle(lineWidth: 3, lineCap: .round)
+            core = Color(red: 0.55, green: 0.78, blue: 1)
+            glow = Color(red: 0.2, green: 0.5, blue: 1)
         case .attack:
-            color = Color(red: 1, green: 0.45, blue: 0.32).opacity(0.7)
-            style = StrokeStyle(lineWidth: 2, lineCap: .round, dash: [6, 6])
+            core = Color(red: 1, green: 0.72, blue: 0.45)
+            glow = Color(red: 1, green: 0.32, blue: 0.12)
         case .target:
-            color = Color(red: 0.62, green: 0.82, blue: 1)
-            style = StrokeStyle(lineWidth: 2.5, lineCap: .round, dash: [8, 5])
+            core = Color(red: 1, green: 0.93, blue: 0.75)
+            glow = Color(red: 1, green: 0.55, blue: 0.15)
         }
 
         var line = Path()
-        line.move(to: segment.from)
-        line.addLine(to: end)
-        context.stroke(line, with: .color(.black.opacity(0.45)), style: StrokeStyle(lineWidth: style.lineWidth + 2.5, lineCap: .round, dash: style.dash))
-        context.stroke(line, with: .color(color), style: style)
+        line.move(to: from)
+        line.addQuadCurve(to: end, control: control)
 
-        let size = 10.0
+        var glowContext = context
+        glowContext.addFilter(.blur(radius: 6))
+        glowContext.stroke(line, with: .color(glow.opacity(0.85)), style: StrokeStyle(lineWidth: 12, lineCap: .round))
+        context.stroke(line, with: .linearGradient(Gradient(colors: [glow.opacity(0.3), core]), startPoint: from, endPoint: end),
+                       style: StrokeStyle(lineWidth: 6, lineCap: .round))
+
+        let tip = CGPoint(x: to.x - ux * 4, y: to.y - uy * 4)
+        let base = CGPoint(x: tip.x - ux * headLength, y: tip.y - uy * headLength)
         var head = Path()
-        head.move(to: CGPoint(x: end.x + ux * 6, y: end.y + uy * 6))
-        head.addLine(to: CGPoint(x: end.x - ux * size + uy * size * 0.6, y: end.y - uy * size - ux * size * 0.6))
-        head.addLine(to: CGPoint(x: end.x - ux * size - uy * size * 0.6, y: end.y - uy * size + ux * size * 0.6))
+        head.move(to: tip)
+        head.addLine(to: CGPoint(x: base.x + uy * 12, y: base.y - ux * 12))
+        head.addLine(to: CGPoint(x: base.x - ux * 3, y: base.y - uy * 3))
+        head.addLine(to: CGPoint(x: base.x - uy * 12, y: base.y + ux * 12))
         head.closeSubpath()
-        context.fill(head, with: .color(color))
+        glowContext.fill(head, with: .color(glow))
+        context.fill(head, with: .color(core))
+        context.stroke(head, with: .color(glow), lineWidth: 1.5)
     }
 }

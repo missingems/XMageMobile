@@ -3,6 +3,7 @@ import SwiftUI
 struct PlayerAvatar: View {
     let player: Player
     let identity: [String]
+    var isCompact = false
     let onChoose: () -> Void
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -13,14 +14,26 @@ struct PlayerAvatar: View {
         let delta: Int
     }
 
-    private let diameter = 60.0
+    private var diameter: Double { isCompact ? 46 : 58 }
 
     var body: some View {
-        Button(action: onChoose) {
-            emblem
+        Group {
+            if isCompact {
+                button
+                    .overlay(alignment: .leading) {
+                        name
+                            .fixedSize()
+                            .alignmentGuide(.leading) { $0[.trailing] + 10 }
+                    }
+            } else {
+                VStack(spacing: 3) {
+                    button
+                    name
+                        .frame(maxWidth: 110)
+                }
+            }
         }
-        .buttonStyle(.plain)
-        .allowsHitTesting(player.choosable)
+        .accessibilityElement(children: .combine)
         .accessibilityRemoveTraits(player.choosable ? [] : .isButton)
         .accessibilityLabel("\(player.name), \(player.life) life\(player.hasPriority ? ", has priority" : "")")
         .accessibilityHint(player.choosable ? "Choose as target" : "")
@@ -36,12 +49,28 @@ struct PlayerAvatar: View {
         }
     }
 
+    private var button: some View {
+        Button(action: onChoose) {
+            emblem
+        }
+        .buttonStyle(.plain)
+        .allowsHitTesting(player.choosable)
+    }
+
+    private var name: some View {
+        Text(player.name)
+            .font(.caption.weight(.semibold))
+            .foregroundStyle(.secondary)
+            .lineLimit(1)
+            .accessibilityHidden(true)
+    }
+
     private var emblem: some View {
         ZStack {
             Circle().fill(fill)
             Circle().fill(.black.opacity(0.3))
             Text(player.life, format: .number)
-                .font(.system(size: 26, weight: .bold))
+                .font(.system(size: isCompact ? 21 : 26, weight: .bold))
                 .monospacedDigit()
                 .foregroundStyle(.white)
                 .contentTransition(.numericText(value: Double(player.life)))

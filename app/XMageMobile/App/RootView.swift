@@ -47,6 +47,12 @@ struct RootView: View {
 
     private func autoStartIfRequested() async {
         let defaults = UserDefaults.standard
+        #if DEBUG
+        if defaults.bool(forKey: "sampleTable") {
+            store.loadSample(SampleGame.state, prompt: SampleGame.prompt)
+            return
+        }
+        #endif
         guard defaults.bool(forKey: "autoStart") else { return }
         store.connect(ServerSettings(
             bridgeHost: defaults.string(forKey: "bridgeHost") ?? "localhost",
